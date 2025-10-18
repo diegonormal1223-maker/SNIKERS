@@ -1,0 +1,446 @@
+<label>
+  <input type="checkbox" required>
+  Acepto los <a href="/terms">términos y condiciones</a>
+</label>
+
+<label>
+  <input type="checkbox">
+  Quiero recibir ofertas y novedades por email
+  (puedes cancelar en cualquier momento)
+</label>
+```
+
+**Transparencia:**
+- Enlace a políticas visible
+- Lenguaje claro y simple
+- Sin letra pequeña escondida
+- Opciones fáciles de modificar
+
+---
+
+## 15. ROADMAP DE IMPLEMENTACIÓN
+
+### FASE 1: FUNDACIÓN (Semanas 1-2)
+
+**1.1 Definición de identidad**
+- [ ] Logo final en todas las variantes
+- [ ] Paleta de colores documentada
+- [ ] Tipografías seleccionadas y licenciadas
+- [ ] Guía de estilo básica
+
+**1.2 Arquitectura de información**
+- [ ] Mapa del sitio finalizado
+- [ ] Nombres de páginas y URLs
+- [ ] Jerarquía de navegación
+- [ ] Taxonomía de productos
+
+**1.3 Setup de proyecto**
+- [ ] Estructura de carpetas
+- [ ] Nomenclatura de archivos
+- [ ] Sistema de versionamiento (Git)
+- [ ] Entorno de desarrollo
+
+---
+
+### FASE 2: DISEÑO (Semanas 3-4)
+
+**2.1 Wireframes (baja fidelidad)**
+- [ ] Index / Homepage
+- [ ] Catálogo con filtros
+- [ ] Detalle de producto
+- [ ] Carrito y checkout (flujo completo)
+- [ ] Login/Registro
+- [ ] Perfil de usuario
+- [ ] Páginas institucionales
+
+**2.2 Mockups (alta fidelidad)**
+- [ ] Aplicar brand identity
+- [ ] Estados (hover, active, focus)
+- [ ] Versiones responsive (desktop/tablet/móvil)
+- [ ] Componentes reutilizables
+- [ ] Sistema de espaciado y grid
+
+**2.3 Prototipo interactivo**
+- [ ] Navegación entre páginas
+- [ ] Interacciones básicas
+- [ ] Flujo de compra completo
+- [ ] Validación con usuarios (5 personas mínimo)
+
+---
+
+### FASE 3: CONTENIDO (Semanas 5-6)
+
+**3.1 Textos y copy**
+- [ ] Microcopy de toda la interfaz
+- [ ] Descripciones de productos (plantilla)
+- [ ] Página "Acerca de" / Manifiesto
+- [ ] FAQ completas
+- [ ] Políticas legales (con asesoría legal)
+
+**3.2 Imágenes**
+- [ ] Fotografía de productos (contratar fotógrafo o stock)
+- [ ] Imágenes de hero/banners
+- [ ] Iconografía personalizada
+- [ ] Fotos de comunidad/lifestyle
+- [ ] Optimización y formatos múltiples
+
+**3.3 Datos de productos**
+- [ ] Base de datos con estructura:
+  - ID, SKU
+  - Nombre, descripción
+  - Precio, categoría
+  - Tallas, colores
+  - Stock, imágenes
+  - Atributos (marca, modelo, etc.)
+- [ ] Mínimo 50 productos para lanzamiento
+
+---
+
+### FASE 4: DESARROLLO (Semanas 7-10)
+
+**4.1 Componentes base**
+- [ ] Header (con menú responsive)
+- [ ] Footer
+- [ ] Tarjeta de producto
+- [ ] Botones y forms
+- [ ] Modal/overlay system
+- [ ] Navegación con teclado
+
+**4.2 Páginas principales**
+- [ ] Index con todas las secciones
+- [ ] Catálogo funcional
+  - Grid responsive
+  - Filtros
+  - Ordenamiento
+  - Paginación
+- [ ] Detalle de producto
+  - Galería de imágenes
+  - Selector de talla
+  - Add to cart
+- [ ] Carrito
+  - Agregar/eliminar
+  - Actualizar cantidad
+  - Cupones
+- [ ] Checkout (4 pasos)
+  - Validaciones
+  - Integración de pago
+  - Confirmación
+
+**4.3 Sistema de usuario**
+- [ ] Registro y login
+- [ ] Recuperación de contraseña
+- [ ] Panel de perfil
+- [ ] Historial de pedidos
+- [ ] Favoritos
+
+**4.4 Búsqueda y filtros**
+- [ ] Buscador con autocompletado
+- [ ] Filtros dinámicos
+- [ ] URL parameters para compartir
+- [ ] Estados vacíos
+
+---
+
+### FASE 5: INTEGRACIONES (Semanas 11-12)
+
+**5.1 Pasarela de pago**
+- [ ] Integración (ej: Stripe, PayU, Mercado Pago)
+- [ ] Pruebas en sandbox
+- [ ] Manejo de errores
+- [ ] Webhooks para confirmaciones
+
+**5.2 Envíos**
+- [ ] Cálculo automático de costos
+- [ ] Integración con courier (opcional)
+- [ ] Generación de etiquetas
+- [ ] Tracking de pedidos
+
+**5.3 Email transaccional**
+- [ ] Confirmación de registro
+- [ ] Confirmación de pedido
+- [ ] Actualización de envío
+- [ ] Recuperación de contraseña
+- [ ] Newsletter (opcional)
+
+**5.4 Analítica**
+- [ ] Google Analytics 4
+- [ ] Google Tag Manager
+- [ ] Eventos de e-commerce
+- [ ] Facebook/TikTok pixels
+
+---
+
+### FASE 6: TESTING Y QA (Semana 13)
+
+**6.1 Testing funcional**
+- [ ] Todos los flujos de usuario
+- [ ] Formularios y validaciones
+- [ ] Carrito y checkout completo
+- [ ] Compra de prueba exitosa
+- [ ] Emails recibidos correctamente
+
+**6.2 Testing responsive**
+- [ ] Chrome, Firefox, Safari, Edge
+- [ ] iOS (iPhone/iPad)
+- [ ] Android (varios dispositivos)
+- [ ] Rotación de pantalla
+- [ ] Zoom al 200%
+
+**6.3 Testing de rendimiento**
+- [ ] Velocidad de carga <3s (Lighthouse)
+- [ ] Optimización de imágenes
+- [ ] Core Web Vitals (LCP, FID, CLS)
+- [ ] Caché funcionando
+
+**6.4 Testing de accesibilidad**
+- [ ] Contraste (WCAG AA)
+- [ ] Navegación con teclado
+- [ ] Lectores de pantalla (NVDA/VoiceOver)
+- [ ] Textos alternativos
+- [ ] Focus visible
+
+**6.5 Testing de seguridad**
+- [ ] SSL/HTTPS activo
+- [ ] Headers de seguridad
+- [ ] Validación server-side
+- [ ] Protección CSRF
+- [ ] Rate limiting
+
+---
+
+### FASE 7: PRE-LANZAMIENTO (Semana 14)
+
+**7.1 SEO técnico**
+- [ ] Metadatos en todas las páginas
+- [ ] Sitemap.xml
+- [ ] Robots.txt
+- [ ] Datos estructurados (Schema.org)
+- [ ] URLs amigables
+- [ ] Redirects 301 (si aplica)
+- [ ] Google Search Console configurado
+
+**7.2 Legal y compliance**
+- [ ] Banner de cookies funcionando
+- [ ] Políticas publicadas y enlazadas
+- [ ] Términos aceptados en checkout
+- [ ] GDPR/CCPA ready (si aplica)
+
+**7.3 Preparación operativa**
+- [ ] Inventario cargado y verificado
+- [ ] Proceso de fulfillment definido
+- [ ] Atención al cliente (email/chat)
+- [ ] FAQ actualizada
+- [ ] Dashboard de administración
+
+**7.4 Staging y UAT**
+- [ ] Sitio en servidor de staging
+- [ ] Testing por stakeholders
+- [ ] Pruebas de compra reales
+- [ ] Corrección de últimos bugs
+
+---
+
+### FASE 8: LANZAMIENTO (Semana 15)
+
+**8.1 Día del lanzamiento**
+- [ ] Deploy a producción
+- [ ] Verificación post-deploy
+- [ ] Monitoreo de errores activo
+- [ ] Backup de base de datos
+- [ ] Anuncio en redes sociales
+- [ ] Newsletter a early subscribers
+
+**8.2 Primera semana**
+- [ ] Monitoreo 24/7 de:
+  - Uptime
+  - Errores 404/500
+  - Transacciones
+  - Tiempos de carga
+- [ ] Respuesta rápida a usuarios
+- [ ] Ajustes menores según feedback
+- [ ] Reportes diarios de ventas
+
+**8.3 Primer mes**
+- [ ] Análisis de métricas
+- [ ] Identificar puntos de fricción
+- [ ] A/B testing de elementos clave
+- [ ] Optimizaciones continuas
+- [ ] Recopilar testimonios
+
+---
+
+### FASE 9: ITERACIÓN CONTINUA
+
+**Optimizaciones mensuales:**
+- Análisis de analytics
+- Mejoras de conversión
+- Nuevos productos
+- Contenido de blog/guías
+- Campañas estacionales
+
+**Actualizaciones trimestrales:**
+- Nuevas funcionalidades
+- Rediseños de secciones
+- Integraciones adicionales
+- Expansión de catálogo
+
+---
+
+## 16. ESTRUCTURA DE CARPETAS Y ORGANIZACIÓN
+
+### A. Estructura de Archivos
+```
+sniker/
+│
+├── index.html                  # Homepage
+│
+├── pages/                      # Páginas del sitio
+│   ├── catalog.html           # Listado de productos
+│   ├── product.html           # Detalle de producto (plantilla)
+│   ├── cart.html              # Carrito de compras
+│   ├── checkout.html          # Proceso de pago
+│   ├── checkout-success.html  # Confirmación de compra
+│   ├── login.html             # Iniciar sesión
+│   ├── register.html          # Crear cuenta
+│   ├── forgot-password.html   # Recuperar contraseña
+│   ├── profile.html           # Panel de usuario
+│   ├── profile-orders.html    # Historial de pedidos
+│   ├── profile-favorites.html # Productos guardados
+│   ├── profile-addresses.html # Direcciones de envío
+│   ├── about.html             # Acerca de SNIKER
+│   ├── contact.html           # Contacto
+│   ├── faq.html               # Preguntas frecuentes
+│   ├── privacy-policy.html    # Política de privacidad
+│   ├── terms-conditions.html  # Términos y condiciones
+│   ├── cookies-policy.html    # Política de cookies
+│   ├── shipping-returns.html  # Envíos y devoluciones
+│   ├── size-guide.html        # Guía de tallas
+│   ├── 404.html               # Página no encontrada
+│   └── 500.html               # Error del servidor
+│
+├── assets/                     # Recursos estáticos
+│   │
+│   ├── css/                   # Hojas de estilo
+│   │   ├── main.css           # Estilos principales
+│   │   ├── components.css     # Componentes reutilizables
+│   │   ├── utilities.css      # Utility classes
+│   │   └── responsive.css     # Media queries
+│   │
+│   ├── js/                    # JavaScript
+│   │   ├── app.js             # Lógica principal
+│   │   ├── components/        # Componentes JS
+│   │   │   ├── header.js      # Menú y búsqueda
+│   │   │   ├── cart.js        # Lógica del carrito
+│   │   │   ├── filters.js     # Sistema de filtros
+│   │   │   ├── product-gallery.js
+│   │   │   └── modal.js
+│   │   └── utils/             # Funciones auxiliares
+│   │       ├── api.js         # Llamadas a API
+│   │       ├── storage.js     # LocalStorage (NO usar en artifacts)
+│   │       └── validation.js  # Validaciones
+│   │
+│   ├── img/                   # Imágenes
+│   │   ├── products/          # Fotos de productos
+│   │   │   ├── nike-air-max-90/
+│   │   │   │   ├── main.webp
+│   │   │   │   ├── main.jpg   # Fallback
+│   │   │   │   ├── side.webp
+│   │   │   │   ├── top.webp
+│   │   │   │   ├── detail.webp
+│   │   │   │   └── thumb.webp
+│   │   │   └── [otros-productos]/
+│   │   │
+│   │   ├── hero/              # Imágenes de hero
+│   │   │   ├── home-hero.webp
+│   │   │   └── home-hero.jpg
+│   │   │
+│   │   ├── banners/           # Banners promocionales
+│   │   ├── community/         # Fotos de usuarios
+│   │   ├── brand/             # Elementos de marca
+│   │   │   ├── logo.svg
+│   │   │   ├── logo-icon.svg
+│   │   │   ├── logo-light.svg
+│   │   │   └── logo-dark.svg
+│   │   │
+│   │   └── misc/              # Otras imágenes
+│   │       ├── og-image.jpg   # Open Graph
+│   │       ├── placeholder.svg
+│   │       └── not-found.svg
+│   │
+│   ├── icons/                 # Iconografía SVG
+│   │   ├── search.svg
+│   │   ├── user.svg
+│   │   ├── heart.svg
+│   │   ├── cart.svg
+│   │   ├── check.svg
+│   │   ├── close.svg
+│   │   ├── filter.svg
+│   │   ├── arrow.svg
+│   │   └── [otros-iconos].svg
+│   │
+│   └── fonts/                 # Tipografías
+│       ├── rajdhani/
+│       │   ├── rajdhani-bold.woff2
+│       │   └── rajdhani-semibold.woff2
+│       └── inter/
+│           ├── inter-regular.woff2
+│           └── inter-medium.woff2
+│
+├── content/                    # Contenido editable
+│   ├── legal/                 # Textos legales
+│   │   ├── privacy-policy.md
+│   │   ├── terms-conditions.md
+│   │   ├── cookies-policy.md
+│   │   └── shipping-returns.md
+│   │
+│   ├── guides/                # Guías y tutoriales
+│   │   ├── size-guide.md
+│   │   ├── care-guide.md
+│   │   └── style-tips.md
+│   │
+│   └── faq/                   # Preguntas frecuentes
+│       ├── shipping.md
+│       ├── returns.md
+│       ├── payments.md
+│       └── general.md
+│
+├── data/                       # Datos estructurados
+│   ├── products.json          # Catálogo de productos
+│   ├── categories.json        # Categorías y filtros
+│   ├── brands.json            # Marcas disponibles
+│   └── testimonials.json      # Testimonios de clientes
+│
+├── docs/                       # Documentación
+│   ├── brand-guidelines.pdf   # Guía de marca
+│   ├── design-system.md       # Sistema de diseño
+│   ├── api-docs.md            # Documentación de API
+│   └── this-document.md       # Este índice
+│
+└── config/                     # Configuraciones
+    ├── sitemap.xml
+    ├── robots.txt
+    ├── manifest.json          # PWA manifest
+    └── .htaccess              # Configuración servidor
+```
+
+---
+
+### B. Nomenclatura de Archivos
+
+**Convenciones:**
+- Minúsculas siempre
+- Separar palabras con guiones: `product-detail.html`
+- Sin caracteres especiales (ñ, tildes, espacios)
+- Nombres descriptivos y concisos
+
+**Ejemplos:**
+```
+✅ Correcto:
+   nike-air-max-90-retro.webp
+   checkout-success.html
+   header-mobile.css
+
+❌ Incorrecto:
+   Nike Air Max 90.jpg
+   checkoutSuccess.html
+   header_Mobile.css

@@ -1,0 +1,172 @@
+MODULOS 
+
+
+
+1\. Módulos principales del usuario                                               '¿'¿'¿'¿'¿'¿'¿'¿'¿'¿    DIEGO
+
+
+
+Inicio (Home): portada con productos destacados, promociones y banner principal.
+
+
+
+Catálogo de productos: lista completa de tenis con filtros (marca, talla, precio, color).
+
+
+
+Detalle de producto: muestra información de un tenis específico (nombre, precio, fotos, descripción, tallas).
+
+
+
+Carrito de compras: permite ver, editar y eliminar productos antes de pagar.
+
+
+
+Checkout / Compra: proceso para ingresar dirección, método de pago y confirmar pedido.
+
+
+
+Login y registro: manejo de cuentas, acceso de usuarios y creación de perfiles.
+
+
+
+Perfil de usuario: historial de pedidos, direcciones, datos personales y favoritos.
+
+
+
+Búsqueda avanzada: módulo que permite buscar y filtrar productos dinámicamente.
+
+
+
+Favoritos / Lista de deseos: para guardar tenis que el usuario quiere comprar después.
+
+
+
+⚙️ 2. Módulos administrativos (para el dashboard del admin)                       '¿'¿'¿'¿'¿'¿'¿'¿'     DIEGO
+
+
+
+Gestión de productos: agregar, editar, eliminar y clasificar tenis.
+
+
+
+Gestión de usuarios: ver y administrar cuentas registradas.
+
+
+
+Gestión de pedidos: revisar ventas, estados de entrega, cancelaciones, etc.
+
+
+
+Gestión de inventario: controlar stock disponible.
+
+
+
+Reportes y estadísticas: mostrar ventas por mes, productos más vendidos, ingresos, etc.
+
+
+
+💬 3. Módulos informativos y de soporte                                       00000000000000000000000
+
+
+
+Nosotros / Acerca de: presenta la marca, su historia y estilo.
+
+
+
+Contacto: formulario para enviar consultas o reclamos.
+
+
+
+FAQ / Ayuda: preguntas frecuentes sobre envíos, devoluciones o pagos.
+
+
+
+(Políticas: privacidad, términos y condiciones, devoluciones.)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+
+
+
+4\. Módulos de seguridad y validación                                            ¿'¿'¿'¿'¿'¿'¿'¿'   GALEANO
+
+
+
+Autenticación: control de sesiones (login/logout).
+
+
+
+Validación de formularios: revisar campos vacíos o datos incorrectos.
+
+
+
+Control de roles: distinguir entre usuarios y administradores.
+
+
+
+Protección de datos personales: cifrado y manejo seguro de la información.
+
+
+
+5\. Módulos extra o complementarios                                                              '¿'¿'¿'¿'¿'¿  JUANDI
+
+
+
+Buscador inteligente: sugerencias automáticas según lo que el usuario escribe.
+
+
+
+Filtrado dinámico: actualiza los productos sin recargar la página.
+
+
+
+Carrito flotante o mini-carrito: accesible desde cualquier página.
+
+
+
+Notificaciones / alertas: avisos visuales de compra, error o éxito.
+
+
+
+Suscripción (newsletter): para recibir novedades por correo.
+
+
+
+Integración de redes sociales: compartir o seguir a SNIKER en Instagram, TikTok, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bases de datos                ¿'¿'¿'¿'¿'¿'    ESTEBAN
+
+
+
+
+
+
+
+
+
+
+
+laravel                               00000000000000000000
+
+
+
+
+
+
+
+
+
+documentación                        000000000000000000000
+

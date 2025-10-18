@@ -1,0 +1,44 @@
+🎯 Objetivo General
+
+Desarrollar una plataforma web interactiva y moderna denominada SNIKER, que permita la visualización, gestión y venta en línea de tenis urbanos exclusivos, ofreciendo a los usuarios una experiencia de compra ágil, segura y atractiva, a través de un diseño intuitivo, funcionalidades dinámicas y una estructura escalable que facilite su administración.
+
+🎯 Objetivos Específicos
+🧱 Diseño y estructura
+
+Diseñar una interfaz web intuitiva, responsiva y visualmente atractiva, basada en una estética urbana con colores contrastantes y estilo minimalista.
+
+Implementar un sistema de navegación claro que facilite el acceso a los diferentes módulos (catálogo, carrito, perfil, contacto, etc.).
+
+Crear una arquitectura de carpetas ordenada que permita el mantenimiento y escalabilidad del proyecto.
+
+⚙️ Funcionalidad y desarrollo
+
+Desarrollar los módulos principales del sistema (inicio, catálogo, carrito, login, registro y perfil) utilizando tecnologías web modernas como HTML, CSS, JavaScript y PHP.
+
+Integrar una base de datos MySQL que almacene información de productos, usuarios y pedidos.
+
+Implementar un sistema de autenticación que permita a los usuarios registrarse, iniciar sesión y gestionar su cuenta de manera segura.
+
+Incorporar un módulo de búsqueda y filtrado avanzado que permita localizar productos según talla, color, precio o marca.
+
+Diseñar un carrito de compras funcional, que gestione la adición, eliminación y actualización de productos en tiempo real.
+
+💼 Administración y gestión
+
+Desarrollar un panel administrativo (dashboard) para la gestión de productos, usuarios y pedidos.
+
+Incluir un sistema de reportes básicos que muestre ventas, inventario y productos más vendidos.
+
+💬 Experiencia del usuario y comunicación
+
+Implementar un formulario de contacto y sección de ayuda (FAQ) para mejorar la atención al cliente.
+
+Permitir la suscripción a boletines informativos (newsletter) para mantener informados a los usuarios sobre lanzamientos y promociones.
+
+Garantizar la accesibilidad y compatibilidad multiplataforma, asegurando un funcionamiento óptimo tanto en dispositivos móviles como en computadores.
+
+🔒 Seguridad y mantenimiento
+
+Aplicar buenas prácticas de seguridad en el manejo de sesiones, datos personales y validación de formularios.
+
+Realizar pruebas de usabilidad y funcionalidad para detectar errores y asegurar la estabilidad del sistema antes de su implementación final.
