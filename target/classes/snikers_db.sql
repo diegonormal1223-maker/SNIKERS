@@ -3,6 +3,20 @@
 -- Simulación de Alta Actividad
 -- ==========================================================
 
+-- Desactivar temporalmente restricciones de llaves foráneas para permitir limpieza limpia
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- 1. LIMPIEZA DE TABLAS EXISTENTES
+DROP TABLE IF EXISTS `favorites`;
+DROP TABLE IF EXISTS `order_items`;
+DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `cart_items`;
+DROP TABLE IF EXISTS `carts`;
+DROP TABLE IF EXISTS `addresses`;
+DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `users`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -12,16 +26,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
--- 1. REINICIO TOTAL (Limpieza deshabilitada para Railway)
--- DROP DATABASE IF EXISTS `snikers_db`;
--- CREATE DATABASE `snikers_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
--- USE `snikers_db`;
-
 -- ==========================================================
 -- 2. ESTRUCTURA (Tablas)
 -- ==========================================================
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -34,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE `categories` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -42,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   UNIQUE KEY `UK_t8o6pivur7nn124jehx7cygw5` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `products` (
+CREATE TABLE `products` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
@@ -62,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `FKog2rp4qthbtt2lfyhfo32lsw9` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `addresses` (
+CREATE TABLE `addresses` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
   `full_name` varchar(255) DEFAULT NULL,
@@ -89,14 +98,14 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   KEY `FK1fa36y2oqhao3wgg2rw1pi459` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `carts` (
+CREATE TABLE `carts` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_64t7ox312pqal3p7fg9o503c2` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `cart_items` (
+CREATE TABLE `cart_items` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `cart_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
@@ -108,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `cart_items` (
   KEY `FK1re40cjegsfvw58xrkdp6bac6` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `orders` (
+CREATE TABLE `orders` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
   `order_date` datetime(6) DEFAULT NULL,
@@ -124,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   KEY `FK32ql8ubntj5uh44ph9659tiih` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `order_items` (
+CREATE TABLE `order_items` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `order_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
@@ -137,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `order_items` (
   KEY `FKocimc7dtr037rh4ls4l95nlfi` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `favorites` (
+CREATE TABLE `favorites` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
   `product_id` bigint(20) DEFAULT NULL,
@@ -385,6 +394,9 @@ ALTER TABLE `order_items`
 
 ALTER TABLE `products`
   ADD CONSTRAINT `FKog2rp4qthbtt2lfyhfo32lsw9` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+-- Reestablecer restricciones de llaves foráneas
+SET FOREIGN_KEY_CHECKS = 1;
 
 COMMIT;
 

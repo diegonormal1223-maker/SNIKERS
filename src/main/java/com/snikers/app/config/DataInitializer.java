@@ -36,42 +36,33 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("🚀 INICIANDO CARGA DE DATOS...");
+        System.out.println("🚀 INICIANDO CARGA DE DATOS... (Ejecución incondicional de scripts SQL)");
+        try {
+            ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+            populator.addScript(new ClassPathResource("snikers_db.sql"));
+            populator.addScript(new ClassPathResource("update_orders_status.sql"));
+            // Continuar en caso de advertencias
+            populator.setContinueOnError(true);
+            DatabasePopulatorUtils.execute(populator, dataSource);
+            System.out.println("✅ Scripts SQL (snikers_db.sql y update_orders_status.sql) cargados exitosamente.");
 
-        // Comprobamos si estamos en Railway (o si se configuró explícitamente para cargar los scripts)
-        boolean isRailway = System.getenv("RAILWAY_ENVIRONMENT") != null 
-                || System.getenv("MYSQLHOST") != null;
-
-        boolean forceSqlInit = System.getenv("FORCE_SQL_INIT") != null 
-                || System.getProperty("force.sql.init") != null;
-
-        if (isRailway || forceSqlInit) {
-            System.out.println("🌐 Entorno de Railway detectado (o FORCE_SQL_INIT activado). Verificando si es necesario cargar scripts SQL...");
-            // Solo ejecutamos los scripts SQL si la base de datos está vacía (sin categorías ni usuarios)
-            // o si se forzó explícitamente, para evitar colisiones/duplicaciones de datos en reinicios.
-            if (forceSqlInit || (categoryRepository.count() == 0 && userRepository.count() == 0)) {
-                System.out.println("📂 Inicializando base de datos cargando snikers_db.sql y update_orders_status.sql...");
-                try {
-                    ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-                    populator.addScript(new ClassPathResource("snikers_db.sql"));
-                    populator.addScript(new ClassPathResource("update_orders_status.sql"));
-                    // En caso de que alguna tabla ya exista por ddl-auto=update, continuamos con las inserciones
-                    populator.setContinueOnError(true);
-                    DatabasePopulatorUtils.execute(populator, dataSource);
-                    System.out.println("✅ Scripts SQL cargados exitosamente.");
-                } catch (Exception e) {
-                    System.err.println("❌ Error al cargar los scripts SQL: " + e.getMessage());
-                    e.printStackTrace();
+            // Sincronizar y re-encriptar contraseñas de todos los usuarios cargados
+            System.out.println("🔐 Sincronizando contraseñas de usuarios con el encriptador de la app...");
+            List<User> allUsers = userRepository.findAll();
+            for (User u : allUsers) {
+                if ("admin@snikers.com".equalsIgnoreCase(u.getEmail())) {
+                    u.setPassword(passwordEncoder.encode("admin123"));
+                } else {
+                    u.setPassword(passwordEncoder.encode("cliente123"));
                 }
-            } else {
-                System.out.println("ℹ️ La base de datos ya contiene datos. Se omite la carga de scripts SQL para proteger la base de datos.");
             }
-        } else {
-            System.out.println("💻 Entorno local/otro detectado. Ejecutando inicialización programática por defecto...");
-            seedUsers();
-            seedCategoriesAndProducts();
-        }
+            userRepository.saveAll(allUsers);
+            System.out.println("✅ Contraseñas sincronizadas (admin: admin123, clientes: cliente123).");
 
+        } catch (Exception e) {
+            System.err.println("❌ Error al cargar los scripts SQL o sincronizar contraseñas: " + e.getMessage());
+            e.printStackTrace();
+        }
         System.out.println("✅ CARGA DE DATOS COMPLETADA.");
     }
 

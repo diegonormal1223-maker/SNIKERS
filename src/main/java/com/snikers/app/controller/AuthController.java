@@ -28,8 +28,10 @@ public class AuthController {
             User registeredUser = userService.registerUser(user);
             return ResponseEntity.ok(registeredUser);
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
-            return ResponseEntity.badRequest().body("El email ya está registrado.");
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error de integridad de datos: " + e.getMostSpecificCause().getMessage());
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
