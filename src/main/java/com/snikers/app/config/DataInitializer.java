@@ -14,6 +14,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
@@ -27,12 +32,46 @@ public class DataInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
+    private final DataSource dataSource;
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("🚀 INICIANDO CARGA DE DATOS...");
-        seedUsers();
-        seedCategoriesAndProducts();
+
+        // Comprobamos si estamos en Railway (o si se configuró explícitamente para cargar los scripts)
+        boolean isRailway = System.getenv("RAILWAY_ENVIRONMENT") != null 
+                || System.getenv("MYSQLHOST") != null;
+
+        boolean forceSqlInit = System.getenv("FORCE_SQL_INIT") != null 
+                || System.getProperty("force.sql.init") != null;
+
+        if (isRailway || forceSqlInit) {
+            System.out.println("🌐 Entorno de Railway detectado (o FORCE_SQL_INIT activado). Verificando si es necesario cargar scripts SQL...");
+            // Solo ejecutamos los scripts SQL si la base de datos está vacía (sin categorías ni usuarios)
+            // o si se forzó explícitamente, para evitar colisiones/duplicaciones de datos en reinicios.
+            if (forceSqlInit || (categoryRepository.count() == 0 && userRepository.count() == 0)) {
+                System.out.println("📂 Inicializando base de datos cargando snikers_db.sql y update_orders_status.sql...");
+                try {
+                    ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+                    populator.addScript(new ClassPathResource("snikers_db.sql"));
+                    populator.addScript(new ClassPathResource("update_orders_status.sql"));
+                    // En caso de que alguna tabla ya exista por ddl-auto=update, continuamos con las inserciones
+                    populator.setContinueOnError(true);
+                    DatabasePopulatorUtils.execute(populator, dataSource);
+                    System.out.println("✅ Scripts SQL cargados exitosamente.");
+                } catch (Exception e) {
+                    System.err.println("❌ Error al cargar los scripts SQL: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("ℹ️ La base de datos ya contiene datos. Se omite la carga de scripts SQL para proteger la base de datos.");
+            }
+        } else {
+            System.out.println("💻 Entorno local/otro detectado. Ejecutando inicialización programática por defecto...");
+            seedUsers();
+            seedCategoriesAndProducts();
+        }
+
         System.out.println("✅ CARGA DE DATOS COMPLETADA.");
     }
 
