@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi Lista de Deseos - Guarda tus sneakers favoritos en SNIKER">
+    <title>Lista de Deseos - SNIKER</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/favoritos.css">
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="icono-logo"></div>
+            <span>SNIKER</span>
+        </a>
+
+        <div class="acciones-header">
+            <a href="catalogo.html" class="enlace-volver">← Seguir Comprando</a>
+            <a href="perfilusuario.html" class="boton-icono">👤</a>
+            <a href="carrito.html" class="boton-icono">
+                🛒
+                <span class="insignia-carrito">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notificacion" id="notificacion"></div>
+
+    <!-- MODAL COMPARTIR -->
+    <div class="modal-overlay" id="modalCompartir">
+        <div class="modal-contenido">
+            <button class="boton-cerrar-modal" onclick="cerrarModal()">×</button>
+            <h2 class="titulo-modal">Compartir Lista</h2>
+            <p style="color: var(--texto-gris); margin-bottom: 20px;">
+                Comparte tu lista de deseos con amigos y familia
+            </p>
+
+            <div class="opciones-compartir">
+                <a href="#" class="boton-compartir" onclick="compartir('whatsapp')">
+                    <span class="icono-compartir">💬</span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="#" class="boton-compartir" onclick="compartir('facebook')">
+                    <span class="icono-compartir">f</span>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="boton-compartir" onclick="compartir('twitter')">
+                    <span class="icono-compartir">🐦</span>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="boton-compartir" onclick="compartir('email')">
+                    <span class="icono-compartir">📧</span>
+                    <span>Email</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <label style="display: block; margin-bottom: 10px; color: var(--texto-gris); font-size: 13px;">
+                    Enlace para compartir:
+                </label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="enlaceCompartir" value="https://sniker.com/wishlist/usuario" readonly
+                        style="flex: 1; padding: 12px; background: rgba(255,255,255,0.05); border: 2px solid rgba(57,255,20,0.3); border-radius: 10px; color: var(--texto-blanco);">
+                    <button onclick="copiarEnlace()"
+                        style="background: var(--neon-verde); color: var(--fondo-oscuro); border: none; padding: 12px 20px; border-radius: 10px; cursor: pointer; font-weight: 700;">
+                        Copiar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="contenedor-lista">
+        <!-- ENCABEZADO DE PÁGINA -->
+        <div class="encabezado-pagina">
+            <div>
+                <h1 class="titulo-pagina">Mi Lista de Deseos</h1>
+                <p style="color: var(--texto-gris); font-size: 16px; margin-top: 10px;">
+                    Guarda los sneakers que amas para comprarlos después
+                </p>
+            </div>
+
+            <div class="info-contador">
+                <div class="contador">
+                    <span class="numero-contador" id="contadorTotal">0</span>
+                    <span class="texto-contador">Productos</span>
+                </div>
+                <div class="contador">
+                    <span class="numero-contador" style="color: var(--neon-morado);" id="valorTotal">$0.00</span>
+                    <span class="texto-contador">Valor Total</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE HERRAMIENTAS -->
+        <div class="barra-herramientas">
+            <div class="acciones-grupo">
+                <button class="boton-accion" onclick="agregarTodosAlCarrito()">
+                    <span>🛒</span>
+                    Agregar Todos
+                </button>
+                <button class="boton-accion" onclick="agregarSeleccionados()">
+                    <span>✓</span>
+                    Agregar Seleccionados (<span id="contadorSeleccionados">0</span>)
+                </button>
+                <button class="boton-accion" onclick="abrirModalCompartir()">
+                    <span>🔗</span>
+                    Compartir Lista
+                </button>
+                <button class="boton-accion peligro" onclick="limpiarLista()">
+                    <span>🗑️</span>
+                    Limpiar Lista
+                </button>
+            </div>
+
+            <div class="acciones-grupo">
+                <select class="selector-ordenar" id="selectorOrdenar" onchange="ordenarProductos()">
+                    <option value="reciente">Más Recientes</option>
+                    <option value="antiguo">Más Antiguos</option>
+                    <option value="precio-bajo">Precio: Menor a Mayor</option>
+                    <option value="precio-alto">Precio: Mayor a Menor</option>
+                    <option value="nombre">Nombre A-Z</option>
+                </select>
+
+                <div class="selector-vista">
+                    <button class="boton-vista activo" onclick="cambiarVista('grid')">◫</button>
+                    <button class="boton-vista" onclick="cambiarVista('lista')">☰</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTADO VACÍO -->
+        <div class="estado-vacio" id="estadoVacio">
+            <div class="icono-vacio">❤️</div>
+            <h2>Tu Lista está Vacía</h2>
+            <p>
+                ¡Comienza a agregar tus sneakers favoritos!<br>
+                Explora nuestra colección y guarda los que más te gusten.
+            </p>
+            <a href="catalogo.html" class="boton-principal">Explorar Catálogo</a>
+        </div>
+
+        <!-- GRID DE FAVORITOS -->
+        <div class="grid-favoritos" id="gridFavoritos">
+            <!-- Favorites will be loaded dynamically -->
+        </div>
+    </div>
+
+    <script src="JS/auth-check.js"></script>
+    <script src="JS/cart-badge.js"></script>
+    <script src="JS/favoritos.js"></script>
+</body>
+
+</html>

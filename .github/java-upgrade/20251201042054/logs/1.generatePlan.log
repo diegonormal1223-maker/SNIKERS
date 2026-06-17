@@ -1,0 +1,798 @@
+2025-12-01T04:20:56.562Z [INFO] Initializing project configuration...
+2025-12-01T04:20:56.565Z [INFO] Project c:/xampp/htdocs/springboot snikers/snikers is a maven project, try to get java version from pom.xml
+2025-12-01T04:20:56.571Z [INFO] Project java version: 17
+2025-12-01T04:20:56.572Z [INFO] Maven project detected.
+2025-12-01T04:20:56.574Z [INFO] Build tool type: mvn
+2025-12-01T04:20:56.927Z [INFO] [Environment] Running command (Java 17): java -version
+openjdk version "17.0.16" 2025-07-15 LTS
+OpenJDK Runtime Environment Microsoft-11926163 (build 17.0.16+8-LTS)
+OpenJDK 64-Bit Server VM Microsoft-11926163 (build 17.0.16+8-LTS, mixed mode, sharing)
+2025-12-01T04:20:57.516Z [INFO] [JdkEnvironment] Got real Java version: 17.0.16
+2025-12-01T04:20:57.519Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+  "version": "17"
+}
+2025-12-01T04:20:57.628Z [INFO] [Environment] Running command (Java 17): mvn --version
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: C:\Users\USER\.maven\maven-3.9.11
+Java version: 17.0.16, vendor: Microsoft, runtime: C:\Users\USER\.jdk\jdk-17.0.16
+Default locale: es_CO, platform encoding: Cp1252
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"
+2025-12-01T04:21:02.146Z [INFO] Real build tool version: 3.9.11
+2025-12-01T04:21:02.150Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+  "version": "3.9.11"
+}
+2025-12-01T04:21:02.152Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+    "name": "mvn",
+    "version": "3.9.11"
+  },
+  "jdk": {
+    "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+    "name": "java",
+    "version": "17"
+  },
+  "name": "snikers",
+  "dir": "c:/xampp/htdocs/springboot snikers/snikers"
+}
+2025-12-01T04:21:02.155Z [INFO] Project configuration initialized: {
+  "buildTool": {
+    "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+    "name": "mvn",
+    "version": "3.9.11"
+  },
+  "jdk": {
+    "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+    "name": "java",
+    "version": "17"
+  },
+  "name": "snikers",
+  "dir": "c:/xampp/htdocs/springboot snikers/snikers"
+}
+2025-12-01T04:21:02.156Z [INFO] Initializing upgrade goals...
+2025-12-01T04:21:02.209Z [INFO] [Environment] Running command (Java 17): mvn dependency:tree -B
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.snikers:snikers-app >-----------------------
+[INFO] Building snikers-app 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.6.1:tree (default-cli) @ snikers-app ---
+[INFO] com.snikers:snikers-app:jar:0.0.1-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:3.2.3:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:3.2.3:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:3.2.3:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.4.14:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.4.14:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.21.1:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.21.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:2.0.12:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:2.1.1:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:3.2.3:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-actuator:jar:3.2.3:compile
+[INFO] |  |  \- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.15.4:compile
+[INFO] |  +- io.micrometer:micrometer-observation:jar:1.12.3:compile
+[INFO] |  |  \- io.micrometer:micrometer-commons:jar:1.12.3:compile
+[INFO] |  \- io.micrometer:micrometer-jakarta9:jar:1.12.3:compile
+[INFO] |     \- io.micrometer:micrometer-core:jar:1.12.3:compile
+[INFO] |        +- org.hdrhistogram:HdrHistogram:jar:2.1.12:runtime
+[INFO] |        \- org.latencyutils:LatencyUtils:jar:2.0.3:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-data-jpa:jar:3.2.3:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-aop:jar:3.2.3:compile
+[INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.9.21:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-jdbc:jar:3.2.3:compile
+[INFO] |  |  +- com.zaxxer:HikariCP:jar:5.0.1:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:6.1.4:compile
+[INFO] |  +- org.hibernate.orm:hibernate-core:jar:6.4.4.Final:compile
+[INFO] |  |  +- jakarta.persistence:jakarta.persistence-api:jar:3.1.0:compile
+[INFO] |  |  +- jakarta.transaction:jakarta.transaction-api:jar:2.0.1:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.5.3.Final:runtime
+[INFO] |  |  +- org.hibernate.common:hibernate-commons-annotations:jar:6.0.6.Final:runtime
+[INFO] |  |  +- io.smallrye:jandex:jar:3.1.2:runtime
+[INFO] |  |  +- com.fasterxml:classmate:jar:1.6.0:runtime
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.14.12:runtime
+[INFO] |  |  +- org.glassfish.jaxb:jaxb-runtime:jar:4.0.4:runtime
+[INFO] |  |  |  \- org.glassfish.jaxb:jaxb-core:jar:4.0.4:runtime
+[INFO] |  |  |     +- org.eclipse.angus:angus-activation:jar:2.0.1:runtime
+[INFO] |  |  |     +- org.glassfish.jaxb:txw2:jar:4.0.4:runtime
+[INFO] |  |  |     \- com.sun.istack:istack-commons-runtime:jar:4.1.2:runtime
+[INFO] |  |  +- jakarta.inject:jakarta.inject-api:jar:2.0.1:runtime
+[INFO] |  |  \- org.antlr:antlr4-runtime:jar:4.13.0:compile
+[INFO] |  +- org.springframework.data:spring-data-jpa:jar:3.2.3:compile
+[INFO] |  |  +- org.springframework.data:spring-data-commons:jar:3.2.3:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:6.1.4:compile
+[INFO] |  |  +- org.springframework:spring-context:jar:6.1.4:compile
+[INFO] |  |  +- org.springframework:spring-tx:jar:6.1.4:compile
+[INFO] |  |  +- org.springframework:spring-beans:jar:6.1.4:compile
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:2.0.12:compile
+[INFO] |  \- org.springframework:spring-aspects:jar:6.1.4:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:3.2.3:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:3.2.3:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.15.4:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.15.4:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:3.2.3:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:10.1.19:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:10.1.19:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:10.1.19:compile
+[INFO] |  +- org.springframework:spring-web:jar:6.1.4:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:6.1.4:compile
+[INFO] |     \- org.springframework:spring-expression:jar:6.1.4:compile
+[INFO] +- org.springframework.boot:spring-boot-devtools:jar:3.2.3:runtime
+[INFO] |  +- org.springframework.boot:spring-boot:jar:3.2.3:compile
+[INFO] |  \- org.springframework.boot:spring-boot-autoconfigure:jar:3.2.3:compile
+[INFO] +- com.mysql:mysql-connector-j:jar:8.3.0:runtime
+[INFO] +- org.projectlombok:lombok:jar:1.18.30:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:3.2.3:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:3.2.3:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:3.2.3:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.9.0:test
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.1:runtime
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:2.1.2:runtime
+[INFO] |  +- net.minidev:json-smart:jar:2.5.0:test
+[INFO] |  |  \- net.minidev:accessors-smart:jar:2.5.0:test
+[INFO] |  |     \- org.ow2.asm:asm:jar:9.3:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.24.2:test
+[INFO] |  +- org.awaitility:awaitility:jar:4.2.0:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.2:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.10.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-api:jar:5.10.2:test
+[INFO] |  |  |  +- org.opentest4j:opentest4j:jar:1.3.0:test
+[INFO] |  |  |  +- org.junit.platform:junit-platform-commons:jar:1.10.2:test
+[INFO] |  |  |  \- org.apiguardian:apiguardian-api:jar:1.1.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.10.2:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.10.2:test
+[INFO] |  |     \- org.junit.platform:junit-platform-engine:jar:1.10.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:5.7.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.14.12:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:3.3:test
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:5.7.0:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.1:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-core:jar:6.1.4:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:6.1.4:compile
+[INFO] |  +- org.springframework:spring-test:jar:6.1.4:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.9.1:test
+[INFO] +- org.springframework.boot:spring-boot-starter-security:jar:3.2.3:compile
+[INFO] |  +- org.springframework:spring-aop:jar:6.1.4:compile
+[INFO] |  +- org.springframework.security:spring-security-config:jar:6.2.2:compile
+[INFO] |  |  \- org.springframework.security:spring-security-core:jar:6.2.2:compile
+[INFO] |  |     \- org.springframework.security:spring-security-crypto:jar:6.2.2:compile
+[INFO] |  \- org.springframework.security:spring-security-web:jar:6.2.2:compile
+[INFO] +- io.jsonwebtoken:jjwt-api:jar:0.11.5:compile
+[INFO] +- io.jsonwebtoken:jjwt-impl:jar:0.11.5:runtime
+[INFO] +- io.jsonwebtoken:jjwt-jackson:jar:0.11.5:runtime
+[INFO] |  \- com.fasterxml.jackson.core:jackson-databind:jar:2.15.4:compile
+[INFO] |     +- com.fasterxml.jackson.core:jackson-annotations:jar:2.15.4:compile
+[INFO] |     \- com.fasterxml.jackson.core:jackson-core:jar:2.15.4:compile
+[INFO] \- com.github.librepdf:openpdf:jar:1.3.30:compile
+[INFO]    \- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.832 s
+[INFO] Finished at: 2025-11-30T23:21:20-05:00
+[INFO] ------------------------------------------------------------------------
+2025-12-01T04:21:20.197Z [INFO] [MavenBuildTool] Successfully got dependency tree of c:/xampp/htdocs/springboot snikers/snikers
+2025-12-01T04:21:20.201Z [INFO] [MavenBuildTool] Getting Java version of c:/xampp/htdocs/springboot snikers/snikers from pom.xml
+2025-12-01T04:21:20.202Z [INFO] [MavenBuildTool] Searching for pom.xml files in c:/xampp/htdocs/springboot snikers/snikers
+2025-12-01T04:21:20.204Z [INFO] [MavenBuildTool] Getting all module coordinates of c:/xampp/htdocs/springboot snikers/snikers
+2025-12-01T04:21:20.205Z [INFO] [MavenBuildTool] Getting effective POMs of c:/xampp/htdocs/springboot snikers/snikers
+2025-12-01T04:21:20.207Z [INFO] [Environment] Running command (Java 17): mvn help:effective-pom -Doutput=effective-pom-8b9ec5e5-2da3-484c-847d-a7d367f1adbc.log
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.snikers:snikers-app >-----------------------
+[INFO] Building snikers-app 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- help:3.4.0:effective-pom (default-cli) @ snikers-app ---
+[INFO] Effective-POM written to: c:\xampp\htdocs\springboot snikers\snikers\effective-pom-8b9ec5e5-2da3-484c-847d-a7d367f1adbc.log
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.376 s
+[INFO] Finished at: 2025-11-30T23:21:25-05:00
+[INFO] ------------------------------------------------------------------------
+2025-12-01T04:21:25.279Z [INFO] [MavenBuildTool] Found pom.xml files: c:\xampp\htdocs\springboot snikers\snikers\pom.xml
+2025-12-01T04:21:25.283Z [INFO] [MavenBuildTool] Java version found in c:\xampp\htdocs\springboot snikers\snikers\pom.xml: 17
+2025-12-01T04:21:25.285Z [INFO] Source Java version: 17
+2025-12-01T04:21:25.286Z [INFO] validateAndUpdateTargets, targets: [object Object]
+2025-12-01T04:21:25.289Z [INFO] No target dependencies found for Spring Boot. Skipping target dependency validation
+2025-12-01T04:21:25.289Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Boot
+2025-12-01T04:21:25.291Z [WARN] No source dependencies found for Spring Framework. Skipping target dependency validation
+2025-12-01T04:21:25.291Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Framework
+2025-12-01T04:21:25.292Z [WARN] No source dependencies found for Spring Security. Skipping target dependency validation
+2025-12-01T04:21:25.293Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Security
+2025-12-01T04:21:25.294Z [WARN] No source dependencies found for Jakarta EE. Skipping target dependency validation
+2025-12-01T04:21:25.295Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Jakarta EE
+2025-12-01T04:21:25.296Z [WARN] No source dependencies found for JUnit. Skipping target dependency validation
+2025-12-01T04:21:25.297Z [INFO] validateAndUpdateTargets, targets: [object Object], group:JUnit
+2025-12-01T04:21:25.299Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Java
+2025-12-01T04:21:25.299Z [INFO] validateAndUpdateTargets, userTargets: [object Object]
+2025-12-01T04:21:25.302Z [INFO] initUpgradeGoal, targetDeps: [object Object]
+2025-12-01T04:21:25.303Z [INFO] Upgrade goal initialized: [
+  {
+    "name": "Java",
+    "groupId": "java",
+    "artifactId": "*",
+    "version": "21",
+    "recipes": [
+      {
+        "id": "org.openrewrite.java.migrate.UpgradeToJava21",
+        "name": "Upgrade to Java 21",
+        "description": "Migrate Java 8 to Java 21.",
+        "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava21",
+        "recipeLib": {
+          "groupId": "org.openrewrite.recipe",
+          "artifactId": "rewrite-migrate-java",
+          "version": "2.31.1",
+          "versionForGradle": "2.31.1"
+        }
+      }
+    ],
+    "supportedSources": [
+      {
+        "groupId": "java",
+        "artifactId": "*",
+        "version": ">=8 <21"
+      },
+      {
+        "name": "Java",
+        "groupId": "java",
+        "artifactId": "*",
+        "version": "11",
+        "recipes": [
+          {
+            "id": "org.openrewrite.java.migrate.Java8toJava11",
+            "name": "Upgrade to Java 11",
+            "description": "Migrate Java 8 to Java 11.",
+            "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+            "recipeLib": {
+              "groupId": "org.openrewrite.recipe",
+              "artifactId": "rewrite-migrate-java",
+              "version": "2.31.1",
+              "versionForGradle": "2.31.1"
+            }
+          }
+        ],
+        "supportedSources": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": ">=8 <11"
+          }
+        ],
+        "effects": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "11"
+          }
+        ]
+      },
+      {
+        "name": "Java",
+        "groupId": "java",
+        "artifactId": "*",
+        "version": "17",
+        "recipes": [
+          {
+            "id": "org.openrewrite.java.migrate.UpgradeToJava17",
+            "name": "Upgrade to Java 17",
+            "description": "Migrate Java 8 to Java 17.",
+            "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava17",
+            "recipeLib": {
+              "groupId": "org.openrewrite.recipe",
+              "artifactId": "rewrite-migrate-java",
+              "version": "2.31.1",
+              "versionForGradle": "2.31.1"
+            }
+          }
+        ],
+        "supportedSources": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": ">=8 <17"
+          },
+          {
+            "name": "Java",
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "11",
+            "recipes": [
+              {
+                "id": "org.openrewrite.java.migrate.Java8toJava11",
+                "name": "Upgrade to Java 11",
+                "description": "Migrate Java 8 to Java 11.",
+                "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+                "recipeLib": {
+                  "groupId": "org.openrewrite.recipe",
+                  "artifactId": "rewrite-migrate-java",
+                  "version": "2.31.1",
+                  "versionForGradle": "2.31.1"
+                }
+              }
+            ],
+            "supportedSources": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": ">=8 <11"
+              }
+            ],
+            "effects": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": "11"
+              }
+            ]
+          }
+        ],
+        "effects": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "17"
+          }
+        ]
+      }
+    ],
+    "effects": [
+      {
+        "groupId": "java",
+        "artifactId": "*",
+        "version": "21"
+      }
+    ]
+  }
+]
+2025-12-01T04:21:25.305Z [INFO] Initializing upgrade options...
+2025-12-01T04:21:25.307Z [INFO] Source Java version: 17
+2025-12-01T04:21:25.307Z [INFO] Source JDK: {"name":"java","path":"C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin","version":"17"}
+2025-12-01T04:21:25.309Z [INFO] Target Java version: 21
+2025-12-01T04:21:25.418Z [INFO] Target JDK: {"name":"java","path":"C:\\Program Files\\Java\\jdk-21\\bin","version":"21.0.8","source":"others"}
+2025-12-01T04:21:25.419Z [INFO] Maven project detected.
+2025-12-01T04:21:25.421Z [INFO] Build tool type: mvn
+2025-12-01T04:21:25.422Z [INFO] Build tool: {"name":"mvn","path":"C:\\Users\\USER\\.maven\\maven-3.9.11\\bin","version":""}
+2025-12-01T04:21:25.423Z [INFO] Working branch: appmod/java-upgrade-20251201042054
+2025-12-01T04:21:25.424Z [INFO] Upgrade options initialized: {
+  "target": {
+    "jdk": {
+      "name": "java",
+      "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+      "version": "21.0.8",
+      "source": "others"
+    },
+    "dependencies": [
+      {
+        "name": "Java",
+        "groupId": "java",
+        "artifactId": "*",
+        "version": "21",
+        "recipes": [
+          {
+            "id": "org.openrewrite.java.migrate.UpgradeToJava21",
+            "name": "Upgrade to Java 21",
+            "description": "Migrate Java 8 to Java 21.",
+            "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava21",
+            "recipeLib": {
+              "groupId": "org.openrewrite.recipe",
+              "artifactId": "rewrite-migrate-java",
+              "version": "2.31.1",
+              "versionForGradle": "2.31.1"
+            }
+          }
+        ],
+        "supportedSources": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": ">=8 <21"
+          },
+          {
+            "name": "Java",
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "11",
+            "recipes": [
+              {
+                "id": "org.openrewrite.java.migrate.Java8toJava11",
+                "name": "Upgrade to Java 11",
+                "description": "Migrate Java 8 to Java 11.",
+                "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+                "recipeLib": {
+                  "groupId": "org.openrewrite.recipe",
+                  "artifactId": "rewrite-migrate-java",
+                  "version": "2.31.1",
+                  "versionForGradle": "2.31.1"
+                }
+              }
+            ],
+            "supportedSources": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": ">=8 <11"
+              }
+            ],
+            "effects": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": "11"
+              }
+            ]
+          },
+          {
+            "name": "Java",
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "17",
+            "recipes": [
+              {
+                "id": "org.openrewrite.java.migrate.UpgradeToJava17",
+                "name": "Upgrade to Java 17",
+                "description": "Migrate Java 8 to Java 17.",
+                "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava17",
+                "recipeLib": {
+                  "groupId": "org.openrewrite.recipe",
+                  "artifactId": "rewrite-migrate-java",
+                  "version": "2.31.1",
+                  "versionForGradle": "2.31.1"
+                }
+              }
+            ],
+            "supportedSources": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": ">=8 <17"
+              },
+              {
+                "name": "Java",
+                "groupId": "java",
+                "artifactId": "*",
+                "version": "11",
+                "recipes": [
+                  {
+                    "id": "org.openrewrite.java.migrate.Java8toJava11",
+                    "name": "Upgrade to Java 11",
+                    "description": "Migrate Java 8 to Java 11.",
+                    "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+                    "recipeLib": {
+                      "groupId": "org.openrewrite.recipe",
+                      "artifactId": "rewrite-migrate-java",
+                      "version": "2.31.1",
+                      "versionForGradle": "2.31.1"
+                    }
+                  }
+                ],
+                "supportedSources": [
+                  {
+                    "groupId": "java",
+                    "artifactId": "*",
+                    "version": ">=8 <11"
+                  }
+                ],
+                "effects": [
+                  {
+                    "groupId": "java",
+                    "artifactId": "*",
+                    "version": "11"
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "groupId": "java",
+                "artifactId": "*",
+                "version": "17"
+              }
+            ]
+          }
+        ],
+        "effects": [
+          {
+            "groupId": "java",
+            "artifactId": "*",
+            "version": "21"
+          }
+        ]
+      }
+    ],
+    "buildTool": {
+      "name": "mvn",
+      "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+      "version": ""
+    }
+  },
+  "workingBranch": "appmod/java-upgrade-20251201042054",
+  "runTests": true
+}
+2025-12-01T04:21:25.425Z [INFO] Project dependencies loaded: [
+  "org.springframework.boot:spring-boot-starter-actuator:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-data-jpa:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-web:3.2.3:jar",
+  "org.springframework.boot:spring-boot-devtools:3.2.3:jar",
+  "com.mysql:mysql-connector-j:8.3.0:jar",
+  "org.projectlombok:lombok:1.18.30:jar",
+  "org.springframework.boot:spring-boot-starter-test:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-security:3.2.3:jar",
+  "io.jsonwebtoken:jjwt-api:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-impl:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-jackson:0.11.5:jar",
+  "com.github.librepdf:openpdf:1.3.30:jar"
+]
+2025-12-01T04:21:25.427Z [INFO] Project modules loaded: [
+  "com.snikers:snikers-app:0.0.1-SNAPSHOT"
+]
+2025-12-01T04:21:25.428Z [INFO] done initializing context.
+2025-12-01T04:21:25.429Z [INFO] Source dependencies: [
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-actuator",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-data-jpa",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-web",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-devtools",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "runtime",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "com.mysql",
+    "artifactId": "mysql-connector-j",
+    "type": "jar",
+    "version": "8.3.0",
+    "scope": "runtime",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.projectlombok",
+    "artifactId": "lombok",
+    "type": "jar",
+    "version": "1.18.30",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-test",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "test",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-security",
+    "type": "jar",
+    "version": "3.2.3",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "io.jsonwebtoken",
+    "artifactId": "jjwt-api",
+    "type": "jar",
+    "version": "0.11.5",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "io.jsonwebtoken",
+    "artifactId": "jjwt-impl",
+    "type": "jar",
+    "version": "0.11.5",
+    "scope": "runtime",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "io.jsonwebtoken",
+    "artifactId": "jjwt-jackson",
+    "type": "jar",
+    "version": "0.11.5",
+    "scope": "runtime",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "com.github.librepdf",
+    "artifactId": "openpdf",
+    "type": "jar",
+    "version": "1.3.30",
+    "scope": "compile",
+    "module": "snikers-app"
+  },
+  {
+    "groupId": "java",
+    "artifactId": "*",
+    "version": "17"
+  }
+]
+2025-12-01T04:21:25.431Z [INFO] validateAndUpdateTargets, targets: [object Object]
+2025-12-01T04:21:25.432Z [INFO] No target dependencies found for Spring Boot. Skipping target dependency validation
+2025-12-01T04:21:25.432Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Boot
+2025-12-01T04:21:25.433Z [WARN] No source dependencies found for Spring Framework. Skipping target dependency validation
+2025-12-01T04:21:25.434Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Framework
+2025-12-01T04:21:25.435Z [WARN] No source dependencies found for Spring Security. Skipping target dependency validation
+2025-12-01T04:21:25.437Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Spring Security
+2025-12-01T04:21:25.438Z [WARN] No source dependencies found for Jakarta EE. Skipping target dependency validation
+2025-12-01T04:21:25.439Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Jakarta EE
+2025-12-01T04:21:25.440Z [WARN] No source dependencies found for JUnit. Skipping target dependency validation
+2025-12-01T04:21:25.441Z [INFO] validateAndUpdateTargets, targets: [object Object], group:JUnit
+2025-12-01T04:21:25.443Z [INFO] validateAndUpdateTargets, targets: [object Object], group:Java
+2025-12-01T04:21:25.444Z [INFO] validateAndUpdateTargets, userTargets: [object Object]
+2025-12-01T04:21:25.446Z [INFO] Upgrade route: upgrade `Java` to *21* with oneStepOneFramework=false
+2025-12-01T04:21:25.448Z [INFO] Upgrade route planned: [
+  [
+    {
+      "name": "Java",
+      "groupId": "java",
+      "artifactId": "*",
+      "version": "21",
+      "recipes": [
+        {
+          "id": "org.openrewrite.java.migrate.UpgradeToJava21",
+          "name": "Upgrade to Java 21",
+          "description": "Migrate Java 8 to Java 21.",
+          "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava21",
+          "recipeLib": {
+            "groupId": "org.openrewrite.recipe",
+            "artifactId": "rewrite-migrate-java",
+            "version": "2.31.1",
+            "versionForGradle": "2.31.1"
+          }
+        }
+      ],
+      "supportedSources": [
+        {
+          "groupId": "java",
+          "artifactId": "*",
+          "version": ">=8 <21"
+        },
+        {
+          "name": "Java",
+          "groupId": "java",
+          "artifactId": "*",
+          "version": "11",
+          "recipes": [
+            {
+              "id": "org.openrewrite.java.migrate.Java8toJava11",
+              "name": "Upgrade to Java 11",
+              "description": "Migrate Java 8 to Java 11.",
+              "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+              "recipeLib": {
+                "groupId": "org.openrewrite.recipe",
+                "artifactId": "rewrite-migrate-java",
+                "version": "2.31.1",
+                "versionForGradle": "2.31.1"
+              }
+            }
+          ],
+          "supportedSources": [
+            {
+              "groupId": "java",
+              "artifactId": "*",
+              "version": ">=8 <11"
+            }
+          ],
+          "effects": [
+            {
+              "groupId": "java",
+              "artifactId": "*",
+              "version": "11"
+            }
+          ]
+        },
+        {
+          "name": "Java",
+          "groupId": "java",
+          "artifactId": "*",
+          "version": "17",
+          "recipes": [
+            {
+              "id": "org.openrewrite.java.migrate.UpgradeToJava17",
+              "name": "Upgrade to Java 17",
+              "description": "Migrate Java 8 to Java 17.",
+              "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava17",
+              "recipeLib": {
+                "groupId": "org.openrewrite.recipe",
+                "artifactId": "rewrite-migrate-java",
+                "version": "2.31.1",
+                "versionForGradle": "2.31.1"
+              }
+            }
+          ],
+          "supportedSources": [
+            {
+              "groupId": "java",
+              "artifactId": "*",
+              "version": ">=8 <17"
+            },
+            {
+              "name": "Java",
+              "groupId": "java",
+              "artifactId": "*",
+              "version": "11",
+              "recipes": [
+                {
+                  "id": "org.openrewrite.java.migrate.Java8toJava11",
+                  "name": "Upgrade to Java 11",
+                  "description": "Migrate Java 8 to Java 11.",
+                  "url": "https://docs.openrewrite.org/recipes/java/migrate/UpgradeToJava11",
+                  "recipeLib": {
+                    "groupId": "org.openrewrite.recipe",
+                    "artifactId": "rewrite-migrate-java",
+                    "version": "2.31.1",
+                    "versionForGradle": "2.31.1"
+                  }
+                }
+              ],
+              "supportedSources": [
+                {
+                  "groupId": "java",
+                  "artifactId": "*",
+                  "version": ">=8 <11"
+                }
+              ],
+              "effects": [
+                {
+                  "groupId": "java",
+                  "artifactId": "*",
+                  "version": "11"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "groupId": "java",
+              "artifactId": "*",
+              "version": "17"
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "groupId": "java",
+          "artifactId": "*",
+          "version": "21"
+        }
+      ]
+    }
+  ]
+]
+2025-12-01T04:21:25.530Z [ERROR] "git" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+

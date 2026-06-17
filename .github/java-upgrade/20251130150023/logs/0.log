@@ -1,0 +1,217 @@
+2025-11-30T15:00:23.458Z [INFO] ----------------------invoke generate_upgrade_plan----------------------
+2025-11-30T15:00:23.459Z [INFO] [Tool.invoke]({name: generate_upgrade_plan, input: {
+  "projectPath": "c:/xampp/htdocs/springboot snikers/snikers",
+  "targetJavaVersion": "21"
+}}).
+2025-11-30T15:00:23.461Z [INFO] [Plan.tryStartTask]({tool:generate_upgrade_plan, nextTask:{type:undefined, tool:undefined}}
+2025-11-30T15:00:23.462Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2025-11-30T15:00:23.463Z [INFO] [Plan.createTaskAtStart]({tool: generate_upgrade_plan, input: {
+  "projectPath": "c:/xampp/htdocs/springboot snikers/snikers",
+  "targetJavaVersion": "21",
+  "sessionId": "20251130150023"
+}}).
+2025-11-30T15:00:23.463Z [INFO] [Plan.tryStartTask]: starting task generatePlan
+2025-11-30T15:00:23.465Z [INFO] [Task.start](): Starting task generatePlan
+2025-11-30T15:00:23.466Z [INFO] [Task.start](1): Started task generatePlan
+2025-11-30T15:00:23.470Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2025-11-30T15:01:06.254Z [INFO] Copilot user info:{
+  "access_type_sku": "free_limited_copilot",
+  "analytics_tracking_id": "aafb447a3a5434cb88256d5fc97146e9",
+  "assigned_date": "2025-08-22T15:45:00-05:00",
+  "can_signup_for_limited": false,
+  "chat_enabled": true,
+  "copilot_plan": "individual",
+  "organization_login_list": [],
+  "organization_list": [],
+  "limited_user_quotas": {
+    "chat": 310,
+    "completions": 3635
+  },
+  "limited_user_subscribed_day": 22,
+  "limited_user_reset_date": "2025-12-22",
+  "monthly_quotas": {
+    "chat": 500,
+    "completions": 4000
+  }
+}
+2025-11-30T15:01:06.255Z [INFO] [Tool.invoke] do pre-invoke.
+2025-11-30T15:01:06.256Z [INFO] [Tool.invoke] do invoke.
+2025-11-30T15:01:06.323Z [INFO] [Task.start](): Starting task generatePlan
+2025-11-30T15:01:06.325Z [INFO] [Task.start](1.1): Started task generatePlan
+2025-11-30T15:01:06.326Z [INFO] ---------------------prepare install_jdk----------------------
+2025-11-30T15:01:06.327Z [INFO] [Tool.prepareInvocation]({name: install_jdk, input: {
+  "sessionId": "20251130150023",
+  "version": "17",
+  "dest": "C:\\Users\\USER\\.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:01:06.328Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2025-11-30T15:01:07.130Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install JDK",
+  "confirmationMessages": {
+    "title": "Download and install JDK",
+    "message": "\nJDK 17 is required to build the project, but not found on the machine.\nThis tool will download and install JDK 17 from Microsoft with below settings.\n- **Version**: 17\n- **Vendor**: Microsoft\n- **Url**: https://aka.ms/download-jdk/microsoft-jdk-17.0.16-windows-x64.zip\n- **Destination**: `C:\\Users\\USER\\.jdk`\n- **Checksum**: SHA256: 53f0c9ec64811a9ab968747076653e5500115db7230d244e4ec53577ca5ec8fc\n- **Signature**: https://aka.ms/download-jdk/microsoft-jdk-17.0.16-windows-x64.zip.sig\n- **Public Key**: http://aka.ms/microsoft_jdk_public_key\n"
+  }
+}}).
+2025-11-30T15:01:07.131Z [INFO] ----------------------prepared install_jdk----------------------
+2025-11-30T15:01:14.465Z [INFO] ----------------------invoke install_jdk----------------------
+2025-11-30T15:01:14.466Z [INFO] [Tool.invoke]({name: install_jdk, input: {
+  "sessionId": "20251130150023",
+  "version": "17",
+  "dest": "C:\\Users\\USER\\.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:01:14.468Z [INFO] [Plan.tryStartTask]({tool:install_jdk, nextTask:{type:undefined, tool:undefined}}
+2025-11-30T15:01:14.469Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2025-11-30T15:01:14.471Z [INFO] [Plan.createTaskAtStart]({tool: install_jdk, input: {
+  "sessionId": "20251130150023",
+  "version": "17",
+  "dest": "C:\\Users\\USER\\.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:01:14.473Z [INFO] [Plan.tryStartTask]: starting task detached
+2025-11-30T15:01:14.474Z [INFO] [Task.start](): Starting task detached
+2025-11-30T15:01:14.476Z [INFO] [Task.start](): Started task detached
+2025-11-30T15:01:14.478Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2025-11-30T15:01:14.479Z [INFO] [Tool.invoke] do pre-invoke.
+2025-11-30T15:01:14.480Z [INFO] [Tool.invoke] do invoke.
+2025-11-30T15:01:55.515Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "java",
+    "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+    "version": "17.0.16"
+  },
+  "message": "JDK 17 is installed at C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "17"
+  }
+}}).
+2025-11-30T15:01:55.516Z [INFO] [Plan.completeTask](task:{id:<unknown>, type:detached}, result:{
+  "result": {
+    "name": "java",
+    "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+    "version": "17.0.16"
+  },
+  "message": "JDK 17 is installed at C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "17"
+  }
+})
+2025-11-30T15:01:55.517Z [INFO] [Task.complete](): Completing task detached
+2025-11-30T15:01:55.520Z [INFO] [Task.complete](): Completed task detached
+2025-11-30T15:01:55.521Z [INFO] [Plan.completeTask]: no next task, create new one.
+2025-11-30T15:01:55.522Z [INFO] [Plan.completeTask]: getting next task.
+2025-11-30T15:01:55.523Z [INFO] [Plan.getNextTaskAtComplete]({task: [Detached] install_jdk, result: {
+  "name": "java",
+  "path": "C:\\Users\\USER\\.jdk\\jdk-17.0.16\\bin",
+  "version": "17.0.16"
+}}).
+2025-11-30T15:01:55.524Z [INFO] [Plan.completeTask]: next task is {type:undefined, expectedToolName:undefined}.
+2025-11-30T15:01:55.525Z [INFO] [Plan.completeTask]: next task has no instruction. Just return JDK 17 is installed at C:\Users\USER\.jdk\jdk-17.0.16\bin
+2025-11-30T15:01:55.526Z [INFO] [Tool.invoke]({message: JDK 17 is installed at C:\Users\USER\.jdk\jdk-17.0.16\bin
+}).
+2025-11-30T15:01:55.527Z [INFO] ----------------------invoked install_jdk----------------------
+2025-11-30T15:01:55.588Z [INFO] [Task.complete](1.1): Completing task generatePlan
+2025-11-30T15:01:55.633Z [INFO] [Task.complete](1.1): Completed task generatePlan
+2025-11-30T15:01:56.806Z [INFO] [Task.start](): Starting task generatePlan
+2025-11-30T15:01:56.809Z [INFO] [Task.start](1.2): Started task generatePlan
+2025-11-30T15:01:56.810Z [INFO] ---------------------prepare install_maven----------------------
+2025-11-30T15:01:56.812Z [INFO] [Tool.prepareInvocation]({name: install_maven, input: {
+  "sessionId": "20251130150023",
+  "version": "3.9.11",
+  "dest": "C:\\Users\\USER\\.maven",
+  "reason": "Maven  is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:01:56.814Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2025-11-30T15:01:57.818Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install Maven",
+  "confirmationMessages": {
+    "title": "Download and install Maven",
+    "message": "\nMaven  is required to build the project, but not found on the machine.\nThis tool will download and install Maven 3.9.11 from Apache with below settings.\n- **Version**: 3.9.11\n- **Vendor**: Apache\n- **Url**: https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.zip\n- **Destination**: `C:\\Users\\USER\\.maven`\n- **Checksum**: SHA512: 03e2d65d4483a3396980629f260e25cac0d8b6f7f2791e4dc20bc83f9514db8d0f05b0479e699a5f34679250c49c8e52e961262ded468a20de0be254d8207076\n- **Signature**: https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.zip.asc\n- **Public Key**: https://downloads.apache.org/maven/KEYS\n"
+  }
+}}).
+2025-11-30T15:01:57.819Z [INFO] ----------------------prepared install_maven----------------------
+2025-11-30T15:02:09.203Z [INFO] ----------------------invoke install_maven----------------------
+2025-11-30T15:02:09.204Z [INFO] [Tool.invoke]({name: install_maven, input: {
+  "sessionId": "20251130150023",
+  "version": "3.9.11",
+  "dest": "C:\\Users\\USER\\.maven",
+  "reason": "Maven  is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:02:09.206Z [INFO] [Plan.tryStartTask]({tool:install_maven, nextTask:{type:undefined, tool:undefined}}
+2025-11-30T15:02:09.209Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2025-11-30T15:02:09.210Z [INFO] [Plan.createTaskAtStart]({tool: install_maven, input: {
+  "sessionId": "20251130150023",
+  "version": "3.9.11",
+  "dest": "C:\\Users\\USER\\.maven",
+  "reason": "Maven  is required to build the project, but not found on the machine."
+}}).
+2025-11-30T15:02:09.211Z [INFO] [Plan.tryStartTask]: starting task detached
+2025-11-30T15:02:09.213Z [INFO] [Task.start](): Starting task detached
+2025-11-30T15:02:09.214Z [INFO] [Task.start](): Started task detached
+2025-11-30T15:02:09.216Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2025-11-30T15:02:09.218Z [INFO] [Tool.invoke] do pre-invoke.
+2025-11-30T15:02:09.219Z [INFO] [Tool.invoke] do invoke.
+2025-11-30T15:02:17.125Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "mvn",
+    "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+    "version": "3.9.11"
+  },
+  "message": "Maven 3.9.11 is installed at C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+  "telemetry": {
+    "tool": "Maven",
+    "version": "3.9.11"
+  }
+}}).
+2025-11-30T15:02:17.127Z [INFO] [Plan.completeTask](task:{id:<unknown>, type:detached}, result:{
+  "result": {
+    "name": "mvn",
+    "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+    "version": "3.9.11"
+  },
+  "message": "Maven 3.9.11 is installed at C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+  "telemetry": {
+    "tool": "Maven",
+    "version": "3.9.11"
+  }
+})
+2025-11-30T15:02:17.129Z [INFO] [Task.complete](): Completing task detached
+2025-11-30T15:02:17.131Z [INFO] [Task.complete](): Completed task detached
+2025-11-30T15:02:17.133Z [INFO] [Plan.completeTask]: no next task, create new one.
+2025-11-30T15:02:17.135Z [INFO] [Plan.completeTask]: getting next task.
+2025-11-30T15:02:17.136Z [INFO] [Plan.getNextTaskAtComplete]({task: [Detached] install_maven, result: {
+  "name": "mvn",
+  "path": "C:\\Users\\USER\\.maven\\maven-3.9.11\\bin",
+  "version": "3.9.11"
+}}).
+2025-11-30T15:02:17.138Z [INFO] [Plan.completeTask]: next task is {type:undefined, expectedToolName:undefined}.
+2025-11-30T15:02:17.140Z [INFO] [Plan.completeTask]: next task has no instruction. Just return Maven 3.9.11 is installed at C:\Users\USER\.maven\maven-3.9.11\bin
+2025-11-30T15:02:17.142Z [INFO] [Tool.invoke]({message: Maven 3.9.11 is installed at C:\Users\USER\.maven\maven-3.9.11\bin
+}).
+2025-11-30T15:02:17.143Z [INFO] ----------------------invoked install_maven----------------------
+2025-11-30T15:02:17.200Z [INFO] [Task.complete](1.2): Completing task generatePlan
+2025-11-30T15:02:17.206Z [INFO] [Task.complete](1.2): Completed task generatePlan
+2025-11-30T15:03:44.256Z [INFO] Project dependencies loaded: [
+  "org.springframework.boot:spring-boot-starter-actuator:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-data-jpa:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-web:3.2.3:jar",
+  "org.springframework.boot:spring-boot-devtools:3.2.3:jar",
+  "com.mysql:mysql-connector-j:8.3.0:jar",
+  "org.projectlombok:lombok:1.18.30:jar",
+  "org.springframework.boot:spring-boot-starter-test:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-security:3.2.3:jar",
+  "io.jsonwebtoken:jjwt-api:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-impl:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-jackson:0.11.5:jar"
+]
+2025-11-30T15:03:44.262Z [INFO] Project modules loaded: [
+  "com.snikers:snikers-app:0.0.1-SNAPSHOT"
+]
+2025-11-30T15:03:44.475Z [ERROR] [Tool.invoke] error occurs when invoking tool generate_upgrade_plan: Error: Failed to get git status for c:/xampp/htdocs/springboot snikers/snikers: "git" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable..
+2025-11-30T15:03:44.480Z [INFO] [Task.complete](1): Completing task generatePlan
+2025-11-30T15:03:44.483Z [INFO] ----------------------invoked generate_upgrade_plan----------------------
+2025-11-30T15:03:44.490Z [INFO] [Task.complete](1): Completed task generatePlan

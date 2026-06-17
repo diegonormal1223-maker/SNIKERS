@@ -1,0 +1,215 @@
+/* Modal Styles - Premium Dark/Neon Theme */
+
+/* Ensure variables are available if used standalone, though usually inherited from global css */
+:root {
+    --neon-green: #39ff14;
+    --neon-purple: #b026ff;
+    --dark-bg: #0a0a0f;
+    --dark-card: #16161f;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --success-green: #00ff88;
+    --error-red: #ff3860;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    /* High z-index to sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(10, 10, 15, 0.85);
+    /* Darker, slightly transparent background */
+    backdrop-filter: blur(8px);
+    /* Stronger blur for focus */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: var(--dark-card);
+    margin: 5% auto;
+    /* Slightly higher up */
+    padding: 40px;
+    border: 2px solid rgba(57, 255, 20, 0.2);
+    /* Subtle neon border */
+    width: 90%;
+    max-width: 650px;
+    /* Slightly wider */
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.15);
+    /* Soft neon glow */
+    position: relative;
+    animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy entrance */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(50px) scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.close-modal {
+    color: var(--text-gray);
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+    transform: rotate(90deg);
+}
+
+/* Typography */
+.modal h2 {
+    color: var(--text-white);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--neon-green), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Form Styles (Matching Profile Page) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal input[type="text"],
+.modal input[type="tel"],
+.modal input[type="email"],
+.modal select {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(57, 255, 20, 0.2);
+    border-radius: 12px;
+    color: var(--text-white);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+    margin-top: auto;
+    /* Pushes input to bottom to align with others in grid */
+}
+
+.modal input:focus,
+.modal select:focus {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.modal input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Button Styles */
+.modal button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, var(--neon-green), #2ecc40);
+    color: var(--dark-bg);
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.modal button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Scrollbar for modal content if needed */
+.modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 25px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .modal h2 {
+        font-size: 20px;
+    }
+}

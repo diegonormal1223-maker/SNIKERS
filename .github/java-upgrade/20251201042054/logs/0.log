@@ -1,0 +1,73 @@
+2025-12-01T04:20:54.891Z [INFO] ----------------------invoke generate_upgrade_plan----------------------
+2025-12-01T04:20:54.895Z [INFO] [Tool.invoke]({name: generate_upgrade_plan, input: {
+  "projectPath": "c:/xampp/htdocs/springboot snikers/snikers",
+  "targetJavaVersion": "21"
+}}).
+2025-12-01T04:20:54.902Z [INFO] [Plan.tryStartTask]({tool:generate_upgrade_plan, nextTask:{type:undefined, tool:undefined}}
+2025-12-01T04:20:54.905Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2025-12-01T04:20:54.907Z [INFO] [Plan.createTaskAtStart]({tool: generate_upgrade_plan, input: {
+  "projectPath": "c:/xampp/htdocs/springboot snikers/snikers",
+  "targetJavaVersion": "21",
+  "sessionId": "20251201042054"
+}}).
+2025-12-01T04:20:54.909Z [INFO] [Plan.tryStartTask]: starting task generatePlan
+2025-12-01T04:20:54.911Z [INFO] [Task.start](): Starting task generatePlan
+2025-12-01T04:20:54.917Z [INFO] [Task.start](1): Started task generatePlan
+2025-12-01T04:20:54.940Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2025-12-01T04:20:56.555Z [INFO] Copilot user info:{
+  "access_type_sku": "free_limited_copilot",
+  "analytics_tracking_id": "aafb447a3a5434cb88256d5fc97146e9",
+  "assigned_date": "2025-08-22T15:45:00-05:00",
+  "can_signup_for_limited": false,
+  "chat_enabled": true,
+  "copilot_plan": "individual",
+  "organization_login_list": [],
+  "organization_list": [],
+  "limited_user_quotas": {
+    "chat": 300,
+    "completions": 3635
+  },
+  "limited_user_subscribed_day": 22,
+  "limited_user_reset_date": "2025-12-22",
+  "monthly_quotas": {
+    "chat": 500,
+    "completions": 4000
+  }
+}
+2025-12-01T04:20:56.558Z [INFO] [Tool.invoke] do pre-invoke.
+2025-12-01T04:20:56.559Z [INFO] [Tool.invoke] do invoke.
+2025-12-01T04:21:25.426Z [INFO] Project dependencies loaded: [
+  "org.springframework.boot:spring-boot-starter-actuator:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-data-jpa:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-web:3.2.3:jar",
+  "org.springframework.boot:spring-boot-devtools:3.2.3:jar",
+  "com.mysql:mysql-connector-j:8.3.0:jar",
+  "org.projectlombok:lombok:1.18.30:jar",
+  "org.springframework.boot:spring-boot-starter-test:3.2.3:jar",
+  "org.springframework.boot:spring-boot-starter-security:3.2.3:jar",
+  "io.jsonwebtoken:jjwt-api:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-impl:0.11.5:jar",
+  "io.jsonwebtoken:jjwt-jackson:0.11.5:jar",
+  "com.github.librepdf:openpdf:1.3.30:jar"
+]
+2025-12-01T04:21:25.428Z [INFO] Project modules loaded: [
+  "com.snikers:snikers-app:0.0.1-SNAPSHOT"
+]
+2025-12-01T04:21:25.538Z [ERROR] [Tool.invoke] error occurs when invoking tool generate_upgrade_plan: Error: Failed to get git status for c:/xampp/htdocs/springboot snikers/snikers: "git" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable..
+2025-12-01T04:21:25.540Z [INFO] [Task.complete](1): Completing task generatePlan
+2025-12-01T04:21:25.542Z [INFO] ----------------------invoked generate_upgrade_plan----------------------
+2025-12-01T04:21:25.545Z [INFO] [Task.complete](1): Completed task generatePlan
+2025-12-01T04:25:40.195Z [INFO] ---------------------prepare install_jdk----------------------
+2025-12-01T04:25:40.197Z [INFO] [Tool.prepareInvocation]({name: install_jdk, input: {
+  "version": "21"
+}}).
+2025-12-01T04:25:40.198Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2025-12-01T04:25:42.070Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install JDK",
+  "confirmationMessages": {
+    "title": "Download and install JDK",
+    "message": "\nThis tool will download and install JDK 21 from Microsoft with below settings.\n- **Version**: 21\n- **Vendor**: Microsoft\n- **Url**: https://aka.ms/download-jdk/microsoft-jdk-21.0.8-windows-x64.zip\n- **Destination**: `C:\\Users\\USER\\.jdk`\n- **Checksum**: SHA256: 6ecfa864b95a45cde05d92351edf06d33b778669499b485bb8414145704fae0a\n- **Signature**: https://aka.ms/download-jdk/microsoft-jdk-21.0.8-windows-x64.zip.sig\n- **Public Key**: http://aka.ms/microsoft_jdk_public_key\n"
+  }
+}}).
+2025-12-01T04:25:42.070Z [INFO] ----------------------prepared install_jdk----------------------

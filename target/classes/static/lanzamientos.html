@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuevos Lanzamientos — SNIKER</title>
+  <link rel="stylesheet" href="CSS/lanzamientos.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon"></div><span>SNIKER</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="catalogo.html">CATALOGO</a></li>
+        <li><a href="lanzamientos.html">NUEVOS LANZAMIENTOS</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="perfilusuario.html" class="icon-btn" aria-label="Cuenta">👤</a>
+      <a href="favoritos.html" class="icon-btn" aria-label="Favoritos">
+        ❤️
+        <span class="favorites-badge">0</span>
+      </a>
+      <a href="carrito.html" class="icon-btn" aria-label="Carrito">🛒<span class="cart-badge">3</span></a>
+    </div>
+  </header>
+
+  <!-- NOTIFICACIÓN -->
+  <div class="notificacion" id="notificacion"></div>
+
+  <section id="home" class="hero">
+
+    <div class="hero-image">
+      <div class="hero-slider" aria-roledescription="carrusel">
+        <div class="hero-track">
+          <div class="hero-slide"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1600&q=80"
+              alt="Zapatilla 1"></div>
+          <div class="hero-slide"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=1600&q=80"
+              alt="Zapatilla 2"></div>
+          <div class="hero-slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80"
+              alt="Zapatilla 3"></div>
+        </div>
+        <button class="hero-prev" aria-label="Imagen anterior">‹</button>
+        <button class="hero-next" aria-label="Imagen siguiente">›</button>
+        <div class="hero-dots" role="tablist" aria-label="Paginación"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-subtitle">⚡ DROPS EXCLUSIVOS</div>
+      <h1>NUEVOS LANZAMIENTOS</h1>
+      <p>Descubre los últimos drops y ediciones limitadas disponibles ahora</p>
+    </div>
+
+  </section>
+
+  <section id="new" class="new-drops">
+    <h2 class="section-title">Mosaico de Lanzamientos</h2>
+
+    <div class="banners-grid">
+
+      <article class="banner-card"
+        style="--img:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1600'); grid-column: span 5;">
+        <div class="banner-content">
+          <span class="banner-badge">DROP 04 · LIMITADO</span>
+          <h3 class="banner-title">SNIKER X-2000 “Neon Pulse”</h3>
+          <p class="banner-sub">Primavera 2025 • 500 pares</p>
+          <a href="catalogo.html?drop=neon-pulse" class="banner-btn">VER DROP</a>
+        </div>
+      </article>
+
+      <article class="banner-card"
+        style="--img:url('https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=1600'); grid-column: span 7;">
+        <div class="banner-content">
+          <span class="banner-badge purple">EXCLUSIVO</span>
+          <h3 class="banner-title">Colaboración “Morado Series”</h3>
+          <p class="banner-sub">Sólo en SNIKER</p>
+          <a href="catalogo.html?serie=morada" class="banner-btn">EXPLORAR</a>
+        </div>
+      </article>
+
+
+      <article class="banner-card tall"
+        style="--img:url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1600'); grid-column: span 4; grid-row: span 2;">
+        <div class="banner-content">
+          <span class="banner-badge">PACK RETRO</span>
+          <h3 class="banner-title">Runner EVO Negra</h3>
+          <p class="banner-sub">De vuelta en stock</p>
+          <a href="catalogo.html?pack=retro-evo" class="banner-btn">COMPRAR AHORA</a>
+        </div>
+      </article>
+
+      <article class="banner-card"
+        style="--img:url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1600'); grid-column: span 4;">
+        <div class="banner-content">
+          <span class="banner-badge">RESERVA</span>
+          <h3 class="banner-title">Pack Monocromático</h3>
+          <p class="banner-sub">Reserva anticipada</p>
+          <a href="catalogo.html?pack=mono" class="banner-btn">RESERVAR</a>
+        </div>
+      </article>
+
+      <article class="banner-card"
+        style="--img:url('https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=1600'); grid-column: span 4;">
+        <div class="banner-content">
+          <span class="banner-badge">CLÁSICOS</span>
+          <h3 class="banner-title">Clásicas Blancas</h3>
+          <p class="banner-sub">El icono de siempre</p>
+          <a href="catalogo.html?pack=classics" class="banner-btn">COMPRAR</a>
+        </div>
+      </article>
+
+      <article class="banner-card wide"
+        style="--img:url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=1600'); grid-column: span 8;">
+        <div class="banner-content">
+          <span class="banner-badge">ESTILO DE VIDA</span>
+          <h3 class="banner-title">Urban Nomad</h3>
+          <p class="banner-sub">Comodidad para tu día</p>
+          <a href="catalogo.html?pack=urban" class="banner-btn">VER COLECCIÓN</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer id="contacto">
+    © 2025 SNIKER — Zapatillas auténticas | Productos 100% verificados
+  </footer>
+
+  <script src="JS/auth-check.js"></script>
+  <script src="JS/cart-badge.js"></script>
+  <script src="JS/favorites-badge.js"></script>
+  <script src="JS/lanzamientos.js"></script>
+</body>
+
+</html>

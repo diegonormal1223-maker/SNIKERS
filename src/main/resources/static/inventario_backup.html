@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de gestión de inventario SNIKER">
+    <title>SNIKER - Gestión de Inventario</title>
+
+    <link rel="stylesheet" href="CSS/inventario.css">
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="logo-section" style="text-decoration: none; color: inherit;">
+            <div class="logo-icon"></div>
+            <span class="logo-text">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ventas.html" class="nav-link">
+                        <span class="nav-icon">💰</span>
+                        <span class="nav-text">Ventas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionpedidos.html" class="nav-link">
+                        <span class="nav-icon">🚛</span>
+                        <span class="nav-text">Pedidos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="domicilios.html" class="nav-link">
+                        <span class="nav-icon">✈️</span>
+                        <span class="nav-text">Domicilios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionproductos.html" class="nav-link">
+                        <span class="nav-icon">👟</span>
+                        <span class="nav-text">Productos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="inventario.html" class="nav-link active"> <span class="nav-icon">📦</span>
+                        <span class="nav-text">Inventario</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionusuarios.html" class="nav-link">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-text">Usuarios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reportes.html" class="nav-link">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">Reportes</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" placeholder="Buscar productos por nombre, SKU..." id="searchInput"
+                        onkeyup="buscarProductos()">
+                </div>
+            </div>
+
+            <div class="header-right">
+
+                <div class="user-profile" onclick="togglePerfilMenu()">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin</div>
+                        <div class="user-role">Administrador</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <h1 class="page-title">Gestion de Inventario</h1>
+            <p class="page-subtitle">Controla y administra el stock de tus productos</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Total Productos</span>
+                        <span class="stat-icon">👟</span>
+                    </div>
+                    <div class="stat-value" id="totalProductos">6</div>
+                    <div class="stat-change positive">
+                        ↑ 3 nuevos este mes
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Valor Inventario</span>
+                        <span class="stat-icon">💰</span>
+                    </div>
+                    <div class="stat-value" id="valorInventario">$15,000</div>
+                    <div class="stat-change positive">
+                        ↑ 8% vs mes anterior
+                    </div>
+                </div>
+
+                <div class="stat-card alert">
+                    <div class="stat-header">
+                        <span class="stat-title">Stock Bajo</span>
+                        <span class="stat-icon">⚠️</span>
+                    </div>
+                    <div class="stat-value" id="stockBajo">3</div>
+                    <div class="stat-change negative">
+                        Requieren reabastecimiento
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Unidades Totales</span>
+                        <span class="stat-icon">📊</span>
+                    </div>
+                    <div class="stat-value" id="unidadesTotales">111</div>
+                    <div class="stat-change neutral">
+                        En todos los almacenes
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <button class="quick-action-btn secondary" onclick="abrirModalAjusteStock()">
+                    <span>📦</span>
+                    Ajustar Stock
+                </button>
+                <button class="quick-action-btn secondary" onclick="generarReporteInventario()">
+                    <span>📄</span>
+                    Generar Reporte
+                </button>
+                <button class="quick-action-btn secondary" onclick="mostrarAlertas()">
+                    <span>⚠️</span>
+                    Ver Alertas
+                </button>
+            </div>
+
+            <div class="filters-section">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <span class="filter-label">Categoria:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filtrarPorCategoria('todas')">Todas</button>
+                            <button class="filter-btn" onclick="filtrarPorCategoria('Casual')">Casual</button>
+                            <button class="filter-btn" onclick="filtrarPorCategoria('Urbanas')">Urbanas</button>
+                            <button class="filter-btn" onclick="filtrarPorCategoria('Retro')">Retro</button>
+                            <button class="filter-btn" onclick="filtrarPorCategoria('Deportivo')">Deportivo</button>
+                        </div>
+                        <span class="filter-label">Ordenar por:</span>
+                        <select class="filter-select" id="sortFilter" onchange="ordenarProductos()">
+                            <option value="nombre">Nombre (A-Z)</option>
+                            <option value="precio-asc">Precio (Menor a Mayor)</option>
+                            <option value="precio-desc">Precio (Mayor a Menor)</option>
+                            <option value="stock-asc">Stock (Menor a Mayor)</option>
+                            <option value="stock-desc">Stock (Mayor a Menor)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically from API -->
+            </div>
+        </div>
+    </main>
+

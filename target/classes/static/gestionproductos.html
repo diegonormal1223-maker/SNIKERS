@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de Productos - Dashboard Admin SNIKER">
+    <title>Gestión de Productos - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="CSS/gestionproductos.css">
+
+    <style>
+        select option {
+            background-color: #16161f;
+            color: #ffffff;
+        }
+    </style>
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <aside class="barra-lateral" id="barraLateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li class="item-nav">
+                    <a href="dashboard.html" class="enlace-nav">
+                        <span class="icono-nav">📊</span>
+                        <span class="texto-nav">Dashboard</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="ventas.html" class="enlace-nav">
+                        <span class="icono-nav">💰</span>
+                        <span class="texto-nav">Ventas</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="gestionpedidos.html" class="enlace-nav">
+                        <span class="icono-nav">🚛</span>
+                        <span class="texto-nav">Pedidos</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="domicilios.html" class="enlace-nav">
+                        <span class="icono-nav">✈️</span>
+                        <span class="texto-nav">Domicilios</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="gestionproductos.html" class="enlace-nav activo"> <span class="icono-nav">👟</span>
+                        <span class="texto-nav">Productos</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="inventario.html" class="enlace-nav">
+                        <span class="icono-nav">📦</span>
+                        <span class="texto-nav">Inventario</span>
+                    </a>
+                </li>
+                <li class="item-nav">
+                    <a href="gestionusuarios.html" class="enlace-nav">
+                        <span class="icono-nav">👥</span>
+                        <span class="texto-nav">Usuarios</span> </a>
+                </li>
+                <li class="item-nav">
+                    <a href="reportes.html" class="enlace-nav">
+                        <span class="icono-nav">📈</span>
+                        <span class="texto-nav">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reembolsos.html" class="enlace-nav">
+                        <span class="icono-nav">💸</span>
+                        <span class="texto-nav">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Gestión de Productos</h1>
+
+            <div class="perfil-usuario">
+                <div class="avatar-usuario">A</div>
+                <div>
+                    <div style="font-weight: 700; font-size: 14px;">Admin</div>
+                    <div style="font-size: 12px; color: var(--texto-gris);">Administrador</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="area-contenido">
+            <div class="stats-rapidos">
+                <div class="stat-card">
+                    <div class="stat-label">Total Productos</div>
+                    <div class="stat-valor" id="totalProductos">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Stock Alto</div>
+                    <div class="stat-valor" style="color: var(--verde-exito);" id="stockAlto">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Stock Medio</div>
+                    <div class="stat-valor" style="color: var(--amarillo-alerta);" id="stockMedio">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Stock Bajo</div>
+                    <div class="stat-valor" style="color: var(--rojo-error);" id="stockBajo">0</div>
+                </div>
+            </div>
+
+            <div class="barra-herramientas">
+                <div class="grupo-busqueda">
+                    <div class="barra-busqueda">
+                        <span class="icono-busqueda">🔍</span>
+                        <input type="search" id="buscarProducto" placeholder="Buscar por nombre, SKU o categoría..."
+                            onkeyup="buscarProductos()">
+                    </div>
+                    <button class="boton-filtro" onclick="toggleFiltros()">
+                        <span>🎛️</span>
+                        Filtros
+                    </button>
+                </div>
+
+                <button class="boton-nuevo-producto" onclick="abrirModalNuevoProducto()">
+                    <span>+</span>
+                    Nuevo Producto
+                </button>
+            </div>
+
+            <div class="filtros-container" id="panelFiltros" style="display: none;">
+                <select class="filtro-select" id="filtroCategoria" onchange="aplicarFiltros()">
+                    <option value="">Todas las Categorías</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Urbanas">Urbanas</option>
+                    <option value="Retro">Retro</option>
+                    <option value="Deportivo">Deportivo</option>
+                </select>
+                <select class="filtro-select" id="filtroMarca" onchange="aplicarFiltros()">
+                    <option value="">Todas las Marcas</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Jordan">Jordan</option>
+                    <option value="Puma">Puma</option>
+                </select>
+                <select class="filtro-select" id="filtroEstado" onchange="aplicarFiltros()">
+                    <option value="">Todos los Estados</option>
+                    <option value="ACTIVE">Activo</option>
+                    <option value="INACTIVE">Inactivo</option>
+                </select>
+                <select class="filtro-select" id="filtroColor" onchange="aplicarFiltros()">
+                    <option value="">Todos los Colores</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Azul">Azul</option>
+                    <option value="Verde">Verde</option>
+                    <option value="Amarillo">Amarillo</option>
+                    <option value="Naranja">Naranja</option>
+                    <option value="Morado">Morado</option>
+                </select>
+                <select class="filtro-select" id="filtroTalla" onchange="aplicarFiltros()">
+                    <option value="">Todas las Tallas</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                </select>
+                <select class="filtro-select" id="filtroPrecio" onchange="aplicarFiltros()">
+                    <option value="">Todos los Precios</option>
+                    <option value="0-50">$0 - $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-150">$100 - $150</option>
+                    <option value="150-200">$150 - $200</option>
+                    <option value="200+">$200+</option>
+                </select>
+                <select class="filtro-select" id="filtroStock" onchange="aplicarFiltros()">
+                    <option value="">Todos los Stocks</option>
+                    <option value="alto">Stock Alto (31+)</option>
+                    <option value="medio">Stock Medio (11-30)</option>
+                    <option value="bajo">Stock Bajo (≤10)</option>
+                    <option value="agotado">Agotado (0)</option>
+                </select>
+            </div>
+
+            <div class="contenedor-tabla">
+                <div class="encabezado-tabla">
+                    <h2 class="titulo-tabla">Lista de Productos</h2>
+                    <div class="acciones-tabla">
+                        <button class="boton-accion-tabla">Exportar</button>
+                        <button class="boton-accion-tabla" onclick="window.location.href='gestionproductos_import.html'">Importar</button>
+                    </div>
+                </div>
+
+                <table class="tabla-productos">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>ID</th>
+                            <th>Categoría</th>
+                            <th>Marca</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Color</th>
+                            <th>Talla</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductosBody">
+                    </tbody>
+                </table>
+
+                <div class="paginacion" id="paginacion">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <div class="overlay-modal" id="modalProducto">
+        <div class="contenido-modal">
+            <button class="boton-cerrar-modal" onclick="cerrarModal()">×</button>
+            <h2 class="titulo-modal" id="tituloModal">Nuevo Producto</h2>
+
+            <form id="formularioProducto">
+                <input type="hidden" id="productoId">
+                <input type="hidden" id="skuOriginal">
+
+                <div class="grid-formulario">
+                    <div class="grupo-formulario ancho-completo">
+                        <label for="nombreProducto">Nombre del Producto *</label>
+                        <input type="text" id="nombreProducto" placeholder="Ej: Air Retro Classic" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="productoIdVisible">ID (Automático)</label>
+                        <input type="text" id="productoIdVisible" placeholder="Autogenerado" readonly
+                            style="background-color: rgba(255, 255, 255, 0.02); color: var(--neon-verde); font-weight: bold; cursor: not-allowed;">
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="categoria">Categoría *</label>
+                        <select id="categoria" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Urbanas">Urbanas</option>
+                            <option value="Retro">Retro</option>
+                            <option value="Deportivo">Deportivo</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="precio">Precio (USD) *</label>
+                        <input type="number" id="precio" placeholder="0.00" step="0.01" max="9999" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="stock">Stock *</label>
+                        <input type="number" id="stock" placeholder="0" min="0" max="99" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="marca">Marca *</label>
+                        <select id="marca" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="Nike">Nike</option>
+                            <option value="Adidas">Adidas</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Puma">Puma</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="estado">Estado *</label>
+                        <select id="estado" required>
+                            <option value="ACTIVE">Activo</option>
+                            <option value="INACTIVE">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-formulario ancho-completo">
+                        <label>Colores Disponibles *</label>
+                        <div class="contenedor-tallas" id="contenedorColores">
+                        </div>
+                    </div>
+
+                    <div class="grupo-formulario ancho-completo">
+                        <label>Tallas Disponibles *</label>
+                        <div class="contenedor-tallas" id="contenedorTallas">
+                        </div>
+                    </div>
+
+                    <div class="grupo-formulario ancho-completo">
+                        <label for="descripcion">Descripción *</label>
+                        <textarea id="descripcion" placeholder="Describe el producto..." required></textarea>
+                    </div>
+
+                    <div class="grupo-formulario ancho-completo">
+                        <label>Imágenes del Producto</label>
+                        <div class="upload-imagen" onclick="document.getElementById('inputImagenes').click()">
+                            <div class="icono-upload">📷</div>
+                            <div class="texto-upload-principal">
+                                Haz clic para subir imágenes o arrastra aquí
+                            </div>
+                            <div class="texto-upload-secundario">
+                                PNG, JPG o WEBP (máx. 5MB por imagen)
+                            </div>
+                            <input type="file" id="inputImagenes" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="botones-formulario">
+                    <button type="button" class="boton-cancelar" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="boton-guardar">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="JS/gestionproductos.js"></script>
+</body>
+
+</html>

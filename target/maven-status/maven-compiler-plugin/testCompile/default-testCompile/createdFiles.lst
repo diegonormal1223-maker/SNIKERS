@@ -1,0 +1,5 @@
+com\snikers\app\service\UserServiceTest.class
+com\snikers\app\service\ProductServiceTest.class
+com\snikers\app\service\ProductServiceIntegrationTest.class
+com\snikers\app\service\SnikersApplicationTests.class
+com\snikers\app\service\UserServiceIntegrationTest.class

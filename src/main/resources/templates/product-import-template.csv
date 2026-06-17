@@ -1,0 +1,2 @@
+sku,name,category,price,comparePrice,stock,brand,colors,sizes,status,description,imageUrl
+SKU-123,Example Product,Default,49.99,59.99,10,BrandX,red, M;L,ACTIVE,Example description,https://example.com/image.jpg

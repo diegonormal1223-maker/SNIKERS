@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de Reembolsos - Dashboard Admin SNIKER">
+    <title>Gestión de Reembolsos - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/ventas2.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+    <style>
+        .badge-refund-pending {
+            background-color: var(--warning-orange);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .action-approve {
+            color: var(--success-green);
+        }
+
+        .action-reject {
+            color: var(--danger-red);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="barra-lateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li>
+                    <a href="dashboard.html" class="enlace-nav">
+                        <span class="icono-nav">📊</span>
+                        <span class="texto-nav">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ventas.html" class="enlace-nav">
+                        <span class="icono-nav">💰</span>
+                        <span class="texto-nav">Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionpedidos.html" class="enlace-nav">
+                        <span class="icono-nav">🚛</span>
+                        <span class="texto-nav">Pedidos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="domicilios.html" class="enlace-nav">
+                        <span class="icono-nav">✈️</span>
+                        <span class="texto-nav">Domicilios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionproductos.html" class="enlace-nav">
+                        <span class="icono-nav">👟</span>
+                        <span class="texto-nav">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inventario.html" class="enlace-nav">
+                        <span class="icono-nav">📦</span>
+                        <span class="texto-nav">Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionusuarios.html" class="enlace-nav">
+                        <span class="icono-nav">👥</span>
+                        <span class="texto-nav">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reportes.html" class="enlace-nav">
+                        <span class="icono-nav">📈</span>
+                        <span class="texto-nav">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reembolsos.html" class="enlace-nav activo">
+                        <span class="icono-nav">💸</span>
+                        <span class="texto-nav">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+        <!-- HEADER -->
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Gestión de Reembolsos</h1>
+        </header>
+
+        <!-- ÁREA DE CONTENIDO -->
+        <div class="area-contenido">
+            <!-- TABLA -->
+            <div class="contenedor-tabla">
+                <div class="encabezado-tabla">
+                    <h2 class="titulo-tabla">Solicitudes de Reembolso</h2>
+                </div>
+
+                <table class="tabla-ventas" id="tablaReembolsos">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Motivo</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaReembolsos">
+                        <!-- Dynamic Content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Rechazo -->
+    <div class="modal" id="modalRechazo"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8);">
+        <div class="contenido-modal"
+            style="background-color: #1a1a2e; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 400px; border-radius: 10px; text-align: center;">
+            <div class="encabezado-modal"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 class="titulo-modal" style="color: var(--danger-red);">Rechazar Reembolso</h3>
+                <button class="boton-cerrar" onclick="cerrarModalRechazo()"
+                    style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
+            </div>
+            <div class="cuerpo-modal">
+                <input type="hidden" id="rechazoOrderId">
+                <div class="grupo-formulario" style="text-align: left;">
+                    <label for="motivoRechazo" style="display: block; margin-bottom: 10px; color: #fff;">Motivo del
+                        rechazo *</label>
+                    <textarea id="motivoRechazo"
+                        style="width: 100%; height: 100px; padding: 10px; background: #0f0f1a; border: 1px solid #444; color: #fff; border-radius: 5px;"
+                        placeholder="Explique por qué se rechaza la solicitud..." required></textarea>
+                </div>
+            </div>
+            <div class="pie-modal" style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="boton-secundario" onclick="cerrarModalRechazo()"
+                    style="padding: 8px 15px; border-radius: 5px; background: #333; color: white; border: none; cursor: pointer;">Cancelar</button>
+                <button class="boton-primario" onclick="confirmarRechazo()"
+                    style="padding: 8px 15px; border-radius: 5px; background: var(--danger-red); color: white; border: none; cursor: pointer;">Confirmar
+                    Rechazo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/reembolsos.js"></script>
+</body>
+
+</html>

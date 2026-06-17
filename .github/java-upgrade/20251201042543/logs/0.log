@@ -1,0 +1,26 @@
+2025-12-01T04:25:43.735Z [INFO] ----------------------invoke install_jdk----------------------
+2025-12-01T04:25:43.736Z [INFO] [Tool.invoke]({name: install_jdk, input: {
+  "version": "21",
+  "projectPath": "c:\\xampp\\htdocs\\springboot snikers\\snikers"
+}}).
+2025-12-01T04:25:43.736Z [INFO] [Task.start](): Starting task toolCall
+2025-12-01T04:25:43.737Z [INFO] [Task.start](): Started task toolCall
+2025-12-01T04:25:43.738Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2025-12-01T04:25:43.739Z [INFO] [Tool.invoke] do pre-invoke.
+2025-12-01T04:25:43.739Z [INFO] [Tool.invoke] do invoke.
+2025-12-01T04:26:28.392Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "java",
+    "path": "C:\\Users\\USER\\.jdk\\jdk-21.0.8\\bin",
+    "version": "21.0.8"
+  },
+  "message": "JDK 21 is installed at C:\\Users\\USER\\.jdk\\jdk-21.0.8\\bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "21"
+  }
+}}).
+2025-12-01T04:26:28.395Z [INFO] [Task.complete](): Completing task toolCall
+2025-12-01T04:26:28.398Z [INFO] [Task.complete](): Completed task toolCall
+2025-12-01T04:26:28.399Z [INFO] [Tool.invoke]({message: JDK 21 is installed at C:\Users\USER\.jdk\jdk-21.0.8\bin}).
+2025-12-01T04:26:28.401Z [INFO] ----------------------invoked install_jdk----------------------

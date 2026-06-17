@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Inicia sesión o regístrate en SNIKER para acceder a drops exclusivos y tu perfil.">
+    <title>SNIKER - Iniciar sesión / Registro</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/loginyregistro.css">
+
+</head>
+
+<body>
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>SNIKER</span>
+        </a>
+        <a href="index.html" class="back-btn">← Volver al inicio</a>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- PESTAÑAS -->
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
+                <button class="tab-btn" data-tab="register">Registro</button>
+            </div>
+
+            <!-- MENSAJE DE ÉXITO -->
+            <div class="success-message" id="successMessage"></div>
+
+            <!-- PESTAÑA INICIAR SESIÓN -->
+            <div class="tab-content active" id="login-tab">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="login-email">Email <span class="required">*</span></label>
+                        <input type="email" id="login-email" name="email" placeholder="tu@email.com" required>
+                        <div class="error-message" id="login-email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Contraseña <span class="required">*</span></label>
+                        <div style="position: relative;">
+                            <input type="password" id="login-password" name="password" placeholder="••••••••" required>
+                            <span class="password-toggle" onclick="togglePassword('login-password', this)"
+                                style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁️</span>
+                        </div>
+                        <div class="error-message" id="login-password-error"></div>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordar mi sesión</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Iniciar Sesión</button>
+                </form>
+            </div>
+
+            <!-- PESTAÑA REGISTRO -->
+            <div class="tab-content" id="register-tab">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="register-name">Nombre completo <span class="required">*</span></label>
+                        <input type="text" id="register-name" name="name" placeholder="Tu nombre" required>
+                        <div class="error-message" id="register-name-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email <span class="required">*</span></label>
+                        <input type="email" id="register-email" name="email" placeholder="tu@email.com" required>
+                        <div class="error-message" id="register-email-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-phone">Teléfono</label>
+                        <input type="tel" id="register-phone" name="phone" placeholder="Tu teléfono">
+                        <div class="error-message" id="register-phone-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Contraseña <span class="required">*</span></label>
+                        <div style="position: relative;">
+                            <input type="password" id="register-password" name="password"
+                                placeholder="Mínimo 8 caracteres" required>
+                            <span class="password-toggle" onclick="togglePassword('register-password', this)"
+                                style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁️</span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="password-strength-bar"></div>
+                        </div>
+                        <div class="password-hint">Usa al menos 8 caracteres con letras, números y símbolos</div>
+                        <div class="error-message" id="register-password-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirmar contraseña <span
+                                class="required">*</span></label>
+                        <div style="position: relative;">
+                            <input type="password" id="register-confirm-password" name="confirm-password"
+                                placeholder="Repite tu contraseña" required>
+                            <span class="password-toggle" onclick="togglePassword('register-confirm-password', this)"
+                                style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁️</span>
+                        </div>
+                        <div class="error-message" id="register-confirm-password-error"></div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="accept-terms" name="terms" required>
+                        <label for="accept-terms">
+                            Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de
+                                Privacidad</a>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">
+                            Quiero recibir drops exclusivos y ofertas especiales
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Crear Cuenta</button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PIÉ DE PÁGINA -->
+    <footer>
+        <p>© 2025 SNIKER. Todos los derechos reservados. | <a href="#">Ayuda</a> | <a href="#">Privacidad</a> | <a
+                href="#">Términos</a></p>
+    </footer>
+    <script src="JS/loginyregistro.js"></script>
+
+</body>
+
+</html>

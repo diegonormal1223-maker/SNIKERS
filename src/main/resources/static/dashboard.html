@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración SNIKER">
+    <title>SNIKER - Dashboard Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="logo-section" style="text-decoration: none; color: inherit;">
+            <div class="logo-icon"></div>
+            <span class="logo-text">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ventas.html" class="nav-link">
+                        <span class="nav-icon">💰</span>
+                        <span class="nav-text">Ventas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionpedidos.html" class="nav-link">
+                        <span class="nav-icon">🚛</span> <span class="nav-text">Pedidos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="domicilios.html" class="nav-link">
+                        <span class="nav-icon">✈️</span>
+                        <span class="nav-text">Domicilios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionproductos.html" class="nav-link">
+                        <span class="nav-icon">👟</span>
+                        <span class="nav-text">Productos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="inventario.html" class="nav-link">
+                        <span class="nav-icon">📦</span> <span class="nav-text">Inventario</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionusuarios.html" class="nav-link">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-text">Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reportes.html" class="nav-link">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">Reportes</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reembolsos.html" class="nav-link">
+                        <span class="nav-icon">💸</span>
+                        <span class="nav-text">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" placeholder="Buscar pedidos, productos, clientes...">
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">A</div>
+                <div class="user-info">
+                    <div class="user-name">Admin</div>
+                    <div class="user-role">Administrador</div>
+                </div>
+            </div>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-subtitle">Bienvenido de nuevo, aquí está tu resumen de hoy</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-change positive">↑ 12.5%</span>
+                    </div>
+                    <div class="stat-label">Ventas Totales</div>
+                    <div class="stat-value" id="totalSales">$0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">📦</span>
+                        <span class="stat-change positive">↑ 8.3%</span>
+                    </div>
+                    <div class="stat-label">Pedidos</div>
+                    <div class="stat-value" id="totalOrders">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-icon">👥</span>
+                        <span class="stat-change positive">↑ 5.2%</span>
+                    </div>
+                    <div class="stat-label">Clientes</div>
+                    <div class="stat-value" id="totalUsers">0</div>
+                </div>
+                <!-- Rating Card Removed -->
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Ventas Mensuales</h3>
+                        <div class="chart-filter">
+                            <button class="filter-btn active">Mes</button>
+                            <button class="filter-btn">Semana</button>
+                            <button class="filter-btn">Día</button>
+                        </div>
+                    </div>
+                    <div class="chart-container-bar">
+                        <!-- Dynamic Content -->
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Top Categorías</h3>
+                    </div>
+                    <div class="chart-container-donut">
+                        <div class="donut-chart" role="img" aria-label="Gráfico de categorías">
+                        </div>
+                        <div class="chart-legend">
+                            <!-- Dynamic Content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-section">
+                <div class="table-header">
+                    <h3 class="table-title">Pedidos Recientes</h3>
+                    <div class="table-actions">
+                        <button class="action-btn secondary">Filtrar</button>
+                        <button class="action-btn">Exportar</button>
+                    </div>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentOrdersTable">
+                        <!-- Dynamic Content -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="JS/dashboard.js"></script>
+</body>
+
+</html>

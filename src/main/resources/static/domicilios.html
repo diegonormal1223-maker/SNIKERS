@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de Domicilios - Dashboard Admin SNIKER">
+    <title>Gestión de Domicilios - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/domicilios.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="barra-lateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li>
+                    <a href="dashboard.html" class="enlace-nav">
+                        <span class="icono-nav">📊</span>
+                        <span class="texto-nav">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ventas.html" class="enlace-nav">
+                        <span class="icono-nav">💰</span>
+                        <span class="texto-nav">Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionpedidos.html" class="enlace-nav">
+                        <span class="icono-nav">🚛</span>
+                        <span class="texto-nav">Pedidos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="domicilios.html" class="enlace-nav activo">
+                        <span class="icono-nav">✈️</span>
+                        <span class="texto-nav">Domicilios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionproductos.html" class="enlace-nav">
+                        <span class="icono-nav">👟</span>
+                        <span class="texto-nav">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inventario.html" class="enlace-nav">
+                        <span class="icono-nav">📦</span>
+                        <span class="texto-nav">Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionusuarios.html" class="enlace-nav">
+                        <span class="icono-nav">👥</span>
+                        <span class="texto-nav">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reportes.html" class="enlace-nav">
+                        <span class="icono-nav">📈</span>
+                        <span class="texto-nav">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reembolsos.html" class="enlace-nav">
+                        <span class="icono-nav">💸</span>
+                        <span class="texto-nav">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+        <!-- HEADER -->
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Gestión de Domicilios</h1>
+            <button class="boton-actualizar" onclick="actualizarDomicilios()"><span>🔄</span>Actualizar</button>
+        </header>
+
+        <!-- ÁREA DE CONTENIDO -->
+        <div class="area-contenido">
+            <!-- RESUMEN -->
+            <div class="resumen-domicilios">
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">📦</span>
+                        <span class="estado-kpi transito">HOY</span>
+                    </div>
+                    <div class="etiqueta-kpi">Total Domicilios</div>
+                    <div class="valor-kpi" id="kpiTotal">0</div>
+                    <div class="detalle-kpi">Entregas programadas</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">🚚</span>
+                        <span class="estado-kpi transito">EN RUTA</span>
+                    </div>
+                    <div class="etiqueta-kpi">En Tránsito</div>
+                    <div class="valor-kpi" id="kpiTransito">0</div>
+                    <div class="detalle-kpi">Entregas en camino</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">⏳</span>
+                        <span class="estado-kpi pendiente">PENDIENTE</span>
+                    </div>
+                    <div class="etiqueta-kpi">Pendientes</div>
+                    <div class="valor-kpi" id="kpiPendientes">0</div>
+                    <div class="detalle-kpi">Por asignar repartidor</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">✅</span>
+                        <span class="estado-kpi entregado">COMPLETO</span>
+                    </div>
+                    <div class="etiqueta-kpi">Entregados Hoy</div>
+                    <div class="valor-kpi" id="kpiEntregados">0</div>
+                    <div class="detalle-kpi">Tasa del 95%</div>
+                </div>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="seccion-filtros">
+                <div class="contenedor-filtros">
+                    <span class="etiqueta-filtro">Filtrar:</span>
+                    <div class="grupo-filtros">
+                        <button class="boton-filtro activo" onclick="filtrarDomicilios(event, 'todos')">Todos</button>
+                        <button class="boton-filtro" onclick="filtrarDomicilios(event, 'pendiente')">Pendientes</button>
+                        <button class="boton-filtro" onclick="filtrarDomicilios(event, 'transito')">En Tránsito</button>
+                        <button class="boton-filtro" onclick="filtrarDomicilios(event, 'entregado')">Entregados</button>
+                        <button class="boton-filtro" onclick="filtrarDomicilios(event, 'cancelado')">Cancelados</button>
+                    </div>
+
+                    <div class="barra-busqueda">
+                        <span class="icono-busqueda">🔍</span>
+                        <input type="search" placeholder="Buscar por cliente, dirección o ID..." id="inputBusqueda"
+                            onkeyup="buscarDomicilios()">
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID DE DOMICILIOS -->
+            <div class="grid-domicilios" id="gridDomicilios">
+                <!-- Domicilio 1 -->
+                <div class="tarjeta-domicilio" data-estado="transito" onclick="verSeguimiento('DOM-001')">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-001</span>
+                        <span class="estado-domicilio transito">En Tránsito</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">JD</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">Juan Díaz</div>
+                                <div class="telefono-cliente">📱 +57 300 123 4567</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Calle 45 #23-15, Chapinero, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">Nike Air Max 270 - Talla 42</div>
+                        </div>
+                        <div class="monto-domicilio">$420.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 65%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">⏱️ Llegada estimada: 25 minutos</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-001')">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Domicilio 2 -->
+                <div class="tarjeta-domicilio" data-estado="pendiente">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-002</span>
+                        <span class="estado-domicilio pendiente">Pendiente</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">MR</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">María Rodríguez</div>
+                                <div class="telefono-cliente">📱 +57 310 987 6543</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Carrera 15 #78-90, Suba, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">Adidas Ultraboost - Talla 38</div>
+                        </div>
+                        <div class="monto-domicilio">$380.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 20%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">⏱️ Esperando asignación de repartidor</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-002')">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Domicilio 3 -->
+                <div class="tarjeta-domicilio" data-estado="entregado">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-003</span>
+                        <span class="estado-domicilio entregado">Entregado</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">CP</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">Carlos Pérez</div>
+                                <div class="telefono-cliente">📱 +57 320 456 7890</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Calle 127 #52-40, Usaquén, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">Puma Suede Classic - Talla 43</div>
+                        </div>
+                        <div class="monto-domicilio">$280.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 100%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">✅ Entregado hace 2 horas</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-003')">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Domicilio 4 -->
+                <div class="tarjeta-domicilio" data-estado="transito">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-004</span>
+                        <span class="estado-domicilio transito">En Tránsito</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">LG</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">Laura Gómez</div>
+                                <div class="telefono-cliente">📱 +57 315 234 5678</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Avenida 68 #45-23, Engativá, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">Reebok Classic Leather - Talla 37</div>
+                        </div>
+                        <div class="monto-domicilio">$320.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 80%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">⏱️ Llegada estimada: 10 minutos</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-004')">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Domicilio 5 -->
+                <div class="tarjeta-domicilio" data-estado="cancelado">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-005</span>
+                        <span class="estado-domicilio cancelado">Cancelado</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">AS</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">Andrés Silva</div>
+                                <div class="telefono-cliente">📱 +57 318 765 4321</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Carrera 7 #32-16, La Candelaria, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">Converse Chuck Taylor - Talla 41</div>
+                        </div>
+                        <div class="monto-domicilio">$250.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 10%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">❌ Cancelado por el cliente</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-005')">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Domicilio 6 -->
+                <div class="tarjeta-domicilio" data-estado="pendiente">
+                    <div class="encabezado-tarjeta">
+                        <span class="id-domicilio">#DOM-006</span>
+                        <span class="estado-domicilio pendiente">Pendiente</span>
+                    </div>
+                    <div class="cuerpo-tarjeta">
+                        <div class="info-cliente-domicilio">
+                            <div class="avatar-grande">PM</div>
+                            <div class="datos-cliente">
+                                <div class="nombre-cliente-domicilio">Patricia Morales</div>
+                                <div class="telefono-cliente">📱 +57 312 345 6789</div>
+                            </div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📍 Dirección de Entrega</div>
+                            <div class="contenido-info">Calle 94 #15-20, Chicó, Bogotá</div>
+                        </div>
+                        <div class="seccion-info">
+                            <div class="titulo-info">📦 Producto</div>
+                            <div class="contenido-info">New Balance 574 - Talla 39</div>
+                        </div>
+                        <div class="monto-domicilio">$360.000 COP</div>
+                        <div class="barra-progreso">
+                            <div class="progreso-relleno" style="width: 15%;"></div>
+                        </div>
+                        <div class="tiempo-estimado">⏱️ Esperando confirmación</div>
+                    </div>
+                    <div class="pie-tarjeta">
+                        <button class="boton-tarjeta">📞 Llamar</button>
+                        <button class="boton-tarjeta primario"
+                            onclick="event.stopPropagation(); verSeguimiento('DOM-006')">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE SEGUIMIENTO -->
+    <div class="modal" id="modalSeguimiento">
+        <div class="contenido-modal">
+            <div class="encabezado-modal">
+                <h2 class="titulo-modal">Seguimiento de Domicilio</h2>
+                <button class="boton-cerrar" onclick="cerrarModal()">✕</button>
+            </div>
+            <div class="cuerpo-modal">
+                <div class="timeline-tracking">
+                    <div class="timeline-item">
+                        <div class="timeline-punto"></div>
+                        <div class="timeline-linea"></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-titulo">✅ Pedido Confirmado</div>
+                            <div class="timeline-fecha">18 Nov 2025 - 10:30 AM</div>
+                            <div class="timeline-descripcion">El pedido ha sido confirmado y está siendo preparado</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-punto"></div>
+                        <div class="timeline-linea"></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-titulo">📦 En Preparación</div>
+                            <div class="timeline-fecha">18 Nov 2025 - 10:45 AM</div>
+                            <div class="timeline-descripcion">El producto está siendo empacado para el envío</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-punto"></div>
+                        <div class="timeline-linea"></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-titulo">🚚 Asignado a Repartidor</div>
+                            <div class="timeline-fecha">18 Nov 2025 - 11:15 AM</div>
+                            <div class="timeline-descripcion">Repartidor: Jorge Ramírez - Moto: XYZ-123</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-punto"></div>
+                        <div class="timeline-linea"></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-titulo">🛣️ En Camino</div>
+                            <div class="timeline-fecha">18 Nov 2025 - 11:30 AM</div>
+                            <div class="timeline-descripcion">El repartidor está en camino a tu ubicación</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-punto" style="background: var(--texto-gris);"></div>
+                        <div class="timeline-contenido" style="opacity: 0.5;">
+                            <div class="timeline-titulo">🏠 Entrega Exitosa</div>
+                            <div class="timeline-fecha">Pendiente</div>
+                            <div class="timeline-descripcion">Esperando confirmación de entrega</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pie-modal">
+                <button class="boton-secundario" onclick="cerrarModal()">Cerrar</button>
+                <button class="boton-tarjeta primario">📞 Contactar Repartidor</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notificacion" id="notificacion">
+        ¡Domicilios actualizados correctamente!
+    </div>
+    <script src="JS/domicilios.js"></script>
+</body>
+
+</html>

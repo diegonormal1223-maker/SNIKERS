@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo SNIKER - Descubre nuestra colección completa de sneakers exclusivos">
+    <title>SNIKER - Catálogo</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/catalogo.css">
+
+</head>
+
+<body>
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>SNIKER</span>
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="lanzamientos.html">NUEVOS LANZAMIENTOS</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <div class="search-box">
+                <input type="search" id="globalSearch" placeholder="Buscar sneakers...">
+            </div>
+            <a href="perfilusuario.html" class="icon-btn" aria-label="Cuenta">👤</a>
+            <a href="favoritos.html" class="icon-btn" aria-label="Favoritos">
+                ❤️
+                <span class="favorites-badge">0</span>
+            </a>
+            <a href="carrito.html" class="icon-btn" aria-label="Carrito">
+                🛒
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notificacion" id="notificacion"></div>
+
+    <!-- ENCABEZADO DEL CATÁLOGO -->
+    <div class="catalog-header">
+        <h1 class="catalog-title">Catálogo Completo</h1>
+        <p class="catalog-subtitle">Descubre nuestra colección exclusiva de sneakers premium</p>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="catalog-container">
+        <!-- BARRA LATERAL DE FILTROS -->
+        <aside class="filters-sidebar">
+            <div class="filters-header">
+                <h2 class="filters-title">Filtros</h2>
+                <button class="clear-filters" onclick="clearAllFilters()">Limpiar todo</button>
+            </div>
+
+            <!-- SECCIÓN: CATEGORÍA -->
+            <div class="filter-section" id="filter-categories">
+                <div class="filter-label">Categoría</div>
+                <div class="filter-options">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <!-- SECCIÓN: MARCA -->
+            <div class="filter-section" id="filter-brands">
+                <div class="filter-label">Marca</div>
+                <div class="filter-options">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <!-- SECCIÓN: TALLA -->
+            <div class="filter-section" id="filter-sizes">
+                <div class="filter-label">Talla</div>
+                <div class="size-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <!-- SECCIÓN: PRECIO -->
+            <div class="filter-section">
+                <div class="filter-label">Precio</div>
+                <div class="price-range">
+                    <input type="range" min="0" max="1000000" value="1000000" id="priceRange"
+                        oninput="updatePrice(this.value)">
+                    <div class="price-values">
+                        <span>$0</span>
+                        <span id="maxPrice">$1,000,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: COLOR -->
+            <div class="filter-section" id="filter-colors">
+                <div class="filter-label">Color</div>
+                <div class="color-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL DEL CATÁLOGO -->
+        <main class="catalog-main">
+            <!-- FILTROS ACTIVOS -->
+            <div class="active-filters" id="activeFilters"></div>
+
+            <!-- BARRA DE HERRAMIENTAS -->
+            <div class="catalog-toolbar">
+                <div class="results-count">
+                    Mostrando <strong id="productCount">0</strong> productos
+                </div>
+
+                <div class="sort-options">
+                    <label for="sortSelect">Ordenar por:</label>
+                    <select id="sortSelect" onchange="sortProducts(this.value)">
+                        <option value="relevance">Relevancia</option>
+                        <option value="price-low">Precio: Menor a Mayor</option>
+                        <option value="price-high">Precio: Mayor a Menor</option>
+                        <option value="newest">Más Nuevos</option>
+                        <option value="popular">Más Populares</option>
+                    </select>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="setView('grid')">◫</button>
+                    <button class="view-btn" onclick="setView('list')">☰</button>
+                </div>
+            </div>
+
+            <!-- ESTADO DE CARGA -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Cargando productos...</p>
+            </div>
+
+            <!-- ESTADO VACÍO -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">🔍</div>
+                <h3>No se encontraron productos</h3>
+                <p>Intenta ajustar los filtros o busca algo diferente</p>
+            </div>
+
+            <!-- GRID DE PRODUCTOS -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be injected here by JS -->
+            </div>
+
+            <!-- PAGINACIÓN -->
+            <div class="pagination">
+                <button class="page-btn">←</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">→</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- BOTÓN MÓVIL DE FILTROS -->
+    <button class="mobile-filter-btn" onclick="toggleMobileFilters()">
+        🔍 Filtros
+    </button>
+
+    <!-- SOBREPUESTA DE FILTROS MÓVILES -->
+    <div class="filters-overlay" id="filtersOverlay">
+        <div class="filters-sidebar">
+            <div class="filters-header">
+                <h2 class="filters-title">Filtros</h2>
+                <button class="clear-filters" onclick="clearAllFilters()">Limpiar todo</button>
+            </div>
+
+            <!-- Mobile filters content will be cloned here or managed by JS -->
+
+            <button class="close-filters" onclick="toggleMobileFilters()">Aplicar Filtros</button>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>© 2025 SNIKER. Todos los derechos reservados. | 🛡️ Zapatillas auténticas | 100% Productos verificados</p>
+    </footer>
+
+    <script src="JS/auth-check.js"></script>
+    <script src="JS/cart-badge.js"></script>
+    <script src="JS/favorites-badge.js"></script>
+    <script src="JS/catalogo.js"></script>
+</body>
+
+</html>

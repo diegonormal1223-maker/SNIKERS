@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalle de producto - SNIKER">
+    <title id="pageTitle">SNIKER - Producto</title>
+    <link rel="stylesheet" href="CSS/detalleproducto.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>SNIKER</span>
+        </a>
+
+        <div class="header-actions">
+            <a href="catalogo.html" class="back-link">← Volver al catálogo</a>
+            <button class="icon-btn" onclick="window.location.href='loginyregistro.html'">👤</button>
+            <button class="icon-btn" onclick="window.location.href='carrito.html'">🛒</button>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a>
+        <span>/</span>
+        <a href="catalogo.html">Catálogo</a>
+        <span>/</span>
+        <span id="breadcrumbProduct">Producto</span>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification"></div>
+
+    <!-- PRODUCT CONTAINER -->
+    <div class="product-container">
+        <div class="product-layout">
+            <!-- GALLERY SECTION -->
+            <div class="gallery-section">
+                <div class="main-image" id="mainImageContainer">
+                    <img src="" alt="Producto" id="mainImg">
+                    <div class="zoom-badge">🔍 Click para ampliar</div>
+                </div>
+            </div>
+
+            <!-- PRODUCT INFO -->
+            <div class="product-info">
+                <div class="product-category" id="productCategory">Sneakers</div>
+
+                <h1 class="product-title" id="productName">Cargando...</h1>
+
+                <p class="product-subtitle" id="productSubtitle">Cargando descripción...</p>
+
+                <div class="product-meta">
+                    <span>SKU: <span id="productSKU">-</span></span>
+                    <span id="productStock">Stock: -</span>
+                </div>
+
+                <div>
+                    <div class="product-price" id="productPrice">$0</div>
+                </div>
+
+                <div class="selector-section">
+                    <div class="selector-label">Convertir moneda</div>
+                    <div class="currency-selector-row">
+                        <select id="currencySelector" class="currency-select">
+                            <option value="USD">USD - Dólar</option>
+                            <option value="COP">COP - Peso Colombiano</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - Libra Esterlina</option>
+                        </select>
+                        <button id="convertCurrencyBtn" class="btn-convert">Convertir</button>
+                    </div>
+                    <div class="converted-price" id="convertedPrice">Selecciona la moneda y presiona convertir</div>
+                </div>
+
+                <!-- COLOR SELECTOR -->
+                <div class="selector-section">
+                    <div class="selector-label" id="colorLabel">Color</div>
+                    <div class="color-selector" id="colors-container">
+                        <!-- Se inyectará dinámicamente vía JS -->
+                    </div>
+                    <p class="error-message" id="colorError" style="display: none; color: #ff3939; margin-top: 10px;">⚠️
+                        Selecciona un color</p>
+                </div>
+
+                <!-- SIZE SELECTOR -->
+                <div class="selector-section">
+                    <div class="selector-label">Talla (US)</div>
+                    <div class="size-grid" id="sizes-container">
+                        <!-- Se inyectará dinámicamente vía JS -->
+                    </div>
+                    <p class="error-message" id="sizeError" style="display: none; color: #ff3939; margin-top: 10px;">⚠️
+                        Selecciona una talla</p>
+                </div>
+
+                <!-- QUANTITY -->
+                <div class="selector-section">
+                    <div class="selector-label">Cantidad</div>
+                    <div class="quantity-selector">
+                        <div class="quantity-control">
+                            <button class="qty-btn" id="decreaseBtn">−</button>
+                            <span class="qty-value" id="quantity">1</span>
+                            <button class="qty-btn" id="increaseBtn">+</button>
+                        </div>
+                        <span id="stockInfo" style="color: var(--success-green); font-size: 14px;"></span>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="action-buttons">
+                    <button class="btn-add-cart" id="addToCartBtn">🛒 Agregar al Carrito</button>
+                </div>
+
+                <div id="outOfStockMessage" class="out-of-stock" style="display: none;">
+                    ⚠️ Producto Agotado
+                </div>
+
+                <!-- FEATURES -->
+                <div class="features-section">
+                    <div class="feature-item">
+                        <span class="feature-icon">🚚</span>
+                        <div>
+                            <strong>Envío Gratis</strong>
+                            <div class="feature-text">Entrega en 1-2 días hábiles</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🛡️</span>
+                        <div>
+                            <strong>100% Auténtico</strong>
+                            <div class="feature-text">Certificado de autenticidad</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔄</span>
+                        <div>
+                            <strong>Cambios Fáciles</strong>
+                            <div class="feature-text">30 días para devoluciones</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <div>
+                            <strong>Pago Seguro</strong>
+                            <div class="feature-text">Protección de compra</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABS SECTION -->
+        <div class="tabs-section">
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="switchTab('description')">Descripción</button>
+                <button class="tab-btn" onclick="switchTab('brand')">Marca</button>
+            </div>
+
+            <!-- DESCRIPTION TAB -->
+            <div class="tab-content active" id="description-tab">
+                <div class="description-content">
+                    <h3>Sobre este producto</h3>
+                    <p id="productDescription">Cargando descripción...</p>
+                </div>
+            </div>
+
+            <!-- BRAND TAB -->
+            <div class="tab-content" id="brand-tab">
+                <div class="description-content">
+                    <h3>Marca</h3>
+                    <p><strong>Marca:</strong> <span id="productBrand">-</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 SNIKER. All rights reserved. | 🛡️ Authentic Sneakers | 100% Verified Products</p>
+    </footer>
+
+    <script src="JS/detalleproducto.js"></script>
+    <script src="JS/currency-converter.js"></script>
+</body>
+
+</html>

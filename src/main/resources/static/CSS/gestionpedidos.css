@@ -1,0 +1,1052 @@
+/* RESETEO GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES DE COLORES */
+:root {
+    --neon-green: #39ff14;
+    --neon-purple: #b026ff;
+    --dark-bg: #0a0a0f;
+    --dark-card: #16161f;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --success-green: #00ff88;
+    --warning-orange: #ffaa00;
+    --error-red: #ff3860;
+}
+
+/* ESTILOS GENERALES DEL BODY */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-white);
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 280px;
+    background-color: var(--dark-card);
+    border-right: 2px solid rgba(57, 255, 20, 0.2);
+    padding: 30px 0;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 0.3s;
+}
+
+/* Sidebar colapsado */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+/* Sección del logo */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 30px;
+    margin-bottom: 40px;
+}
+
+/* Icono hexagonal del logo */
+.logo-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+}
+
+/* Texto del logo */
+.logo-text {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--neon-green);
+    text-shadow: 0 0 20px var(--neon-green);
+    transition: opacity 0.3s;
+}
+
+/* Ocultar texto cuando está colapsado */
+.sidebar.collapsed .logo-text {
+    opacity: 0;
+    display: none;
+}
+
+/* Lista del menú de navegación */
+.nav-menu {
+    list-style: none;
+}
+
+/* Item individual del menú */
+.nav-item {
+    margin-bottom: 5px;
+}
+
+/* Enlaces de navegación */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 30px;
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+}
+
+/* Efecto hover en enlaces */
+.nav-link:hover {
+    background-color: rgba(57, 255, 20, 0.05);
+    color: var(--neon-green);
+    border-left-color: var(--neon-green);
+}
+
+/* Enlace activo */
+.nav-link.active {
+    background-color: rgba(57, 255, 20, 0.1);
+    color: var(--neon-green);
+    border-left-color: var(--neon-green);
+}
+
+/* Iconos de navegación */
+.nav-icon {
+    font-size: 24px;
+    width: 24px;
+    text-align: center;
+}
+
+/* Texto de navegación */
+.nav-text {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s;
+}
+
+/* Ocultar texto de navegación cuando está colapsado */
+.sidebar.collapsed .nav-text {
+    opacity: 0;
+    display: none;
+}
+
+/* Insignia de contador en navegación */
+.nav-badge {
+    background: var(--neon-purple);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: auto;
+}
+
+.sidebar.collapsed .nav-badge {
+    display: none;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    transition: margin-left 0.3s;
+}
+
+/* Ajustar margen cuando sidebar está colapsado */
+.sidebar.collapsed~.main-content {
+    margin-left: 80px;
+}
+
+/* ===== HEADER ===== */
+.dashboard-header {
+    background-color: var(--dark-card);
+    padding: 20px 40px;
+    border-bottom: 2px solid rgba(57, 255, 20, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+/* Sección izquierda del header */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Botón para colapsar menú */
+.menu-toggle {
+    background: transparent;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+/* Hover en botón de menú */
+.menu-toggle:hover {
+    background: var(--neon-green);
+    color: var(--dark-bg);
+}
+
+/* Contenedor de barra de búsqueda */
+.search-bar {
+    position: relative;
+}
+
+/* Input de búsqueda */
+.search-bar input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    padding: 12px 20px 12px 45px;
+    border-radius: 12px;
+    color: var(--text-white);
+    width: 350px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+/* Focus en búsqueda */
+.search-bar input:focus {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* Icono de búsqueda */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-gray);
+}
+
+/* Sección derecha del header */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Botones del header */
+.header-btn {
+    background: transparent;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    color: var(--text-gray);
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+/* Hover en botones del header */
+.header-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+/* Insignia de notificaciones */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--error-red);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* Perfil de usuario */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 15px;
+    background-color: rgba(57, 255, 20, 0.05);
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+/* Hover en perfil */
+.user-profile:hover {
+    border-color: var(--neon-green);
+    background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* Avatar del usuario */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Información del usuario */
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre del usuario */
+.user-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Rol del usuario */
+.user-role {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+/* ===== CONTENIDO DEL DASHBOARD ===== */
+.dashboard-content {
+    padding: 40px;
+}
+
+/* Título de página */
+.page-title {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--neon-green);
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+}
+
+/* Subtítulo de página */
+.page-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* ===== TARJETAS DE ESTADÍSTICAS ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Tarjeta de estadística individual */
+.stat-card {
+    background-color: var(--dark-card);
+    border: 2px solid rgba(57, 255, 20, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s;
+}
+
+/* Hover en tarjeta de estadística */
+.stat-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Header de la tarjeta */
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Título de estadística */
+.stat-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+/* Icono de estadística */
+.stat-icon {
+    font-size: 28px;
+}
+
+/* Valor de estadística */
+.stat-value {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--text-white);
+}
+
+/* Cambio/tendencia de estadística */
+.stat-change {
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Cambio positivo */
+.stat-change.positive {
+    color: var(--success-green);
+}
+
+/* Cambio negativo */
+.stat-change.negative {
+    color: var(--error-red);
+}
+
+/* ===== SECCIÓN DE FILTROS ===== */
+.filters-section {
+    background-color: var(--dark-card);
+    border: 2px solid rgba(57, 255, 20, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de filtros */
+.filters-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Etiqueta de filtro */
+.filter-label {
+    font-weight: 600;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+/* Grupo de botones de filtro */
+.filter-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Botón de filtro */
+.filter-btn {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    color: var(--text-gray);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+/* Hover en botón de filtro */
+.filter-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+/* Botón de filtro activo */
+.filter-btn.active {
+    background-color: var(--neon-green);
+    color: var(--dark-bg);
+    border-color: var(--neon-green);
+}
+
+/* ===== TABLA DE PEDIDOS ===== */
+.orders-table-container {
+    background-color: var(--dark-card);
+    border: 2px solid rgba(57, 255, 20, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Header de la tabla */
+.table-header {
+    padding: 25px;
+    border-bottom: 2px solid rgba(57, 255, 20, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Título de la tabla */
+.table-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--neon-green);
+}
+
+/* Botón de acción principal */
+.btn-primary {
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
+    border: none;
+    color: var(--dark-bg);
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+/* Hover en botón primario */
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Tabla */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Encabezados de tabla */
+.orders-table th {
+    background-color: rgba(57, 255, 20, 0.05);
+    padding: 18px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--neon-green);
+    border-bottom: 2px solid rgba(57, 255, 20, 0.2);
+}
+
+/* Celdas de tabla */
+.orders-table td {
+    padding: 20px 18px;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+    font-size: 14px;
+}
+
+/* Hover en filas */
+.orders-table tr:hover {
+    background-color: rgba(57, 255, 20, 0.03);
+}
+
+/* ID del pedido */
+.order-id {
+    font-weight: 700;
+    color: var(--neon-green);
+    font-family: monospace;
+}
+
+/* Información del cliente */
+.customer-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Avatar del cliente */
+.customer-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Detalles del cliente */
+.customer-details {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre del cliente */
+.customer-name {
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+/* Email del cliente */
+.customer-email {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+/* Información del producto */
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Imagen del producto */
+.product-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.2), rgba(176, 38, 255, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Nombre del producto */
+.product-name {
+    font-weight: 600;
+}
+
+/* Precio */
+.price {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--success-green);
+}
+
+/* Insignias de estado */
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+/* Estado: Pendiente */
+.status-badge.pending {
+    background-color: rgba(255, 170, 0, 0.2);
+    color: var(--warning-orange);
+    border: 1px solid var(--warning-orange);
+}
+
+/* Estado: En Proceso */
+.status-badge.processing {
+    background-color: rgba(57, 255, 20, 0.2);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+}
+
+/* Estado: Enviado */
+.status-badge.shipped {
+    background-color: rgba(0, 255, 136, 0.2);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+}
+
+/* Estado: Entregado */
+.status-badge.delivered {
+    background-color: rgba(57, 255, 20, 0.2);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+}
+
+/* Estado: Cancelado */
+.status-badge.cancelled {
+    background-color: rgba(255, 56, 96, 0.2);
+    color: var(--error-red);
+    border: 1px solid var(--error-red);
+}
+
+/* Botones de acción en tabla */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Botón de acción individual */
+.action-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    background: transparent;
+    color: var(--text-gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+/* Hover en botón de acción */
+.action-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* Botón de eliminar */
+.action-btn.delete:hover {
+    border-color: var(--error-red);
+    color: var(--error-red);
+    background-color: rgba(255, 56, 96, 0.1);
+}
+
+/* ===== PAGINACIÓN ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 25px;
+    border-top: 2px solid rgba(57, 255, 20, 0.2);
+}
+
+/* Botones de paginación */
+.pagination-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    background: transparent;
+    color: var(--text-gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+/* Hover en paginación */
+.pagination-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* Página activa */
+.pagination-btn.active {
+    background-color: var(--neon-green);
+    color: var(--dark-bg);
+    border-color: var(--neon-green);
+}
+
+/* Botón deshabilitado */
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal activo */
+.modal.active {
+    display: flex;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: var(--dark-card);
+    border: 2px solid var(--neon-green);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 50px rgba(57, 255, 20, 0.3);
+}
+
+/* Header del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Título del modal */
+.modal-title {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--neon-green);
+}
+
+/* Botón de cerrar modal */
+.modal-close {
+    background: transparent;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    color: var(--text-gray);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+/* Hover en botón cerrar */
+.modal-close:hover {
+    border-color: var(--error-red);
+    color: var(--error-red);
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    margin-bottom: 30px;
+}
+
+/* Grupo de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Etiqueta de formulario */
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-gray);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Input de formulario */
+.form-input,
+.form-select {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    padding: 12px 15px;
+    border-radius: 10px;
+    color: var(--text-white);
+    outline: none;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+/* Focus en inputs */
+.form-input:focus,
+.form-select:focus {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+/* Estilos para las opciones del select */
+.form-select option {
+    background-color: var(--dark-card);
+    color: var(--text-white);
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Opción seleccionada */
+.form-select option:checked {
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-purple));
+    color: var(--dark-bg);
+    font-weight: 700;
+}
+
+/* Opción hover (solo funciona en algunos navegadores) */
+.form-select option:hover {
+    background-color: rgba(57, 255, 20, 0.2);
+    color: var(--neon-green);
+}
+
+/* Opción deshabilitada */
+.form-select option:disabled {
+    color: var(--text-gray);
+    opacity: 0.5;
+}
+
+/* Placeholder del select */
+.form-select option[value=""] {
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+/* Footer del modal */
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+/* Botón secundario */
+.btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    color: var(--text-gray);
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+/* Hover en botón secundario */
+.btn-secondary:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 200;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .dashboard-content {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar input {
+        width: 200px;
+    }
+
+    .table-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .orders-table {
+        font-size: 12px;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 10px 8px;
+    }
+}
+
+/* ===== NOTIFICACIONES ===== */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--dark-card);
+    color: var(--text-white);
+    padding: 15px 25px;
+    border-radius: 10px;
+    border-left: 5px solid var(--neon-green);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transform: translateX(150%);
+    transition: transform 0.3s ease-in-out;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 350px;
+}
+
+.notificacion.mostrar {
+    transform: translateX(0);
+}
+
+.notificacion.error {
+    border-left-color: var(--error-red);
+}
+
+.notificacion.warning {
+    border-left-color: var(--warning-orange);
+}
+/* ===== VALIDACIONES DE FORMULARIO ===== */
+.form-input.error, .form-select.error {
+    border-color: var(--error-red) !important;
+    box-shadow: 0 0 10px rgba(255, 56, 96, 0.3);
+}
+
+.form-input.success, .form-select.success {
+    border-color: var(--success-green);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+.error-message {
+    display: none;
+    color: var(--error-red);
+    font-size: 11px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+/* Correcci�n de colores de badges seg�n domicilios.css */
+.status-badge.transito {
+    background-color: rgba(0, 212, 255, 0.2);
+    color: #00d4ff; /* azul-info */
+    border: 1px solid #00d4ff;
+}
+
+.status-badge.entregado {
+    background-color: rgba(0, 255, 136, 0.2);
+    color: #00ff88; /* verde-exito */
+    border: 1px solid #00ff88;
+}

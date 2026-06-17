@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carrito de compras SNIKER - Revisa tus productos y procede al checkout.">
+    <title>SNIKER - Carrito de Compras</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/carrito.css">
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>SNIKER</span>
+        </a>
+
+        <div class="header-actions">
+            <a href="index.html" class="back-btn">← Seguir Comprando</a>
+        </div>
+    </header>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notification" id="notification"></div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="cart-container">
+        <h1 class="cart-title">Tu Carrito</h1>
+        <p class="cart-subtitle">Revisa tus productos antes de proceder al checkout</p>
+
+        <!-- BARRA DE PROGRESO -->
+        <div class="progress-steps">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Carrito</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Datos</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Envío</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-label">Pago</div>
+            </div>
+        </div>
+
+        <!-- DISEÑO DEL CARRITO -->
+        <div class="cart-layout">
+            <!-- LISTA DE PRODUCTOS -->
+            <div class="cart-items">
+                <div class="cart-items-header">
+                    <h2>Productos (0)</h2>
+                    <button class="clear-cart" onclick="clearCart()">Vaciar Carrito</button>
+                </div>
+
+                <div id="cartItemsContainer">
+                    <!-- Items will be injected here by JS -->
+                </div>
+
+                <!-- ESTADO DE CARRITO VACÍO (Oculto por defecto) -->
+                <div class="empty-cart" id="emptyCart" style="display: none;">
+                    <div class="empty-cart-icon">🛒</div>
+                    <h3>Tu carrito está vacío</h3>
+                    <p>Descubre nuestras colecciones exclusivas y encuentra tu próximo par favorito</p>
+                    <a href="index.html" class="shop-btn">Explorar Productos</a>
+                </div>
+            </div>
+
+            <!-- RESUMEN DEL CARRITO -->
+            <div class="cart-summary">
+                <h2 class="summary-title">Resumen</h2>
+
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="summary-value" id="subtotal">$0.00</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label">Envío</span>
+                    <span class="summary-value" style="color: var(--success-green);">GRATIS</span>
+                </div>
+
+                <div class="summary-row">
+                    <span class="summary-label">Descuento</span>
+                    <span class="summary-value" id="discount">$0.00</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span class="summary-value" id="total">$0.00</span>
+                </div>
+
+                <!-- CUPÓN -->
+                <div class="coupon-section">
+                    <form class="coupon-form" id="couponForm">
+                        <input type="text" class="coupon-input" placeholder="Código de descuento" id="couponInput">
+                        <button type="submit" class="coupon-btn">Aplicar</button>
+                    </form>
+                    <div class="coupon-applied" id="couponApplied">
+                        <span>Cupón: <span class="coupon-code" id="couponCode"></span></span>
+                        <button class="remove-coupon" onclick="removeCoupon()">✕</button>
+                    </div>
+                </div>
+
+                <button class="checkout-btn" id="checkoutBtn" onclick="goToCheckout()">
+                    Proceder al Checkout →
+                </button>
+
+                <!-- SELLOS DE CONFIANZA -->
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">🛡️</span>
+                        <span>Compra segura</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">🚚</span>
+                        <span>Envío gratis</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">🔄</span>
+                        <span>Cambios fáciles</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="trust-badge-icon">✓</span>
+                        <span>100% Auténtico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRODUCTOS SUGERIDOS -->
+        <div class="suggested-section">
+            <h2 class="suggested-title">Completa tu look</h2>
+            <div class="suggested-products">
+                <div class="suggested-product">
+                    <div class="suggested-product-image">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" alt="Sneaker">
+                    </div>
+                    <h3 class="suggested-product-name">Classic Runner</h3>
+                    <div class="suggested-product-price">$99.99</div>
+                </div>
+
+                <div class="suggested-product">
+                    <div class="suggested-product-image">
+                        <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400" alt="Sneaker">
+                    </div>
+                    <h3 class="suggested-product-name">Street Edition</h3>
+                    <div class="suggested-product-price">$119.99</div>
+                </div>
+
+                <div class="suggested-product">
+                    <div class="suggested-product-image">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400" alt="Sneaker">
+                    </div>
+                    <h3 class="suggested-product-name">Premium Pack</h3>
+                    <div class="suggested-product-price">$139.99</div>
+                </div>
+
+                <div class="suggested-product">
+                    <div class="suggested-product-image">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" alt="Sneaker">
+                    </div>
+                    <h3 class="suggested-product-name">Urban Boost</h3>
+                    <div class="suggested-product-price">$109.99</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>© 2025 SNIKER. Todos los derechos reservados. | 🛡️ Zapatillas auténticas | 100% Productos verificados</p>
+    </footer>
+
+    <script src="JS/auth-check.js"></script>
+    <script src="JS/carrito.js"></script>
+</body>
+
+</html>

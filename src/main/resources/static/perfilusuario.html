@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi Perfil - Gestiona tu cuenta SNIKER">
+    <title>Mi Perfil - SNIKER</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/perfilusuario.css?v=1.2">
+    <link rel="stylesheet" href="CSS/modal.css">
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <span>SNIKER</span>
+        </a>
+
+        <div class="header-actions">
+            <a href="index.html" class="back-link">← Volver al inicio</a>
+            <a href="favoritos.html" class="icon-btn" aria-label="Favoritos">
+                ❤️
+                <span class="badge-count fav-badge favorites-badge">0</span>
+            </a>
+            <a href="carrito.html" class="icon-btn" aria-label="Carrito">
+                🛒
+                <span class="badge-count cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- NOTIFICACION -->
+    <div class="notification" id="notification"></div>
+
+    <!-- CONTENEDOR DE PERFILES -->
+    <div class="profile-container">
+        <!-- BARRA LATERAL -->
+        <aside class="profile-sidebar">
+            <!-- TARJETA DE PERFIL -->
+            <div class="profile-card">
+                <div class="profile-avatar" id="sidebarAvatar">U</div>
+                <h2 class="profile-name" id="sidebarName">Usuario</h2>
+                <div class="profile-email" id="sidebarEmail">usuario@email.com</div>
+
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statOrders">0</span>
+                        <span class="stat-label">Pedidos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statAddresses">0</span>
+                        <span class="stat-label">Direcciones</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAVEGACION -->
+            <nav class="profile-nav">
+                <div class="nav-item active" onclick="showSection('personal')">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Datos Personales</span>
+                </div>
+                <div class="nav-item" onclick="showSection('orders')">
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">Mis Pedidos</span>
+                    <span class="nav-badge" id="navOrderCount">0</span>
+                </div>
+                <div class="nav-item" onclick="showSection('addresses')">
+                    <span class="nav-icon">📍</span>
+                    <span class="nav-text">Direcciones</span>
+                </div>
+
+                <div class="nav-item" onclick="logout()">
+                    <span class="nav-icon">🚪</span>
+                    <span class="nav-text">Cerrar Sesión</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="profile-content">
+            <!-- SECCIÓN DE DATOS PERSONALES -->
+            <section class="content-section active" id="personal-section">
+                <h1 class="section-title">Datos Personales</h1>
+                <p class="section-subtitle">Administra tu información personal</p>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Información Básica</h3>
+                    </div>
+
+                    <form id="personalForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">Nombre Completo</label>
+                                <input type="text" id="profileName" placeholder="Tu nombre">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="profileEmail" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="profilePhone" placeholder="Tu teléfono">
+                                <small class="error-msg" id="profilePhone-error"></small>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <button type="submit" class="btn-save">Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE PEDIDOS -->
+            <section class="content-section" id="orders-section">
+                <h1 class="section-title">Mis Pedidos</h1>
+                <p class="section-subtitle">Historial completo de tus compras</p>
+                <div id="ordersList">
+                    <!-- Orders will be injected here -->
+                </div>
+            </section>
+
+            <!-- SECCIÓN DE DIRECCIONES -->
+            <section class="content-section" id="addresses-section">
+                <h1 class="section-title">Mis Direcciones</h1>
+                <p class="section-subtitle">Gestiona tus direcciones de envío</p>
+
+                <div class="addresses-grid">
+                    <!-- Añadir Nueva Direccion -->
+                    <div class="add-address-card" onclick="addNewAddress()">
+                        <div class="add-icon">+</div>
+                        <div style="font-weight: 700; text-transform: uppercase; color: var(--neon-green);">
+                            Agregar Nueva Dirección
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+    <!-- MODAL DIRECCION -->
+    <div id="addressModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAddressModal()">&times;</span>
+            <h2>Agregar Nueva Dirección</h2>
+            <form id="addressForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="addrLabel">Nombre de la dirección (Ej: Casa, Oficina)</label>
+                        <input type="text" id="addrLabel" placeholder="Ej: Casa" required>
+                        <small class="error-msg" id="addrLabel-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="addrRecipient">Nombre del destinatario</label>
+                        <input type="text" id="addrRecipient" placeholder="Quién recibe" required>
+                        <small class="error-msg" id="addrRecipient-error"></small>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="addrStreet">Dirección completa</label>
+                        <input type="text" id="addrStreet" placeholder="Calle, Carrera, Número..." required>
+                        <small class="error-msg" id="addrStreet-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="addrState">Departamento</label>
+                        <input type="text" id="addrState" placeholder="Selecciona el departamento"
+                            list="departmentsList" required>
+                        <datalist id="departmentsList"></datalist>
+                        <small class="error-msg" id="addrState-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="addrCity">Ciudad</label>
+                        <input type="text" id="addrCity" placeholder="Selecciona la ciudad" list="citiesList" required>
+                        <datalist id="citiesList"></datalist>
+                        <small class="error-msg" id="addrCity-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="addrPhone">Teléfono de contacto</label>
+                        <input type="tel" id="addrPhone" placeholder="Para el repartidor" required>
+                        <small class="error-msg" id="addrPhone-error"></small>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-save">Guardar Dirección</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLE PEDIDO -->
+    <div id="orderDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <div id="orderDetailContent">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/auth-check.js"></script>
+    <script src="JS/cart-badge.js"></script>
+    <script src="JS/favorites-badge.js"></script>
+    <script src="JS/colombia-data.js"></script>
+    <script src="JS/perfilusuario.js"></script>
+</body>
+
+</html>

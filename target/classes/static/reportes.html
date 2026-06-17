@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reportes y Estadísticas - Dashboard Admin SNIKER">
+    <title>Reportes y Estadísticas - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="CSS/reportes.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <aside class="barra-lateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li>
+                    <a href="dashboard.html" class="enlace-nav">
+                        <span class="icono-nav">📊</span>
+                        <span class="texto-nav">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ventas.html" class="enlace-nav">
+                        <span class="icono-nav">💰</span>
+                        <span class="texto-nav">Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionpedidos.html" class="enlace-nav">
+                        <span class="icono-nav">🚛</span>
+                        <span class="texto-nav">Pedidos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="domicilios.html" class="enlace-nav">
+                        <span class="icono-nav">✈️</span>
+                        <span class="texto-nav">Domicilios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionproductos.html" class="enlace-nav">
+                        <span class="icono-nav">👟</span>
+                        <span class="texto-nav">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inventario.html" class="enlace-nav">
+                        <span class="icono-nav">📦</span>
+                        <span class="texto-nav">Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionusuarios.html" class="enlace-nav">
+                        <span class="icono-nav">👥</span>
+                        <span class="texto-nav">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reportes.html" class="enlace-nav activo">
+                        <span class="icono-nav">📈</span>
+                        <span class="texto-nav">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reembolsos.html" class="enlace-nav">
+                        <span class="icono-nav">💸</span>
+                        <span class="texto-nav">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Reportes y Estadísticas</h1>
+
+            <div class="controles-fecha">
+                <select class="selector-periodo" id="selectorPeriodo" onchange="cambiarPeriodo()">
+                    <option value="hoy">Hoy</option>
+                    <option value="semana">Esta Semana</option>
+                    <option value="mes" selected>Este Mes</option>
+                    <option value="trimestre">Este Trimestre</option>
+                    <option value="ano">Este Año</option>
+                    <option value="personalizado">Personalizado</option>
+                </select>
+
+                <button class="boton-exportar" onclick="exportarReporte()">
+                    <span>📊</span>
+                    Exportar Reporte
+                </button>
+            </div>
+        </header>
+
+        <div class="area-contenido">
+            <!-- KPIs -->
+            <div class="resumen-financiero">
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">💰</span>
+                        <span class="cambio-kpi" id="kpiIncomeGrowth">--%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Ingresos Totales</div>
+                    <div class="valor-kpi" id="kpiIncomeValue">$0</div>
+                    <div class="detalle-kpi" id="kpiIncomeDetail">vs. periodo anterior</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">📦</span>
+                        <span class="cambio-kpi" id="kpiOrdersGrowth">--%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Pedidos</div>
+                    <div class="valor-kpi" id="kpiOrdersValue">0</div>
+                    <div class="detalle-kpi" id="kpiOrdersDetail">Promedio: $0 por pedido</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">👥</span>
+                        <span class="cambio-kpi" id="kpiUsersGrowth">--%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Nuevos Clientes</div>
+                    <div class="valor-kpi" id="kpiUsersValue">0</div>
+                    <div class="detalle-kpi" id="kpiUsersDetail">Tasa de conversión: 0%</div>
+                </div>
+
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">🎯</span>
+                        <span class="cambio-kpi" id="kpiConversionGrowth">--%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Tasa de Conversión</div>
+                    <div class="valor-kpi" id="kpiConversionValue">0%</div>
+                    <div class="detalle-kpi" id="kpiConversionDetail">0 visitantes → 0 ventas</div>
+                </div>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="seccion-graficos">
+                <div class="tarjeta-grafico">
+                    <div class="encabezado-grafico">
+                        <h2 class="titulo-grafico">Ventas por Mes</h2>
+                        <div class="filtros-grafico">
+                            <button class="boton-filtro activo" onclick="cambiarMetrica(this, 'ventas')">Ventas</button>
+                            <button class="boton-filtro" onclick="cambiarMetrica(this, 'pedidos')">Pedidos</button>
+                            <button class="boton-filtro" onclick="cambiarMetrica(this, 'clientes')">Clientes</button>
+                        </div>
+                    </div>
+                    <div class="contenedor-grafico">
+                        <canvas id="chartVentas"></canvas>
+                    </div>
+                </div>
+
+                <div class="tarjeta-grafico">
+                    <div class="encabezado-grafico">
+                        <h2 class="titulo-grafico">Ventas por Categoría</h2>
+                    </div>
+                    <div class="contenedor-grafico">
+                        <canvas id="chartCategorias"></canvas>
+                    </div>
+                    <div class="leyenda-circular" id="leyendaCategorias">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos -->
+            <div class="seccion-productos">
+                <div class="tarjeta-grafico">
+                    <div class="encabezado-grafico">
+                        <h2 class="titulo-grafico">Productos Más Vendidos</h2>
+                    </div>
+                    <div class="lista-productos" id="listaTopProductos">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="tarjeta-grafico">
+                    <div class="encabezado-grafico">
+                        <h2 class="titulo-grafico">Productos con Bajo Rendimiento</h2>
+                    </div>
+                    <div class="lista-productos" id="listaBajoRendimiento">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Transacciones -->
+            <div class="tabla-transacciones">
+                <div class="encabezado-grafico">
+                    <h2 class="titulo-grafico">Transacciones Recientes</h2>
+                </div>
+
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaTransacciones">
+                        <!-- Se llenará dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="JS/reportes.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,701 @@
+2026-05-22T19:40:47.887Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:40:47.889Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "precheckCompleted",
+  "phase": "precheck",
+  "status": "succeeded",
+  "message": "Detected Maven project with Java 21 target. Latest LTS target is Java 21."
+}}).
+2026-05-22T19:40:47.890Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:40:47.897Z [INFO] Project c:\xampp\htdocs\snikers springboot\snikers is a maven project, try to get java version from pom.xml
+2026-05-22T19:40:47.901Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'precheckCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:40:47.910Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:40:47.973Z [INFO] Project java version: 21
+2026-05-22T19:40:47.974Z [INFO] Maven project detected.
+2026-05-22T19:40:47.976Z [INFO] Build tool type: mvn
+2026-05-22T19:40:48.356Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+  "version": "21"
+}
+2026-05-22T19:40:48.485Z [INFO] Build tool: undefined
+2026-05-22T19:40:48.485Z [ERROR] Failed to detect or resolve build tool for the project at c:\xampp\htdocs\snikers springboot\snikers.
+2026-05-22T19:40:48.486Z [ERROR] [ReportEventTool] Failed to send project info telemetry: UserError: Failed to detect or resolve build tool for the project at c:\xampp\htdocs\snikers springboot\snikers. Please ensure the build tool Maven is installed and properly configured on the machine.
+2026-05-22T19:40:52.590Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:40:52.591Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:40:52.591Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:40:52.592Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:40:52.592Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:40:52.595Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:40:52.596Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:40:52.596Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:40:52.598Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planGenerationStarted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:40:52.599Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:41:23.331Z [INFO] ---------------------prepare appmod-list-jdks----------------------
+2026-05-22T19:41:23.332Z [INFO] [Tool.prepareInvocation]({name: appmod-list-jdks, input: {
+  "sessionId": "20260522194047"
+}}).
+2026-05-22T19:41:23.333Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:41:23.334Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List jdks"
+}}).
+2026-05-22T19:41:23.335Z [INFO] ----------------------prepared appmod-list-jdks----------------------
+2026-05-22T19:41:23.411Z [INFO] ----------------------invoke appmod-list-jdks----------------------
+2026-05-22T19:41:23.411Z [INFO] [Tool.invoke]({name: appmod-list-jdks, input: {
+  "sessionId": "20260522194047"
+}}).
+2026-05-22T19:41:23.412Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:41:23.427Z [INFO] [Tool.invoke]({result: {
+  "message": "We found following jdks in your system:\n\n1. Java 21.0.8\n   📁 Path: C:\\Program Files\\Java\\jdk-21\\bin\n   🏷️ Source: others\n\nTotal: 1 JDK installation(s) found"
+}}).
+2026-05-22T19:41:23.427Z [INFO] ----------------------invoked appmod-list-jdks----------------------
+2026-05-22T19:41:25.295Z [INFO] ---------------------prepare appmod-list-mavens----------------------
+2026-05-22T19:41:25.296Z [INFO] [Tool.prepareInvocation]({name: appmod-list-mavens, input: {
+  "sessionId": "20260522194047",
+  "includeVersion": true
+}}).
+2026-05-22T19:41:25.297Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:41:25.298Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "List mavens"
+}}).
+2026-05-22T19:41:25.298Z [INFO] ----------------------prepared appmod-list-mavens----------------------
+2026-05-22T19:41:25.301Z [INFO] ----------------------invoke appmod-list-mavens----------------------
+2026-05-22T19:41:25.302Z [INFO] [Tool.invoke]({name: appmod-list-mavens, input: {
+  "sessionId": "20260522194047",
+  "includeVersion": true
+}}).
+2026-05-22T19:41:25.302Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:41:25.308Z [INFO] [Tool.invoke]({result: {
+  "message": "No Maven installations found."
+}}).
+2026-05-22T19:41:25.309Z [INFO] ----------------------invoked appmod-list-mavens----------------------
+2026-05-22T19:43:36.491Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:43:36.492Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planInitialized",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:36.493Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:36.494Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:43:36.495Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:43:36.500Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:43:36.502Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planInitialized",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:36.503Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:43:36.506Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planInitialized' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:43:36.507Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:43:38.532Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:43:38.533Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "environmentAnalyzed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:38.534Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:38.535Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:43:38.536Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:43:38.540Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:43:38.540Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "environmentAnalyzed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:38.541Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:43:38.544Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'environmentAnalyzed' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:43:38.545Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:43:40.507Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:43:40.508Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "dependenciesAnalyzed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:40.509Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:40.510Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:43:40.511Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:43:40.515Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:43:40.516Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "dependenciesAnalyzed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:40.517Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:43:40.519Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'dependenciesAnalyzed' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:43:40.520Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:43:43.072Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:43:43.073Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradePathDesigned",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:43.074Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:43.075Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:43:43.076Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:43:43.090Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:43:43.091Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradePathDesigned",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:43.092Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:43:43.095Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradePathDesigned' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:43:43.095Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:43:45.287Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:43:45.288Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planReviewed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:45.289Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:45.289Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:43:45.293Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:43:45.297Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:43:45.298Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planReviewed",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-05-22T19:43:45.298Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:43:45.300Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planReviewed' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:43:45.300Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:43:50.670Z [INFO] ---------------------prepare appmod-confirm-upgrade-plan----------------------
+2026-05-22T19:43:50.671Z [INFO] [Tool.prepareInvocation]({name: appmod-confirm-upgrade-plan, input: {
+  "sessionId": "20260522194047"
+}}).
+2026-05-22T19:43:50.672Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:43:50.674Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Review [upgrade plan](file:///c:/xampp/htdocs/snikers springboot/snikers/.github/java-upgrade/20260522194047/plan.md)",
+  "confirmationMessages": {
+    "title": "Plan generated",
+    "message": "Please review the generated plan and make any necessary adjustments before proceeding. You can modify the generated [`plan.md`](file:///c:/xampp/htdocs/snikers springboot/snikers/.github/java-upgrade/20260522194047/plan.md) directly."
+  }
+}}).
+2026-05-22T19:43:50.674Z [INFO] ----------------------prepared appmod-confirm-upgrade-plan----------------------
+2026-05-22T19:44:30.953Z [INFO] ----------------------invoke appmod-confirm-upgrade-plan----------------------
+2026-05-22T19:44:30.954Z [INFO] [Tool.invoke]({name: appmod-confirm-upgrade-plan, input: {
+  "sessionId": "20260522194047"
+}}).
+2026-05-22T19:44:30.955Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:44:30.958Z [INFO] Upgrade plan confirmed successfully.
+2026-05-22T19:44:30.963Z [INFO] [Tool.invoke]({result: {
+  "message": "Generated plan is reviewed and confirmed by the user! the upgrade process will start now and be tracked in markdown file: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047\\progress.md."
+}}).
+2026-05-22T19:44:30.963Z [INFO] ----------------------invoked appmod-confirm-upgrade-plan----------------------
+2026-05-22T19:45:04.764Z [INFO] ---------------------prepare appmod-install-maven----------------------
+2026-05-22T19:45:04.764Z [INFO] [Tool.prepareInvocation]({name: appmod-install-maven, input: {
+  "sessionId": "20260522194047",
+  "version": "latest"
+}}).
+2026-05-22T19:45:04.765Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:45:05.495Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install Maven",
+  "confirmationMessages": {
+    "title": "Download and install Maven",
+    "message": "\nThis tool will download and install Maven latest from Apache with below settings.\n- **Version**: latest\n- **Vendor**: Apache\n- **Url**: https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.zip\n- **Destination**: `C:\\Users\\yuran\\.maven`\n- **Checksum**: SHA512: ed41650d42485cfc243fad22158caf9cbb5dc408ce7a09ddb94dd42a019de929ca43065bfa450612cf12bf78b5cafa3884b96c090de326ff590448c933454af3\n- **Signature**: https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.zip.asc\n- **Public Key**: https://downloads.apache.org/maven/KEYS\n"
+  }
+}}).
+2026-05-22T19:45:05.496Z [INFO] ----------------------prepared appmod-install-maven----------------------
+2026-05-22T19:45:07.117Z [INFO] ----------------------invoke appmod-install-maven----------------------
+2026-05-22T19:45:07.119Z [INFO] [Tool.invoke]({name: appmod-install-maven, input: {
+  "sessionId": "20260522194047",
+  "version": "latest"
+}}).
+2026-05-22T19:45:07.119Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:45:10.385Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "mvn",
+    "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+    "version": "3.9.16"
+  },
+  "message": "Maven latest is installed at C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+  "telemetry": {
+    "tool": "Maven",
+    "version": "latest"
+  }
+}}).
+2026-05-22T19:45:10.386Z [INFO] ----------------------invoked appmod-install-maven----------------------
+2026-05-22T19:45:39.607Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:45:39.608Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Program Files\\Java\\jdk-21\\bin",
+    "buildToolPath": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin\\mvn.cmd"
+  }
+}}).
+2026-05-22T19:45:39.609Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:45:39.609Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:45:39.610Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:45:39.613Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:45:39.614Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "C:\\Program Files\\Java\\jdk-21\\bin",
+    "buildToolPath": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin\\mvn.cmd"
+  }
+}}).
+2026-05-22T19:45:39.615Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:45:39.617Z [INFO] Project c:\xampp\htdocs\snikers springboot\snikers is a maven project, try to get java version from pom.xml
+2026-05-22T19:45:39.620Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'environmentSetup' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:45:39.620Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:45:39.625Z [INFO] Project java version: 21
+2026-05-22T19:45:39.627Z [INFO] Maven project detected.
+2026-05-22T19:45:39.628Z [INFO] Build tool type: mvn
+2026-05-22T19:45:39.628Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+  "version": "21"
+}
+2026-05-22T19:45:39.629Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin\\mvn.cmd\\bin",
+  "version": ""
+}
+2026-05-22T19:45:39.630Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin\\mvn.cmd\\bin",
+    "name": "mvn",
+    "version": ""
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "snikers",
+  "dir": "c:\\xampp\\htdocs\\snikers springboot\\snikers"
+}
+2026-05-22T19:51:37.394Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:51:37.395Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:37.396Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:51:37.398Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:51:37.399Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:51:37.408Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:51:37.410Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "baselineSetup",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:37.412Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:51:37.418Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'baselineSetup' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:51:37.420Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:51:42.542Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:51:42.543Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "testCompleted",
+  "phase": "execute",
+  "status": "failed",
+  "details": {
+    "stepNumber": 2,
+    "stepTitle": "Setup Baseline",
+    "failures": "1",
+    "errors": "0",
+    "skipped": "0"
+  }
+}}).
+2026-05-22T19:51:42.545Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:51:42.546Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:51:42.548Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:51:42.554Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:51:42.555Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "testCompleted",
+  "phase": "execute",
+  "status": "failed",
+  "details": {
+    "stepNumber": 2,
+    "stepTitle": "Setup Baseline",
+    "failures": "1",
+    "errors": "0",
+    "skipped": "0"
+  }
+}}).
+2026-05-22T19:51:42.556Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:51:42.559Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'testCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:51:42.560Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:51:49.062Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:51:49.063Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "buildCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:49.064Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:51:49.065Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:51:49.066Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:51:49.072Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:51:49.073Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "buildCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:49.074Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:51:49.077Z [INFO] Project c:\xampp\htdocs\snikers springboot\snikers is a maven project, try to get java version from pom.xml
+2026-05-22T19:51:49.080Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'buildCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:51:49.080Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:51:49.084Z [INFO] Project java version: 21
+2026-05-22T19:51:49.085Z [INFO] Maven project detected.
+2026-05-22T19:51:49.086Z [INFO] Build tool type: mvn
+2026-05-22T19:51:49.118Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+  "version": "21"
+}
+2026-05-22T19:51:49.146Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+  "version": "",
+  "source": "install"
+}
+2026-05-22T19:51:49.147Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "install"
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "snikers",
+  "dir": "c:\\xampp\\htdocs\\snikers springboot\\snikers"
+}
+2026-05-22T19:51:49.149Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:49.150Z [INFO] [MavenBuildTool] Getting effective POMs of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:49.152Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-de2bc56d-889d-414c-9677-204f077877be.log
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:49.254Z [INFO] [MavenBuildTool] Failed to get effective POMs: Error: ENOENT: no such file or directory, open 'c:\xampp\htdocs\snikers springboot\snikers\effective-pom-de2bc56d-889d-414c-9677-204f077877be.log'
+2026-05-22T19:51:49.255Z [INFO] [BaseBuildTool] Found 0 modules: 
+2026-05-22T19:51:49.255Z [INFO] [BaseBuildTool] Finish counting Java and class files
+2026-05-22T19:51:49.256Z [INFO] [MavenBuildTool] Cleaning c:\xampp\htdocs\snikers springboot\snikers using Maven
+2026-05-22T19:51:49.256Z [INFO] [Environment] Running command (Java undefined): mvn clean -q -B -fn
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:49.311Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:49.311Z [INFO] [MavenBuildTool] Getting effective POMs of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:49.312Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-f5758605-6ffb-4af7-bd65-b98f60134ecb.log
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:49.367Z [INFO] [MavenBuildTool] Failed to get effective POMs: Error: ENOENT: no such file or directory, open 'c:\xampp\htdocs\snikers springboot\snikers\effective-pom-f5758605-6ffb-4af7-bd65-b98f60134ecb.log'
+2026-05-22T19:51:54.722Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:51:54.722Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation"
+  }
+}}).
+2026-05-22T19:51:54.723Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:51:54.724Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:51:54.725Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:51:54.730Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:51:54.741Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradeStepStarted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation"
+  }
+}}).
+2026-05-22T19:51:54.742Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:51:54.746Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeStepStarted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:51:54.747Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:51:59.226Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:51:59.226Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "buildCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:59.227Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:51:59.228Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:51:59.229Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:51:59.233Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:51:59.234Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "buildCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:51:59.234Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:51:59.235Z [INFO] Project c:\xampp\htdocs\snikers springboot\snikers is a maven project, try to get java version from pom.xml
+2026-05-22T19:51:59.237Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'buildCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:51:59.238Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:51:59.240Z [INFO] Project java version: 21
+2026-05-22T19:51:59.241Z [INFO] Maven project detected.
+2026-05-22T19:51:59.241Z [INFO] Build tool type: mvn
+2026-05-22T19:51:59.258Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+  "version": "21"
+}
+2026-05-22T19:51:59.271Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+  "version": "",
+  "source": "install"
+}
+2026-05-22T19:51:59.271Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\Users\\yuran\\.maven\\maven-3.9.16\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "install"
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Java\\jdk-21\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "snikers",
+  "dir": "c:\\xampp\\htdocs\\snikers springboot\\snikers"
+}
+2026-05-22T19:51:59.272Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:59.272Z [INFO] [MavenBuildTool] Getting effective POMs of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:59.273Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-82387194-c212-41e4-b0dd-873f57c0eaad.log
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:59.351Z [INFO] [MavenBuildTool] Failed to get effective POMs: Error: ENOENT: no such file or directory, open 'c:\xampp\htdocs\snikers springboot\snikers\effective-pom-82387194-c212-41e4-b0dd-873f57c0eaad.log'
+2026-05-22T19:51:59.351Z [INFO] [BaseBuildTool] Found 0 modules: 
+2026-05-22T19:51:59.352Z [INFO] [BaseBuildTool] Finish counting Java and class files
+2026-05-22T19:51:59.352Z [INFO] [MavenBuildTool] Cleaning c:\xampp\htdocs\snikers springboot\snikers using Maven
+2026-05-22T19:51:59.353Z [INFO] [Environment] Running command (Java undefined): mvn clean -q -B -fn
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:59.399Z [INFO] [MavenBuildTool] Getting all module coordinates of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:59.400Z [INFO] [MavenBuildTool] Getting effective POMs of c:\xampp\htdocs\snikers springboot\snikers
+2026-05-22T19:51:59.401Z [INFO] [Environment] Running command (Java undefined): mvn help:effective-pom -Doutput=effective-pom-18a7ecc4-e4a5-4e7a-9958-9e0445de2c67.log
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+2026-05-22T19:51:59.479Z [INFO] [MavenBuildTool] Failed to get effective POMs: Error: ENOENT: no such file or directory, open 'c:\xampp\htdocs\snikers springboot\snikers\effective-pom-18a7ecc4-e4a5-4e7a-9958-9e0445de2c67.log'
+2026-05-22T19:52:01.723Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:52:01.724Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "testCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:52:01.725Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:52:01.727Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:52:01.728Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:52:01.733Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:52:01.735Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "testCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:52:01.736Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:52:01.740Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'testCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:52:01.741Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:52:05.417Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:52:05.418Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-05-22T19:52:05.420Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:52:05.422Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:52:05.423Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:52:05.429Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:52:05.430Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-05-22T19:52:05.431Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:52:05.435Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeValidationCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:52:05.436Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:52:58.050Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:52:58.050Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:52:58.051Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:52:58.052Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:52:58.053Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:52:58.058Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:52:58.058Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-05-22T19:52:58.059Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:52:58.064Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionCompleted' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:52:58.065Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-05-22T19:53:01.282Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-05-22T19:53:01.283Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java 21 runtime environment validated and tests passed with Maven 3.9.16; upgrade artifacts recorded."
+}}).
+2026-05-22T19:53:01.284Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-05-22T19:53:01.284Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-05-22T19:53:01.285Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-05-22T19:53:01.290Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-05-22T19:53:01.290Z [INFO] [Tool.invoke]({name: appmod-report-event, input: {
+  "sessionId": "20260522194047",
+  "projectPath": "c:\\xampp\\htdocs\\snikers springboot\\snikers",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java 21 runtime environment validated and tests passed with Maven 3.9.16; upgrade artifacts recorded."
+}}).
+2026-05-22T19:53:01.291Z [INFO] [Tool.invoke] do invoke.
+2026-05-22T19:53:01.293Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'summaryGenerated' reported!\nSession ID: 20260522194047,\nSession Dir: c:\\xampp\\htdocs\\snikers springboot\\snikers\\.github\\java-upgrade\\20260522194047"
+}}).
+2026-05-22T19:53:01.294Z [INFO] ----------------------invoked appmod-report-event----------------------

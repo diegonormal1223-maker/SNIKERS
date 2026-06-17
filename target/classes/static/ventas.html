@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de Ventas - Dashboard Admin SNIKER">
+    <title>Gestión de Ventas - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/ventas2.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <aside class="barra-lateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li>
+                    <a href="dashboard.html" class="enlace-nav">
+                        <span class="icono-nav">📊</span>
+                        <span class="texto-nav">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ventas.html" class="enlace-nav activo">
+                        <span class="icono-nav">💰</span>
+                        <span class="texto-nav">Ventas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionpedidos.html" class="enlace-nav">
+                        <span class="icono-nav">🚛</span>
+                        <span class="texto-nav">Pedidos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="domicilios.html" class="enlace-nav">
+                        <span class="icono-nav">✈️</span>
+                        <span class="texto-nav">Domicilios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionproductos.html" class="enlace-nav">
+                        <span class="icono-nav">👟</span>
+                        <span class="texto-nav">Productos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inventario.html" class="enlace-nav">
+                        <span class="icono-nav">📦</span>
+                        <span class="texto-nav">Inventario</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gestionusuarios.html" class="enlace-nav">
+                        <span class="icono-nav">👥</span>
+                        <span class="texto-nav">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reportes.html" class="enlace-nav">
+                        <span class="icono-nav">📈</span>
+                        <span class="texto-nav">Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="reembolsos.html" class="enlace-nav">
+                        <span class="icono-nav">💸</span>
+                        <span class="texto-nav">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido-principal">
+        <!-- HEADER -->
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Gestión de Ventas</h1>
+
+            <div class="acciones-header">
+                <select class="selector-periodo" id="selectorPeriodo" onchange="cambiarPeriodo()">
+                    <option value="hoy">Hoy</option>
+                    <option value="semana">Esta Semana</option>
+                    <option value="mes" selected>Este Mes</option>
+                    <option value="trimestre">Este Trimestre</option>
+                    <option value="ano">Este Año</option>
+                </select>
+
+                <button class="boton-nueva-venta" onclick="abrirModalNuevaVenta()">
+                    <span>➕</span>
+                    Nueva Venta
+                </button>
+            </div>
+        </header>
+
+        <!-- ÁREA DE CONTENIDO -->
+        <div class="area-contenido">
+            <!-- RESUMEN DE VENTAS -->
+            <div class="resumen-ventas">
+                <!-- KPI 1: Ventas Totales -->
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">💰</span>
+                        <span class="cambio-kpi positivo">↑ 12.5%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Ventas Totales</div>
+                    <div class="valor-kpi" id="totalSalesValue">$24,580</div>
+                    <div class="detalle-kpi" id="totalSalesCount">158 ventas realizadas</div>
+                </div>
+
+                <!-- KPI 3: Ventas de Hoy -->
+                <div class="tarjeta-kpi">
+                    <div class="encabezado-kpi">
+                        <span class="icono-kpi">⚡</span>
+                        <span class="cambio-kpi positivo">↑ 15.2%</span>
+                    </div>
+                    <div class="etiqueta-kpi">Ventas de Hoy</div>
+                    <div class="valor-kpi" id="salesToday">$2,890</div>
+                    <div class="detalle-kpi" id="salesTodayCount">12 ventas completadas</div>
+                </div>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="seccion-filtros">
+                <div class="contenedor-filtros">
+                    <span class="etiqueta-filtro">Filtrar:</span>
+                    <div class="grupo-filtros">
+                        <button class="boton-filtro activo" onclick="filtrarVentas('todas')">Todas</button>
+                        <button class="boton-filtro" onclick="filtrarVentas('in_transit')">En Tránsito</button>
+                        <button class="boton-filtro" onclick="filtrarVentas('DELIVERED')">Entregados</button>
+                        <button class="boton-filtro" onclick="filtrarVentas('PENDING')">Pendientes</button>
+                        <button class="boton-filtro" onclick="filtrarVentas('CANCELLED')">Canceladas</button>
+                    </div>
+
+                    <div class="barra-busqueda">
+                        <span class="icono-busqueda">🔍</span>
+                        <input type="search" placeholder="Buscar por cliente, producto o ID..." id="inputBusqueda"
+                            onkeyup="buscarVentas()">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABLA DE VENTAS -->
+            <div class="contenedor-tabla">
+                <div class="encabezado-tabla">
+                    <h2 class="titulo-tabla">📋 Registro de Ventas</h2>
+                    <span class="contador-resultados">Mostrando <span id="contadorVentas">0</span> ventas</span>
+                </div>
+
+                <table class="tabla-ventas" id="tablaVentas">
+                    <thead>
+                        <tr>
+                            <th>ID Venta</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaVentas">
+                        <!-- Dynamic Content -->
+                    </tbody>
+                </table>
+
+                <!-- PAGINACIÓN -->
+                <div class="paginacion" id="paginacion">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL NUEVA VENTA -->
+    <div class="modal" id="modalNuevaVenta">
+        <div class="contenido-modal">
+            <div class="encabezado-modal">
+                <h3 class="titulo-modal">💰 Nueva Venta</h3>
+                <button class="boton-cerrar" onclick="cerrarModal('modalNuevaVenta')">✕</button>
+            </div>
+
+            <div class="cuerpo-modal">
+                <!-- Cliente -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Cliente *</label>
+                    <input type="text" class="input-formulario" placeholder="Nombre del cliente" id="nuevoCliente">
+                    <small class="error-message" id="nuevoCliente-error"></small>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Teléfono *</label>
+                    <input type="text" class="input-formulario" placeholder="Ej: 3001234567" id="nuevoTelefono">
+                    <small class="error-message" id="nuevoTelefono-error"></small>
+                </div>
+
+                <!-- Email -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Email *</label>
+                    <input type="email" class="input-formulario" placeholder="correo@ejemplo.com" id="nuevoEmail">
+                    <small class="error-message" id="nuevoEmail-error"></small>
+                </div>
+
+                <!-- Producto -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Producto *</label>
+                    <select class="select-formulario" id="nuevoProducto">
+                        <option value="">Seleccionar producto...</option>
+                        <!-- Cargado dinámicamente -->
+                    </select>
+                    <small class="error-message" id="nuevoProducto-error"></small>
+                    <small id="stockInfo"
+                        style="color: var(--texto-gris); font-size: 11px; margin-top: 3px; display: none;"></small>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Cantidad *</label>
+                    <input type="number" class="input-formulario" placeholder="1" min="1" value="1" id="nuevaCantidad">
+                    <small class="error-message" id="nuevaCantidad-error"></small>
+                </div>
+
+                <!-- Estado -->
+                <div class="grupo-formulario">
+                    <label class="etiqueta-formulario">Estado</label>
+                    <select class="select-formulario" id="nuevoEstado">
+                        <option value="PENDING">Pendiente</option>
+                        <option value="COMPLETED">Completada</option>
+                        <option value="CANCELLED">Cancelada</option>
+                        <option value="IN_TRANSIT">En Tránsito</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pie-modal">
+                <button class="boton-secundario" onclick="cerrarModal('modalNuevaVenta')">Cancelar</button>
+                <button class="boton-primario" onclick="guardarNuevaVenta()">Guardar Venta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLES VENTA -->
+    <div class="modal" id="modalDetalles">
+        <div class="contenido-modal">
+            <div class="encabezado-modal">
+                <h3 class="titulo-modal">📋 Detalles de la Venta</h3>
+                <button class="boton-cerrar" onclick="cerrarModal('modalDetalles')">✕</button>
+            </div>
+            <div class="cuerpo-modal" id="contenidoDetalles">
+                <!-- El contenido se cargará dinámicamente -->
+            </div>
+            <div class="pie-modal">
+                <button class="boton-secundario" onclick="cerrarModal('modalDetalles')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="JS/ventas.js"></script>
+</body>
+
+</html>

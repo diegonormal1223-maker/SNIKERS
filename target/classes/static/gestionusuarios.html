@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de Usuarios - Dashboard Admin SNIKER">
+    <title>Gestión de Usuarios - SNIKER Admin</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/gestionusuarios.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <aside class="barra-lateral">
+        <a href="index.html" class="seccion-logo" style="text-decoration: none; color: inherit; display: flex;">
+            <div class="icono-logo"></div>
+            <span class="texto-logo">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="menu-nav">
+                <li><a href="dashboard.html" class="enlace-nav"><span class="icono-nav">📊</span><span
+                            class="texto-nav">Dashboard</span></a></li>
+                <li><a href="ventas.html" class="enlace-nav"><span class="icono-nav">💰</span><span
+                            class="texto-nav">Ventas</span></a></li>
+                <li><a href="gestionpedidos.html" class="enlace-nav"><span class="icono-nav">🚛</span><span
+                            class="texto-nav">Pedidos</span></a></li>
+                <li><a href="domicilios.html" class="enlace-nav"><span class="icono-nav">✈️</span><span
+                            class="texto-nav">Domicilios</span></a></li>
+                <li><a href="gestionproductos.html" class="enlace-nav"><span class="icono-nav">👟</span><span
+                            class="texto-nav">Productos</span></a></li>
+                <li><a href="inventario.html" class="enlace-nav"><span class="icono-nav">📦</span><span
+                            class="texto-nav">Inventario</span></a></li>
+                <li><a href="gestionusuarios.html" class="enlace-nav activo"><span class="icono-nav">👥</span><span
+                            class="texto-nav">Usuarios</span></a></li>
+                <li><a href="reportes.html" class="enlace-nav"><span class="icono-nav">📈</span><span
+                            class="texto-nav">Reportes</span></a></li>
+                <li><a href="reembolsos.html" class="enlace-nav"><span class="icono-nav">💸</span><span
+                            class="texto-nav">Reembolsos</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="encabezado-dashboard">
+            <h1 class="titulo-seccion">Gestión de Usuarios</h1>
+            <div class="perfil-admin">
+                <div class="avatar-admin">A</div>
+                <div>
+                    <div style="font-weight: 700; font-size: 14px;">Admin</div>
+                    <div style="font-size: 12px; color: var(--texto-gris);">Administrador</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="area-contenido">
+            <div class="stats-usuarios">
+                <div class="stat-card">
+                    <div class="stat-header"><span class="stat-icono">👥</span></div>
+                    <div class="stat-label">Total Usuarios</div>
+                    <div class="stat-valor" id="totalUsuarios">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><span class="stat-icono">✅</span></div>
+                    <div class="stat-label">Usuarios Activos</div>
+                    <div class="stat-valor" style="color: var(--verde-exito);" id="usuariosActivos">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><span class="stat-icono">📅</span></div>
+                    <div class="stat-label">Nuevos (Este Mes)</div>
+                    <div class="stat-valor" style="color: var(--azul-info);" id="usuariosNuevos">0</div>
+                </div>
+            </div>
+
+            <!-- Barra de Herramientas (Búsqueda y Filtros) -->
+            <div class="barra-herramientas">
+                <div class="grupo-busqueda">
+                    <div class="barra-busqueda">
+                        <span class="icono-busqueda">🔍</span>
+                        <input type="search" id="buscarUsuario" placeholder="Buscar por nombre, email o ID...">
+                    </div>
+                    <select class="selector-filtro" id="filtroRol" onchange="aplicarFiltros()">
+                        <option value="">Todos los Roles</option>
+                        <option value="USER">Cliente</option>
+                        <option value="ADMIN">Administrador</option>
+                    </select>
+                    <select class="selector-filtro" id="filtroEstado" onchange="aplicarFiltros()">
+                        <option value="">Todos los Estados</option>
+                        <option value="ACTIVE">Activo</option>
+                        <option value="BLOCKED">Bloqueado</option>
+                        <option value="INACTIVE">Inactivo</option>
+                    </select>
+                </div>
+
+                <button class="boton-nuevo-usuario" onclick="abrirModalNuevoUsuario()">
+                    <span>+</span> Nuevo Usuario
+                </button>
+            </div>
+
+            <div class="contenedor-tabla">
+                <table class="tabla-usuarios">
+                    <thead>
+                        <tr>
+                            <th>Usuario / Email</th>
+                            <th>ID</th>
+                            <th>Rol</th>
+                            <th>Pedidos</th>
+                            <th>Total Gastado</th>
+                            <th>Fecha Registro</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaUsuariosBody">
+                        <!-- Los usuarios se cargarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+
+                <div class="paginacion" id="paginacion"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <!-- Modal de Edición/Creación de Usuario -->
+    <div class="overlay-modal" id="modalUsuario">
+        <div class="contenido-modal">
+            <button class="boton-cerrar-modal" onclick="cerrarModal()">×</button>
+            <h2 class="titulo-modal" id="tituloModal">Nuevo Usuario</h2>
+
+            <form id="formularioUsuario">
+                <input type="hidden" id="usuarioId" value="">
+                <div class="grid-formulario">
+                    <div class="grupo-formulario">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                        <div class="error-message" id="nombre-error"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="usuario@email.com" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="password">Contraseña</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="********">
+                            <span class="password-toggle" onclick="togglePassword('password', this)">👁️</span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="password-strength-bar"></div>
+                        </div>
+                        <div class="password-hint" id="passwordHint">Mínimo 8 caracteres, mayúscula, minúscula, número y
+                            símbolo.</div>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="confirmPassword">Confirmar Contraseña</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmPassword" placeholder="********">
+                            <span class="password-toggle" onclick="togglePassword('confirmPassword', this)">👁️</span>
+                        </div>
+                        <div class="error-message" id="confirmPassword-error"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="+57 300 123 4567">
+                        <div class="error-message" id="telefono-error"></div>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="rol">Rol *</label>
+                        <select id="rol" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="USER">Cliente</option>
+                            <option value="ADMIN">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="estado">Estado *</label>
+                        <select id="estado" required>
+                            <option value="ACTIVE">Activo</option>
+                            <option value="INACTIVE">Inactivo</option>
+                            <option value="BLOCKED">Bloqueado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="botones-formulario">
+                    <button type="button" class="boton-cancelar" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="boton-guardar">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles de Usuario -->
+    <div class="overlay-modal" id="modalDetalles">
+        <div class="contenido-modal">
+            <button class="boton-cerrar-modal" onclick="cerrarModalDetalles()">×</button>
+            <h2 class="titulo-modal">Detalles del Usuario</h2>
+
+            <div class="detalles-usuario-modal">
+                <div class="seccion-detalles">
+                    <h3 class="titulo-seccion-detalle">Información Personal</h3>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Nombre Completo:</span>
+                        <span class="valor-detalle" id="detalleNombre">-</span>
+                    </div>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Email:</span>
+                        <span class="valor-detalle" id="detalleEmail">-</span>
+                    </div>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Teléfono:</span>
+                        <span class="valor-detalle" id="detalleTelefono">-</span>
+                    </div>
+                </div>
+
+                <div class="seccion-detalles">
+                    <h3 class="titulo-seccion-detalle">Información de Cuenta</h3>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">ID Usuario:</span>
+                        <span class="valor-detalle" id="detalleId">-</span>
+                    </div>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Rol:</span>
+                        <span class="valor-detalle" id="detalleRol">-</span>
+                    </div>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Estado:</span>
+                        <span class="valor-detalle" id="detalleEstado">-</span>
+                    </div>
+                    <div class="fila-detalle">
+                        <span class="label-detalle">Fecha de Registro:</span>
+                        <span class="valor-detalle" id="detalleFechaRegistro">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="botones-formulario">
+                <button type="button" class="boton-cancelar" onclick="cerrarModalDetalles()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/gestionusuarios.js"></script>
+</body>
+
+</html>

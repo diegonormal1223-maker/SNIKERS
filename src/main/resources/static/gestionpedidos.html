@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración SNIKER">
+    <title>SNIKER - Gestión de Pedidos</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="CSS/gestionpedidos.css">
+    <!-- AUTH CHECK - Route Protection -->
+    <script src="JS/auth-check.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="logo-section" style="text-decoration: none; color: inherit;">
+            <div class="logo-icon"></div>
+            <span class="logo-text">SNIKER</span>
+        </a>
+
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ventas.html" class="nav-link">
+                        <span class="nav-icon">💰</span>
+                        <span class="nav-text">Ventas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionpedidos.html" class="nav-link active">
+                        <span class="nav-icon">🚛</span>
+                        <span class="nav-text">Pedidos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="domicilios.html" class="nav-link">
+                        <span class="nav-icon">✈️</span>
+                        <span class="nav-text">Domicilios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionproductos.html" class="nav-link">
+                        <span class="nav-icon">👟</span>
+                        <span class="nav-text">Productos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="inventario.html" class="nav-link">
+                        <span class="nav-icon">📦</span>
+                        <span class="nav-text">Inventario</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gestionusuarios.html" class="nav-link">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-text">Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reportes.html" class="nav-link">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">Reportes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reembolsos.html" class="nav-link">
+                        <span class="nav-icon">💸</span>
+                        <span class="nav-text">Reembolsos</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" placeholder="Buscar pedidos, productos, clientes..." id="searchInput"
+                        onkeyup="buscarPedidos()">
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div class="user-profile" onclick="togglePerfilMenu()">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin</div>
+                        <div class="user-role">Administrador</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <h1 class="page-title">Gestión de Pedidos</h1>
+            <p class="page-subtitle">Administra y supervisa todos los pedidos de tu tienda</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Total Pedidos</span>
+                        <span class="stat-icon">📦</span>
+                    </div>
+                    <div class="stat-value" id="totalOrders">0</div>
+                    <div class="stat-change positive">
+                        Histórico
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Pendientes</span>
+                        <span class="stat-icon">⏳</span>
+                    </div>
+                    <div class="stat-value" id="pendingOrders">0</div>
+                    <div class="stat-change negative">
+                        Requieren atención
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Entregados</span>
+                        <span class="stat-icon">✅</span>
+                    </div>
+                    <div class="stat-value" id="deliveredOrders">0</div>
+                    <div class="stat-change positive">
+                        Completados
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Cancelados</span>
+                        <span class="stat-icon">❌</span>
+                    </div>
+                    <div class="stat-value" id="cancelledOrders">0</div>
+                    <div class="stat-change negative">
+                        Cancelados
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filters-container">
+                    <span class="filter-label">Filtrar por estado:</span>
+                    <div class="filter-group">
+                        <button class="filter-btn active" onclick="filtrarPedidos('todas')">Todos</button>
+                        <button class="filter-btn" onclick="filtrarPedidos('PENDING')">Pendientes</button>
+                        <button class="filter-btn" onclick="filtrarPedidos('IN_TRANSIT')">En Tránsito</button>
+                        <button class="filter-btn" onclick="filtrarPedidos('DELIVERED')">Entregados</button>
+                        <button class="filter-btn" onclick="filtrarPedidos('CANCELLED')">Cancelados</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="orders-table-container">
+                <div class="table-header">
+                    <h2 class="table-title">📋 Lista de Pedidos</h2>
+
+                </div>
+
+                <table class="orders-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Content loaded via JS -->
+                    </tbody>
+                </table>
+
+                <div class="pagination" id="paginacion">
+                    <!-- Pagination loaded via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="modalNuevoPedido">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">📦 Nuevo Pedido</h3>
+                <button class="modal-close" onclick="cerrarModal('modalNuevoPedido')">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Cliente (Solo lectura)</label>
+                    <input type="text" class="form-input" placeholder="Nombre del cliente" id="nuevoCliente" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email (Solo lectura)</label>
+                    <input type="email" class="form-input" placeholder="correo@ejemplo.com" id="nuevoEmail" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Producto (Solo lectura)</label>
+                    <select class="form-select" id="nuevoProducto" disabled>
+                        <option value="">Seleccionar producto...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Dirección de Envío *</label>
+                    <input type="text" class="form-input" placeholder="Ej: Calle 123 #45-67, Ciudad"
+                        id="nuevaDireccion">
+                    <small class="error-message" id="nuevaDireccion-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Estado *</label>
+                    <select class="form-select" id="nuevoEstado">
+                        <option value="PENDING">Pendiente</option>
+                        <option value="PAID">Pagado</option>
+                        <option value="SHIPPED">Enviado</option>
+                        <option value="IN_TRANSIT">En Tránsito</option>
+                        <option value="DELIVERED">Entregado</option>
+                        <option value="COMPLETED">Completado</option>
+                        <option value="CANCELLED">Cancelado</option>
+                    </select>
+                    <small class="error-message" id="nuevoEstado-error"></small>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="cerrarModal('modalNuevoPedido')">Cancelar</button>
+                <button class="btn-primary" onclick="guardarNuevoPedido()">Guardar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalDetalles">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">📋 Detalles del Pedido</h3>
+                <button class="modal-close" onclick="cerrarModal('modalDetalles')">✕</button>
+            </div>
+            <div class="modal-body" id="detallesContent">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="cerrarModal('modalDetalles')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN -->
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="JS/gestionpedidos.js"></script>
+</body>
+
+</html>
