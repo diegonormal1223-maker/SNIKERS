@@ -147,6 +147,11 @@ body {
     border-color: var(--neon-verde);
 }
 
+.selector-periodo option {
+    background-color: var(--tarjeta-oscura);
+    color: var(--texto-blanco);
+}
+
 .boton-exportar {
     background: linear-gradient(135deg, var(--neon-verde), #2ecc40);
     color: var(--fondo-oscuro);

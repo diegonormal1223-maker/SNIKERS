@@ -10,6 +10,7 @@ const ESTADOS = {
     'SHIPPED': { clase: 'transito', texto: 'En Tránsito', progreso: 65, icono: '🚚', color: '#3b82f6' },
     'IN_TRANSIT': { clase: 'transito', texto: 'En Tránsito', progreso: 65, icono: '🚚', color: '#3b82f6' },
     'DELIVERED': { clase: 'entregado', texto: 'Entregado', progreso: 100, icono: '✅', color: '#10b981' },
+    'COMPLETED': { clase: 'entregado', texto: 'Completado', progreso: 100, icono: '✅', color: '#10b981' },
     'CANCELLED': { clase: 'cancelado', texto: 'Cancelado', progreso: 0, icono: '❌', color: '#ef4444' }
 };
 
@@ -157,7 +158,7 @@ function renderizarTarjetas(pedidos) {
 
 function obtenerMensajeTiempo(estado, fecha) {
     const date = new Date(fecha);
-    if (estado === 'DELIVERED') return `✅ Entregado el ${date.toLocaleDateString()}`;
+    if (estado === 'DELIVERED' || estado === 'COMPLETED') return `✅ Entregado el ${date.toLocaleDateString()}`;
     if (estado === 'CANCELLED') return `❌ Cancelado`;
     if (estado === 'SHIPPED' || estado === 'IN_TRANSIT') return `⏱️ En camino desde ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
     return `📅 Pedido: ${date.toLocaleDateString()}`;
@@ -197,7 +198,7 @@ async function verSeguimiento(orderId) {
         }
 
         // Botón Cancelar (Rojo)
-        if (estadoActual !== 'DELIVERED' && estadoActual !== 'CANCELLED') {
+        if (estadoActual !== 'DELIVERED' && estadoActual !== 'COMPLETED' && estadoActual !== 'CANCELLED') {
             const btnCancel = document.createElement('button');
             btnCancel.className = 'boton-tarjeta'; // Usamos clase base para estilo
             btnCancel.textContent = '❌ Cancelar Pedido';
@@ -235,8 +236,8 @@ async function verSeguimiento(orderId) {
 // Generador de Timeline con el estilo visual "Rico" (5 pasos)
 function generarHTMLTimelineDetallado(estadoActual, fechaPedido) {
     const fechaStr = new Date(fechaPedido).toLocaleString('es-CO', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-    const esTransito = estadoActual === 'SHIPPED' || estadoActual === 'IN_TRANSIT' || estadoActual === 'DELIVERED';
-    const esEntregado = estadoActual === 'DELIVERED';
+    const esTransito = estadoActual === 'SHIPPED' || estadoActual === 'IN_TRANSIT' || estadoActual === 'DELIVERED' || estadoActual === 'COMPLETED';
+    const esEntregado = estadoActual === 'DELIVERED' || estadoActual === 'COMPLETED';
     const esCancelado = estadoActual === 'CANCELLED';
 
     if (esCancelado) {

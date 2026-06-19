@@ -214,7 +214,12 @@ public class OrderService {
             java.util.List<jakarta.persistence.criteria.Predicate> predicates = new java.util.ArrayList<>();
 
             if (status != null && !status.isEmpty() && !status.equals("todas")) {
-                predicates.add(cb.equal(root.get("status"), Order.Status.valueOf(status.toUpperCase())));
+                Order.Status orderStatus = Order.Status.valueOf(status.toUpperCase());
+                if (orderStatus == Order.Status.DELIVERED) {
+                    predicates.add(root.get("status").in(Order.Status.DELIVERED, Order.Status.COMPLETED));
+                } else {
+                    predicates.add(cb.equal(root.get("status"), orderStatus));
+                }
             }
 
             if (search != null && !search.isEmpty()) {

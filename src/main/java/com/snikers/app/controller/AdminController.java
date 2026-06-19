@@ -63,7 +63,7 @@ public class AdminController {
                                 o -> o.getStatus() == Order.Status.SHIPPED || o.getStatus() == Order.Status.IN_TRANSIT)
                                 .count());
                 deliveryStats.put("delivered",
-                                allOrders.stream().filter(o -> o.getStatus() == Order.Status.DELIVERED).count());
+                                allOrders.stream().filter(o -> o.getStatus() == Order.Status.DELIVERED || o.getStatus() == Order.Status.COMPLETED).count());
                 deliveryStats.put("cancelled",
                                 allOrders.stream().filter(o -> o.getStatus() == Order.Status.CANCELLED).count());
                 stats.put("deliveryStats", deliveryStats);

@@ -19,15 +19,24 @@
         </a>
         <nav>
             <ul class="menu-nav">
-                <li class="item-nav"><a href="dashboard.html" class="enlace-nav"><span class="icono-nav">📊</span><span class="texto-nav">Dashboard</span></a></li>
-                <li class="item-nav"><a href="ventas.html" class="enlace-nav"><span class="icono-nav">💰</span><span class="texto-nav">Ventas</span></a></li>
-                <li class="item-nav"><a href="gestionpedidos.html" class="enlace-nav"><span class="icono-nav">🚛</span><span class="texto-nav">Pedidos</span></a></li>
-                <li class="item-nav"><a href="gestionproductos.html" class="enlace-nav"><span class="icono-nav">👟</span><span class="texto-nav">Productos</span></a></li>
-                <li class="item-nav"><a href="gestionproductos_import.html" class="enlace-nav activo"><span class="icono-nav">📁</span><span class="texto-nav">Importar</span></a></li>
-                <li class="item-nav"><a href="inventario.html" class="enlace-nav"><span class="icono-nav">📦</span><span class="texto-nav">Inventario</span></a></li>
-                <li class="item-nav"><a href="gestionusuarios.html" class="enlace-nav"><span class="icono-nav">👥</span><span class="texto-nav">Usuarios</span></a></li>
-                <li class="item-nav"><a href="reportes.html" class="enlace-nav"><span class="icono-nav">📈</span><span class="texto-nav">Reportes</span></a></li>
-                <li><a href="reembolsos.html" class="enlace-nav"><span class="icono-nav">💸</span><span class="texto-nav">Reembolsos</span></a></li>
+                <li class="item-nav"><a href="dashboard.html" class="enlace-nav"><span class="icono-nav">📊</span><span
+                            class="texto-nav">Dashboard</span></a></li>
+                <li class="item-nav"><a href="ventas.html" class="enlace-nav"><span class="icono-nav">💰</span><span
+                            class="texto-nav">Ventas</span></a></li>
+                <li class="item-nav"><a href="gestionpedidos.html" class="enlace-nav"><span
+                            class="icono-nav">🚛</span><span class="texto-nav">Pedidos</span></a></li>
+                <li class="item-nav"><a href="gestionproductos.html" class="enlace-nav"><span
+                            class="icono-nav">👟</span><span class="texto-nav">Productos</span></a></li>
+                <li class="item-nav"><a href="gestionproductos_import.html" class="enlace-nav activo"><span
+                            class="icono-nav">📁</span><span class="texto-nav">Importar</span></a></li>
+                <li class="item-nav"><a href="inventario.html" class="enlace-nav"><span class="icono-nav">📦</span><span
+                            class="texto-nav">Inventario</span></a></li>
+                <li class="item-nav"><a href="gestionusuarios.html" class="enlace-nav"><span
+                            class="icono-nav">👥</span><span class="texto-nav">Usuarios</span></a></li>
+                <li class="item-nav"><a href="reportes.html" class="enlace-nav"><span class="icono-nav">📈</span><span
+                            class="texto-nav">Reportes</span></a></li>
+                <li><a href="reembolsos.html" class="enlace-nav"><span class="icono-nav">💸</span><span
+                            class="texto-nav">Reembolsos</span></a></li>
             </ul>
         </nav>
     </aside>
@@ -50,8 +59,9 @@
                     <h2 class="titulo-tabla">Carga de Productos por Archivo</h2>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                         <a class="boton-accion-tabla" href="gestionproductos.html">Volver a Productos</a>
-                        <a class="boton-accion-tabla" href="/admin/import/template/csv">Descargar plantilla CSV</a>
-                        <a class="boton-accion-tabla" href="/admin/import/template/xlsx">Descargar plantilla Excel</a>
+
+                        <a class="boton-accion-tabla"
+                            href="/admin/import/template/Carga masiva plantilla.xlsx">Descargar plantilla Excel</a>
                     </div>
                 </div>
 
@@ -68,16 +78,20 @@
                         </select>
                     </div>
                     <div class="grupo-formulario ancho-completo">
-                        <button type="button" class="boton-nuevo-producto" id="previewButton">Previsualizar archivo</button>
+                        <button type="button" class="boton-nuevo-producto" id="previewButton">Previsualizar
+                            archivo</button>
                     </div>
                     <div class="grupo-formulario ancho-completo">
-                        <button type="button" class="boton-nuevo-producto" id="confirmButton">Importar productos</button>
+                        <button type="button" class="boton-nuevo-producto" id="confirmButton">Importar
+                            productos</button>
                     </div>
                 </form>
 
                 <div id="importMessage" style="margin-top: 12px;"></div>
 
-                <div id="importErrors" style="background: rgba(255, 0, 0, 0.08); border: 1px solid rgba(255, 0, 0, 0.16); padding: 16px; display:none; max-height: 220px; overflow:auto;"></div>
+                <div id="importErrors"
+                    style="background: rgba(255, 0, 0, 0.08); border: 1px solid rgba(255, 0, 0, 0.16); padding: 16px; display:none; max-height: 220px; overflow:auto;">
+                </div>
 
                 <div id="importPreview" style="overflow:auto; margin-top: 16px;"></div>
 

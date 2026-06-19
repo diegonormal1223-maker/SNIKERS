@@ -161,22 +161,7 @@ document.querySelectorAll('.stat-card').forEach(card => {
     });
 });
 
-// BOTÓN EXPORTAR (Tu función original)
-document.querySelectorAll('.action-btn').forEach(btn => {
-    if (btn.textContent.includes('Exportar')) {
-        btn.addEventListener('click', function () {
-            console.log('Exportando datos...');
-            alert('Exportando datos a CSV...\n(Función en desarrollo)');
-        });
-    }
 
-    if (btn.textContent.includes('Filtrar')) {
-        btn.addEventListener('click', function () {
-            console.log('Abriendo filtros...');
-            alert('Opciones de filtro:\n- Por fecha\n- Por estado\n- Por cliente\n- Por monto');
-        });
-    }
-});
 
 // ATAJOS DE TECLADO (Tu función original)
 document.addEventListener('keydown', function (e) {
