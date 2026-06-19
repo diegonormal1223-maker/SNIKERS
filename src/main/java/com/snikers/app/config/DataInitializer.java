@@ -51,13 +51,13 @@ public class DataInitializer implements CommandLineRunner {
             List<User> allUsers = userRepository.findAll();
             for (User u : allUsers) {
                 if ("admin@snikers.com".equalsIgnoreCase(u.getEmail())) {
-                    u.setPassword(passwordEncoder.encode("admin123"));
+                    u.setPassword(passwordEncoder.encode("Admin1234!"));
                 } else {
-                    u.setPassword(passwordEncoder.encode("cliente123"));
+                    u.setPassword(passwordEncoder.encode("Cliente1234!"));
                 }
             }
             userRepository.saveAll(allUsers);
-            System.out.println("✅ Contraseñas sincronizadas (admin: admin123, clientes: cliente123).");
+            System.out.println("✅ Contraseñas sincronizadas (admin: Admin1234!, clientes: Cliente1234!).");
 
         } catch (Exception e) {
             System.err.println("❌ Error al cargar los scripts SQL o sincronizar contraseñas: " + e.getMessage());

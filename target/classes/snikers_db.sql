@@ -129,6 +129,10 @@ CREATE TABLE `orders` (
   `coupon_code` varchar(255) DEFAULT NULL,
   `shipping_address` varchar(255) DEFAULT NULL,
   `payment_method` varchar(255) DEFAULT NULL,
+  `refund_requested` bit(1) DEFAULT b'0',
+  `refund_reason` varchar(255) DEFAULT NULL,
+  `refund_status` varchar(255) DEFAULT NULL,
+  `refund_response` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK32ql8ubntj5uh44ph9659tiih` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
