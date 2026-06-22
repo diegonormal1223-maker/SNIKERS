@@ -180,7 +180,7 @@ public class UserService implements UserDetailsService {
         // Patrón estricto: debe empezar con letra, mínimo 2 caracteres antes de @
         // Dominio debe tener mínimo 2 caracteres antes del TLD
         // TLD debe tener mínimo 2 caracteres
-        String emailPattern = "^[A-Za-z][A-Za-z0-9._-]{1,}@[A-Za-z0-9-]{2,}\\.[A-Za-z]{2,}$";
+        String emailPattern = "^[A-Za-z][A-Za-z0-9._-]{1,}@[A-Za-z0-9.-]{2,}\\.[A-Za-z]{2,}$";
         if (!email.matches(emailPattern)) {
             return false;
         }

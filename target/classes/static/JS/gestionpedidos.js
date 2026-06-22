@@ -75,12 +75,12 @@ function clearAllErrors() {
     });
 }
 
-// Validar dirección (max 100 chars, letras, números, espacios, #, -, coma)
+// Validar dirección (max 100 chars, letras, números, espacios, #, -, coma, paréntesis, puntos)
 function validateAddress(address) {
     const trimmed = address.trim();
     if (trimmed.length === 0) return false;
     if (trimmed.length > 100) return false;
-    return /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s#,\-]+$/.test(trimmed);
+    return /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s#,\-\(\).]+$/.test(trimmed);
 }
 
 // ===== INPUT MASKING Y VALIDACIÓN EN TIEMPO REAL =====
@@ -89,7 +89,7 @@ function setupInputMasks() {
     if (direccionInput) {
         direccionInput.addEventListener('input', function (e) {
             let val = e.target.value;
-            val = val.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s#,\-]/g, '');
+            val = val.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s#,\-\(\).]/g, '');
             val = val.replace(/\s{2,}/g, ' ');
             if (val.length > 100) val = val.substring(0, 100);
 
@@ -407,6 +407,7 @@ async function editarPedido(id) {
             }
 
             const shippingAddress = order.shippingAddress || '';
+            const cleanAddress = shippingAddress.replace(/\s*\([^)]*\)\s*$/, '');
 
             clearAllErrors();
 
@@ -414,7 +415,7 @@ async function editarPedido(id) {
             document.getElementById('nuevoCliente').value = userName;
             document.getElementById('nuevoEmail').value = userEmail;
             document.getElementById('nuevoProducto').value = productsList;
-            document.getElementById('nuevaDireccion').value = shippingAddress;
+            document.getElementById('nuevaDireccion').value = cleanAddress;
             document.getElementById('nuevoEstado').value = order.status;
 
             document.getElementById('modalNuevoPedido').classList.add('active');
