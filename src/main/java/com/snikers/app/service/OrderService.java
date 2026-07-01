@@ -618,8 +618,20 @@ public class OrderService {
         order.setRefundStatus(status);
         order.setRefundResponse(response);
 
-        // If approved, you might want to trigger actual payment refund logic here
-        // For now, we just update the status
+        // Si el reembolso es APROBADO, cancelar el pedido y restaurar el stock
+        if ("APPROVED".equals(status)) {
+            order.setStatus(Order.Status.CANCELLED);
+            // Restaurar stock de cada producto del pedido
+            if (order.getItems() != null) {
+                for (OrderItem item : order.getItems()) {
+                    Product product = item.getProduct();
+                    if (product != null) {
+                        product.setStock(product.getStock() + item.getQuantity());
+                        productRepository.save(product);
+                    }
+                }
+            }
+        }
 
         return orderRepository.save(order);
     }

@@ -379,13 +379,6 @@ function renderRecentOrders(orders) {
             <td>$${order.totalAmount.toLocaleString()}</td>
             <td><span class="status-badge ${statusClass}">${order.status}</span></td>
             <td>${date}</td>
-            <td>
-                <div class="table-actions-cell">
-                    <button class="icon-btn" title="Ver detalles">👁</button>
-                    <button class="icon-btn" title="Editar">✏️</button>
-                    <button class="icon-btn" title="Eliminar">🗑️</button>
-                </div>
-            </td>
         `;
         tbody.appendChild(tr);
     });

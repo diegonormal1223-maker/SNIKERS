@@ -1,3 +1,7 @@
+// GLOBAL VARIABLES
+let currentAddresses = [];
+let editingAddressId = null;
+let userOrders = []; // Store fetched orders
 
 // VER SECCION
 function showSection(sectionName) {
@@ -91,6 +95,25 @@ async function fetchProfile() {
     fetchOrders();
 }
 
+// TRADUCCIONES DE ESTADO EN ESPAÑOL
+const traduccionesEstado = {
+    'PENDING': 'Pendiente',
+    'PAID': 'Confirmado',
+    'SHIPPED': 'Enviado',
+    'IN_TRANSIT': 'En Tránsito',
+    'DELIVERED': 'Entregado',
+    'COMPLETED': 'Completado',
+    'CANCELLED': 'Cancelado',
+    'PROCESSING': 'En Proceso'
+};
+
+function obtenerTextoEstado(status, refundRequested, refundStatus) {
+    if (refundStatus === 'PENDING') return 'En espera';
+    if (refundStatus === 'APPROVED') return 'Aprobado';
+    if (refundStatus === 'REJECTED') return 'Rechazado';
+    return traduccionesEstado[status] || status;
+}
+
 // FETCH ORDERS
 async function fetchOrders() {
     const token = localStorage.getItem('token');
@@ -101,7 +124,12 @@ async function fetchOrders() {
 
         if (response.ok) {
             const orders = await response.json();
-            userOrders = orders; // Store for valid access
+            // Calcular numeracion secuencial (correlativo 1, 2, 3...) ordenando cronologicamente
+            const sortedCronologicamente = [...orders].sort((a, b) => new Date(a.orderDate) - new Date(b.orderDate));
+            sortedCronologicamente.forEach((o, index) => {
+                o.secuencial = index + 1;
+            });
+            userOrders = orders;
             renderOrders(orders);
 
             // Update stats
@@ -143,16 +171,22 @@ function renderOrders(orders) {
         card.className = 'order-card';
 
         let statusClass = 'processing';
-        if (order.status === 'DELIVERED') statusClass = 'completed';
+        if (order.refundStatus === 'APPROVED') statusClass = 'refund-approved';
+        else if (order.refundStatus === 'PENDING') statusClass = 'refund-pending';
+        else if (order.refundStatus === 'REJECTED') statusClass = 'refund-rejected';
+        else if (order.status === 'CANCELLED') statusClass = 'cancelled';
+        else if (order.status === 'DELIVERED' || order.status === 'COMPLETED') statusClass = 'completed';
         else if (order.status === 'SHIPPED') statusClass = 'shipped';
+
+        const textoEstado = obtenerTextoEstado(order.status, order.refundRequested, order.refundStatus);
 
         card.innerHTML = `
             <div class="order-header">
                 <div>
-                    <div class="order-id">Pedido #${order.id}</div>
+                    <div class="order-id">Pedido #${order.secuencial || order.id}</div>
                     <div class="order-date">${new Date(order.orderDate).toLocaleDateString()}</div>
                 </div>
-                <span class="order-status ${statusClass}">${order.status}</span>
+                <span class="order-status ${statusClass}">${textoEstado}</span>
             </div>
             <div class="order-items">
                  ${order.items.map(item => `
@@ -260,7 +294,16 @@ function viewOrder(orderId) {
     }
 
     const modalContent = document.getElementById('orderDetailContent');
-    const statusClass = getStatusClass(order.status);
+    
+    let statusClass = 'processing';
+    if (order.refundStatus === 'APPROVED') statusClass = 'refund-approved';
+    else if (order.refundStatus === 'PENDING') statusClass = 'refund-pending';
+    else if (order.refundStatus === 'REJECTED') statusClass = 'refund-rejected';
+    else if (order.status === 'CANCELLED') statusClass = 'cancelled';
+    else if (order.status === 'DELIVERED' || order.status === 'COMPLETED') statusClass = 'completed';
+    else if (order.status === 'SHIPPED') statusClass = 'shipped';
+
+    const textoEstado = obtenerTextoEstado(order.status, order.refundRequested, order.refundStatus);
 
     const itemsHtml = order.items.map(item => `
         <div style="display: flex; align-items: center; gap: 15px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
@@ -330,13 +373,13 @@ function viewOrder(orderId) {
         <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: start;">
                 <div>
-                    <h2 style="margin: 0; color: var(--neon-green);">Pedido #${order.id}</h2>
+                    <h2 style="margin: 0; color: var(--neon-green);">Pedido #${order.secuencial || order.id}</h2>
                     <p style="margin: 5px 0 0; color: var(--text-gray);">
                         Realizado el ${new Date(order.orderDate).toLocaleString()}
                     </p>
                 </div>
                 <span class="order-status ${statusClass}" style="font-size: 0.9em;">
-                    ${order.status}
+                    ${textoEstado}
                 </span>
             </div>
         </div>
@@ -388,7 +431,7 @@ function showRefundForm(orderId) {
         <div style="text-align: center; padding: 20px 0;">
             <h2 style="color: var(--neon-green); margin-bottom: 15px;">Solicitar Reembolso</h2>
             <p style="color: var(--text-gray); margin-bottom: 25px;">
-                Por favor, cuéntanos el motivo por el cual deseas solicitar el reembolso del pedido #${orderId}.
+                Por favor, cuéntanos el motivo por el cual deseas solicitar el reembolso del pedido #${order.secuencial || orderId}.
             </p>
 
             <form onsubmit="submitRefund(event, ${orderId})" style="text-align: left;">
@@ -806,10 +849,6 @@ function setupInputMasks() {
     if (addrPhone) addrPhone.addEventListener('input', maskPhone);
 }
 
-// GLOBAL VARIABLES
-let currentAddresses = [];
-let editingAddressId = null;
-let userOrders = []; // Store fetched orders
 
 
 // FETCH ADDRESSES

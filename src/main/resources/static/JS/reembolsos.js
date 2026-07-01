@@ -23,25 +23,46 @@ async function fetchRefundRequests() {
             orders.forEach(order => {
                 const tr = document.createElement('tr');
                 const userEmail = order.user ? order.user.email : 'N/A';
+                const userName = order.user && order.user.name ? order.user.name : 'Cliente';
+                const avatarLetter = userName.charAt(0).toUpperCase();
 
                 let actionsContent = '';
-                if (order.refundStatus === 'PENDING') {
-                    actionsContent = `
-                        <button class="icon-btn action-approve" onclick="approveRefund(${order.id})" title="Aprobar">✅</button>
-                        <button class="icon-btn action-reject" onclick="openRejectModal(${order.id})" title="Rechazar">❌</button>
-                    `;
+                let statusText = 'En espera';
+                let statusClass = 'pendiente';
+
+                if (order.refundStatus === 'APPROVED') {
+                    statusText = 'Aprobado';
+                    statusClass = 'completada';
+                    actionsContent = `<span style="color: #888; font-size: 0.9em; font-weight: 600;">Finalizado</span>`;
+                } else if (order.refundStatus === 'REJECTED') {
+                    statusText = 'Rechazado';
+                    statusClass = 'cancelada';
+                    actionsContent = `<span style="color: #888; font-size: 0.9em; font-weight: 600;">Finalizado</span>`;
                 } else {
-                    actionsContent = `<span style="color: #888; font-size: 0.9em;">Finalizado</span>`;
+                    actionsContent = `
+                        <div class="botones-accion">
+                            <button class="boton-accion" onclick="approveRefund(${order.id})" title="Aprobar" style="border-color: var(--verde-exito); color: var(--verde-exito);">✅</button>
+                            <button class="boton-accion" onclick="openRejectModal(${order.id})" title="Rechazar" style="border-color: var(--rojo-error); color: var(--rojo-error);">❌</button>
+                        </div>
+                    `;
                 }
 
                 tr.innerHTML = `
-                    <td>#${order.id}</td>
-                    <td>${userEmail}</td>
-                    <td title="${order.refundReason}" style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <td><span class="id-venta">#${order.id}</span></td>
+                    <td>
+                        <div class="info-cliente">
+                            <div class="avatar-cliente">${avatarLetter}</div>
+                            <div class="detalles-cliente">
+                                <div class="nombre-cliente">${userName}</div>
+                                <div class="email-cliente">${userEmail}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td title="${order.refundReason}" style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; color: var(--texto-gris);">
                         ${order.refundReason}
                     </td>
-                    <td>$${order.totalAmount.toLocaleString()}</td>
-                    <td><span class="badge-refund-pending">${order.refundStatus}</span></td>
+                    <td><span class="precio-venta">$${order.totalAmount.toLocaleString()}</span></td>
+                    <td><span class="estado-venta ${statusClass}">${statusText}</span></td>
                     <td>
                         ${actionsContent}
                     </td>
@@ -64,11 +85,11 @@ async function approveRefund(orderId) {
 function openRejectModal(orderId) {
     document.getElementById('rechazoOrderId').value = orderId;
     document.getElementById('motivoRechazo').value = '';
-    document.getElementById('modalRechazo').style.display = 'block';
+    document.getElementById('modalRechazo').classList.add('activo');
 }
 
 function closingRejectModal() {
-    document.getElementById('modalRechazo').style.display = 'none';
+    document.getElementById('modalRechazo').classList.remove('activo');
 }
 // Alias for HTML onclick
 window.cerrarModalRechazo = closingRejectModal;

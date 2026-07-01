@@ -278,12 +278,11 @@ function renderOrders(orders) {
             <td><span class="price">$${order.totalAmount.toLocaleString()}</span></td>
             <td><span class="status-badge ${statusClass}">${estadoTraducido}</span></td>
             <td>
-                <div class="action-buttons">
-                    <button class="action-btn" onclick="verDetallesPedido(${order.id})" title="Ver detalles">👁️</button>
-                    <button class="action-btn" onclick="editarPedido(${order.id})" title="Editar">✏️</button>
-                    <button class="action-btn delete" onclick="eliminarPedido(${order.id})" title="Cancelar">🗑️</button>
-                </div>
-            </td>
+                 <div class="action-buttons">
+                     <button class="action-btn" onclick="verDetallesPedido(${order.id})" title="Ver detalles">👁️</button>
+                     <button class="action-btn" onclick="editarPedido(${order.id})" title="Editar">✏️</button>
+                 </div>
+             </td>
         `;
         tbody.appendChild(tr);
     });
@@ -417,6 +416,7 @@ async function editarPedido(id) {
             document.getElementById('nuevoProducto').value = productsList;
             document.getElementById('nuevaDireccion').value = cleanAddress;
             document.getElementById('nuevoEstado').value = order.status;
+            document.getElementById('nuevoEstado').setAttribute('disabled', true);
 
             document.getElementById('modalNuevoPedido').classList.add('active');
         }

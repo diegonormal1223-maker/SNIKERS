@@ -382,6 +382,7 @@ async function abrirModalNuevaVenta() {
     document.getElementById('nuevoEmail').removeAttribute('readonly');
     document.getElementById('nuevoProducto').removeAttribute('disabled');
     document.getElementById('nuevaCantidad').removeAttribute('readonly');
+    document.getElementById('nuevoEstado').removeAttribute('disabled');
 
     // Cargar productos
     await loadProducts();
@@ -603,13 +604,13 @@ async function editarVenta(ventaId) {
             document.getElementById('nuevaCantidad').value = quantity;
             document.getElementById('nuevoEstado').value = order.status;
 
-            // RESTRICCIÓN: Hacer solo el estado editable
+            // RESTRICCIÓN: Impedir cualquier modificación en la edición (incluido el estado)
             document.getElementById('nuevoCliente').setAttribute('readonly', true);
             document.getElementById('nuevoTelefono').setAttribute('readonly', true);
             document.getElementById('nuevoEmail').setAttribute('readonly', true);
             document.getElementById('nuevoProducto').setAttribute('disabled', true);
             document.getElementById('nuevaCantidad').setAttribute('readonly', true);
-            // El estado permanece editable
+            document.getElementById('nuevoEstado').setAttribute('disabled', true);
 
             document.getElementById('modalNuevaVenta').classList.add('activo');
         }
@@ -779,7 +780,6 @@ function renderOrders(orders) {
                 <div class="botones-accion">
                     <button class="boton-accion" onclick="verDetallesVenta(${order.id})" title="Ver detalles">👁️</button>
                     <button class="boton-accion" onclick="editarVenta(${order.id})" title="Editar">✏️</button>
-                    <button class="boton-accion eliminar" onclick="eliminarVenta(${order.id})" title="Cancelar">🗑️</button>
                 </div>
             </td>
         `;
